@@ -87,3 +87,16 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Google credential directory
+.credentials
+
+# Google credential
+config/dashboard-credential.json
+config/fiware-176e13e65772.json
+
+# Created DB
+dbase/*.db
+
+# IDE
+.idea
