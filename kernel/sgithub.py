@@ -1,9 +1,10 @@
 from github import Github
+from config.settings import GITHUB_TOKEN
 import pprint
 
 __author__ = 'Manuel Escriche'
 
-gh = Github('adc842f790105942e095f5f77484ffa8242a2ec3')
+gh = Github(login_or_token=GITHUB_TOKEN)
 repo = gh.get_user('mmilidoni').get_repo("github-downloads-count")
 releases = repo.get_releases()
 download_count = n_assets = 0

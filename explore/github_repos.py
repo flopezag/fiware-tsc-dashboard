@@ -1,10 +1,11 @@
 from github import Github
 from dbase import db, Source
+from config.settings import GITHUB_TOKEN
 
 __author__ = 'Manuel Escriche'
 
 source = db.query(Source).filter_by(name='GitHub').one()
-gh = Github('adc842f790105942e095f5f77484ffa8242a2ec3')
+gh = Github(login_or_token=GITHUB_TOKEN)
 
 for metric in source.metrics:
     print('->', metric.enabler_imp.name)
