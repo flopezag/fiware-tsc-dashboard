@@ -1,0 +1,65 @@
+[
+  {
+    "shortname": "UPM", "name": "Universidad Politécnica de Madrid"
+  },
+  {
+    "shortname": "E-IIS", "name": "Engineering - Ingegneria Informatica Spa"
+  },
+  {
+    "shortname": "IBM", "name": "IBM Israel - Science and Technology LTD"
+  },
+  {
+    "shortname": "TID", "name": "Telefónica Investigación y Desarrollo SA"
+  },
+  {
+    "shortname": "OKFN", "name": "Open Knowledge Foundation LBG"
+  },
+  {
+    "shortname": "URJC", "name": "Universidad Rey Juan Carlos"
+  },
+  {
+    "shortname": "EPROS", "name": "Proyectos y Sistemas de Mantenimiento SL"
+  },
+  {
+    "shortname": "UniRoma", "name": "Universita degli Studi di Roma La Sapienza"
+  },
+  {
+    "shortname": "ZHAW", "name": "Zurcher Hochschule Fur Angewandte Wissenschaften"
+  },
+  {
+    "shortname": "ET", "name": "Etxe-tar SA"
+  },
+  {
+    "shortname": "ORANGE", "name": "Orange SA"
+  },
+  {
+    "shortname": "NEC", "name": "NEC Europe LTD"
+  },
+  {
+    "shortname": "UNIS", "name": "University of Surrey"
+  },
+  {
+    "shortname": "TS", "name": "Thales Services SAS"
+  },
+  {
+    "shortname": "DFKI", "name": "Deutsches Forschungszentrum Fuer Kuenstliche Intelligenz Gmbh"
+  },
+  {
+    "shortname": "ADMINO", "name": "Adminotech OY"
+  },
+  {
+    "shortname": "CYBER", "name": "Cyberlightning OY"
+  },
+  {
+    "shortname": "CIE", "name": "University of Oulu"
+  },
+  {
+    "shortname": "LUDO", "name": "Ludocraft"
+  },
+  {
+    "shortname": "ATOS", "name": "ATOS SA"
+  },
+  {
+    "shortname": "EC", "name": "European Commission"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "name":"Catalogue",
+    "content": "Doc",
+    "url": "catalogue.fiware.org",
+    "units": "#pageviews"
+  },
+  {
+    "name":"Readthedocs",
+    "content": "Doc",
+    "url": "readthedocs.io",
+    "units": "#pageviews"
+  },
+  {
+    "name":"Docker",
+    "content": "Software Image",
+    "url": "hub.docker.com",
+    "units": "#pulls"
+  },
+  {
+    "name":"GitHub",
+    "content": "Source Code",
+    "url": "github.com",
+    "units": "#assets|#downloads"
+  },
+  {
+    "name":"Coverall",
+    "content": "Test Stats",
+    "url": "coveralls.io",
+    "units": "%sourcecode"
+  },
+  {
+    "name":"Academy",
+    "content": "Course",
+    "url": "edu.fi-ware.org",
+    "units": "#pageviews"
+  },
+  {
+    "name":"Helpdesk",
+    "content": "Work",
+    "url": "backlog.fiware.org",
+    "units": "#tickets(%pend)|#days"
+  },
+  {
+    "name":"Backlog",
+    "content": "Work",
+    "url": "backlog.fiware.org",
+    "units": "#features|#stories|#bugs"
+  },
+  {
+    "name":"ForgeWiki",
+    "content": "Specs",
+    "url": "",
+    "units": "#pageviews"
+  },
+  {
+    "name":"Lab",
+    "content": "Operation",
+    "url": "",
+    "units": ""
+  }
+]
