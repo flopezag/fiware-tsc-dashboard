@@ -23,9 +23,10 @@ from apiclient import discovery
 from oauth2client import client
 from oauth2client import tools
 from oauth2client.file import Storage
-from config.settings import CREDENTIAL, SERVICE_ACCOUNT_KEY, SERVICE_ACCOUNT_KEY_HOME
+from config.settings import CREDENTIAL, SERVICE_ACCOUNT_KEY, SERVICE_ACCOUNT_KEY_HOME, CODE_HOME
 from config.constants import APPLICATION_NAME, CREDENTIAL_DIR, CREDENTIAL_FILE
 from oauth2client.service_account import ServiceAccountCredentials
+from config.log import logger
 
 try:
     import argparse
@@ -46,16 +47,24 @@ def get_credentials(api):
     :return:
         Credentials, the obtained credential.
     """
+    logger.info("Get Google credential for API {}".format(api))
+
     # If modifying these scopes, delete your previously saved credentials
     # at ./.credentials/sheets.googleapis.com.json
     scope = {'sheets': 'https://www.googleapis.com/auth/spreadsheets',
              'analytics': 'https://www.googleapis.com/auth/analytics.readonly',
              'analyticsreporting': 'https://www.googleapis.com/auth/analytics.readonly'}
 
-    if not os.path.exists(CREDENTIAL_DIR):
-        os.makedirs(CREDENTIAL_DIR)
+    credential_folder = os.path.join(CODE_HOME, CREDENTIAL_DIR)
+    logger.debug("Credential dir: {}".format(credential_folder))
 
-    credential_path = os.path.join(CREDENTIAL_DIR, CREDENTIAL_FILE)
+    if not os.path.exists(credential_folder):
+        try:
+            os.makedirs(credential_folder)
+        except OSError as e:
+            logger.error("Unable to create the corresponding directory: {}".format(e.message))
+
+    credential_path = os.path.join(credential_folder, CREDENTIAL_FILE)
 
     if api == 'sheets':
         store = Storage(credential_path)
@@ -75,6 +84,8 @@ def get_credentials(api):
 
 
 def get_service(api_name):
+    logger.info("Get Google service for API {}".format(api_name))
+
     service = {'sheets': 'v4', 'analytics': 'v3', 'analyticsreporting': 'v4'}
     discoveryServiceUrl = {
         'sheets': 'https://sheets.googleapis.com/$discovery/rest?version=v4',
