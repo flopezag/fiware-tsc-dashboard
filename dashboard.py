@@ -121,7 +121,7 @@ class Dashboard:
 
 
 if __name__ == "__main__":
-    logger.info("Initilaizing the script...")
+    logger.info("Initializing the script...")
     dashboard = Dashboard()
 
     logger.info("Cleaning the Google Excel file...")

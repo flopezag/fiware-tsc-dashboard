@@ -31,12 +31,15 @@ installation.
 
 1. Clone this repository.
 2. Define the configuration file in './config/tsc-dashboard.ini'
-3. Execute the script 'source config.sh'. This script will execute the configuration 
-of the env and modify the file 'dashboard.py' in order to allow the automatic execution 
-of the python file. Last but not least, it moves the configuration file (tsc-dashboard.ini) 
-to the directory '/etc/fiware.d'
-4. Define your Google Credential in the './config/dashboard-credential.json' file.
-5. Define your Google service account key in the './config' directory
+3. Create your Google Credential in the './config/dashboard-credential.json' file.
+4. Create your Google service account key in the './config' directory
+5. Define owners.json file in the './config' directory.
+6. Execute the script 'source config.sh'. 
+7. With root user, execute the command 'cp ./config/tsc-dashboard.logrotate /etc/logrotate.d/tsc-dashboard
+
+This script (config.sh) will execute the configuration of the python virtualenv and 
+modify the file 'dashboard.py' in order to allow the automatic execution of the 
+python file. 
 
 Please, take a look to the https://console.developers.google.com in order to know more details 
 about the configuration of the credential for your application. Now the system is ready to use. 
@@ -44,7 +47,7 @@ You do not need to activate the virtualenv. The scripts will do it for you.
 
 [Top](#top)
 
-## Configuration
+### Configuration
 
 The script is searching the configuration parameters or in the '/etc/fiware.d'
 directory or in the environment variables. Firstly, The script try to find if there 
@@ -52,6 +55,19 @@ is defined an environment variable whose name is 'TSC_DASHBOARD_SETTINGS_FILE'.
 If the script cannot get this environment variable, it tries to find the file 
 'tsc-dashboard.ini' in '/etc/init.d' directory. In any oder case or the file does 
 not exist, the scripts will give you an error.
+
+## Run
+
+To execute the scripts, you only need to execute the following command:
+
+$ ./dashboard.py --noauth_local_webserver
+
+The first time that you execute it, you will be requested to provide access and write
+a verification code for your application. The following ones, you do not need to 
+repeat this process again.
+
+Keep in mind that the config.sh script modify the crontab file, therefore the application
+will be executed every working day at 4 o'clock.
 
 [Top](#top)
 
