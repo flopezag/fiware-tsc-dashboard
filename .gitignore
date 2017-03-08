@@ -100,3 +100,7 @@ dbase/*.db
 
 # IDE
 .idea
+
+# Configuration files
+config/owners.json
+config/tsc-dashboard.ini
