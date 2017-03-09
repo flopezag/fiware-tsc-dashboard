@@ -24,10 +24,11 @@ from kernel.google import get_service
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy import desc
 from config.settings import SHEET_ID, METRIC_VALUES
-from config.constants import DB_NAME, DB_FOLDER
+from config.constants import DB_NAME, DB_FOLDER, FIXED_ROWS, INITIAL_ROW, FIXED_COLUMNS, INITIAL_COLUMN
 from dbase.database import Database
 from dbase.measurement_search import MeasurementData
 from config.log import logger
+from config import enablers
 
 __author__ = 'Fernando López'
 
@@ -62,10 +63,13 @@ class Dashboard:
     def cleanup(self):
         row = [' ']
         values = []
-        for m in range(1, 24):
+
+        final_row = len(enablers) + FIXED_ROWS
+
+        for m in range(INITIAL_COLUMN, FIXED_COLUMNS):
             row.extend([' '])
 
-        for n in range(3, 67):
+        for n in range(INITIAL_ROW, final_row):
             values.append(row)
 
         self.__save__(values=values)

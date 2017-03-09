@@ -27,3 +27,25 @@ DB_NAME = 'enablers-dashboard.db'
 DB_FOLDER = 'dbase'
 LOG_FILE = 'tsc-dashboard.log'
 
+# We need to add 15 rows in the number of enablers list corresponding to:
+# - Title
+# - Report date
+# - Source
+# - Units
+# - Enabler Impl
+# - INCUBATED
+# - DEVELOPMENT
+# - SUPPORT
+# - DEPRECATED
+# - And 6 extra blank rows between them
+FIXED_ROWS = 15
+
+# We keep the firsts row without change in the sheet (sheet title)
+INITIAL_ROW = 2
+
+# The number of columns to delete corresponds to:
+# Source, Catalogue, Readthedocs, Docker, GitHub, Coverall, Academy, Helpdesk, Backlog, ForgeWiki, Lab
+FIXED_COLUMNS = 11
+
+# We start to delete from the initial column
+INITIAL_COLUMN = 1
