@@ -82,7 +82,10 @@ class Readthedocs(DataSource):
 
         service = get_service('analyticsreporting')
         body = {'reportRequests': [{'viewId': view['profile_id'],
-                                    'dateRanges': [],
+                                    'dateRanges': [{
+                                         "startDate": "2015-09-01",
+                                         "endDate": date.today().strftime('%Y-%m-%d')
+                                     }],
                                     'metrics': [{'expression': 'ga:pageviews'}]
                                     }]
                 }
@@ -101,6 +104,23 @@ class Readthedocs(DataSource):
 
 
 class Catalogue(DataSource):
+    """
+    Class to return the pageviews of the different entries in the FIWARE Catalogue.
+    Keep in mind that for each FIWARE Component is obtained all the pageviews from
+    its base URL, for example the FIWARE GE application-mashup-wirecloud whose base
+    URL is /enablers/application-mashup-wirecloud will obtain several measurements,
+    each for the link below it:
+      * /enablers/application-mashup-wirecloud
+      * /enablers/application-mashup-wirecloud/documentation
+      * /enablers/application-mashup-wirecloud/downloads
+      * /enablers/application-mashup-wirecloud/creating-instances
+      * /enablers/application-mashup-wirecloud/instances
+      * /enablers/application-mashup-wirecloud/terms-and-conditions
+      * ...
+
+    We obtain the complete sum of all the pages.
+    """
+
     def __init__(self):
         super(Catalogue, self).__init__()
         self.source = db.query(Source).filter_by(name='Catalogue').one()
@@ -324,7 +344,7 @@ class Coverall(DataSource):
         else:
             raise NoValueFound
 
-
+'''
 class ForgeWiki(DataSource):
     def __init__(self):
         super(ForgeWiki, self).__init__()
@@ -341,3 +361,4 @@ class Lab(DataSource):
 
     def get_measurement(self, metric):
         raise NotImplemented
+'''

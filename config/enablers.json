@@ -1,264 +1,5 @@
 [
   {
-    "name":"Application Mashup - Wirecloud",
-    "status": "Development",
-    "chapter":"Apps",
-    "type":"Product",
-    "owner": "Álvaro Arranz"
-  },
-  {
-    "name":"Business API Ecosystem - Biz Ecosystem RI",
-    "status": "Development",
-    "chapter":"Apps",
-    "type":"Product",
-    "owner": "Francisco de la Vega"
-  },
-  {
-    "name":"Data Visualization - SpagoBI",
-    "status": "Development",
-    "chapter":"Apps",
-    "type":"Service",
-    "owner": "Davide Zerbetto"
-  },
-  {
-    "name":"Marketplace - WMarket",
-    "status": "Deprecated",
-    "chapter":"Apps",
-    "type":"Product",
-    "owner": "Aitor Magán"},
-  {
-    "name":"Repository - Repository RI",
-    "status": "Deprecated",
-    "chapter":"Apps",
-    "type":"Product",
-    "owner": "Francisco de la Vega"
-  },
-  {
-    "name": "Revenue Settlement and Sharing System - RSS RI",
-    "status": "Deprecated",
-    "chapter":"Apps",
-    "type":"Service",
-    "owner": "Francisco de la Vega"
-  },
-  {
-    "name":"Store - WStore",
-    "status": "Deprecated",
-    "chapter":"Apps",
-    "type":"Product",
-    "owner": "Francisco de la Vega"
-  },
-
-  {
-    "name":"Application Management - Murano",
-    "status": "Development",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner": "Fernando Lopez"
-  },
-  {
-    "name":"Docker",
-    "status":"Development",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner": "Kenneth Nagin"
-  },
-  {
-    "name":"IaaS GE",
-    "status": "Support",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner": "Ezra Silvera"
-  },
-  {
-    "name":"Object Storage",
-    "status": "Support",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner": "Yosef Moatti"
-  },
-  {
-    "name":"PaaS Manager - Pegasus",
-    "status": "Support",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner": "Henar Muñoz"
-  },
-  {
-    "name":"Policy Manager - Bosun",
-    "status": "Support",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner":"Fernando Lopez"
-  },
-  {
-    "name":"Self Service Interfaces - Cloud Portal",
-    "status": "Development",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner": "Álvaro Alonso"
-  },
-  {
-    "name":"Software Deployment & Configuration - Sagitta",
-    "status": "Support",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner": "Henar Muñoz"
-  },
-  {
-    "name":"Monitoring GE - Sextant",
-    "status": "Support",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner": "Fernando Lopez"
-  },
-
-  {
-    "name":"BigData Analysis - Cosmos",
-    "status": "Development",
-    "chapter":"Data",
-    "type":"Service",
-    "owner": "Francisco Romero"
-  },
-  {
-    "name":"CKAN",
-    "status": "Support",
-    "chapter":"Data",
-    "type":"Product",
-    "owner": "Jo Barratt"
-  },
-  {
-    "name":"Cloud Messaging - AEON",
-    "status": "Incubated",
-    "chapter":"Data",
-    "type":"Product",
-    "owner": "Elisa Herrmann"
-  },
-  {
-    "name":"Complex Event Processing (CEP) - Proactive Technology Online",
-    "status":"Support",
-    "chapter":"Data",
-    "type":"Product",
-    "owner": "Uri Shani"
-  },
-  {
-    "name":"Electronic Data Exchange - Domibus",
-    "status": "Incubated",
-    "chapter":"Data",
-    "type":"Product",
-    "owner": "Ioana Dragusanu"
-  },
-  {
-    "name":"Publish/Subscribe Context Broker - Orion Context Broker",
-    "status": "Development",
-    "chapter":"Data",
-    "type":"Product",
-    "owner": "Fermín Galán"
-  },
-  {
-    "name":"Stream-oriented - Kurento",
-    "status": "Support",
-    "chapter":"Data",
-    "type":"Product",
-    "owner": "Javier Lopez Fernandez"
-  },
-
-
-  {
-    "name":"Fast RTPS",
-    "status": "Incubated",
-    "chapter":"I2ND",
-    "type":"Product",
-    "owner": "Jaime Martín"
-  },
-  {
-    "name":"Kiara",
-    "status": "Development",
-    "chapter":"I2ND",
-    "type":"Platform Component",
-    "owner": "Jaime Martín"
-  },
-  {
-    "name":"OFNIC",
-    "status": "Support",
-    "chapter":"I2ND",
-    "type":"Component",
-    "owner": "Federico Cimorelli"
-  },
-
-
-  {
-    "name":"IoT Data Edge Consolidation GE - Cepheus",
-    "status": "Support",
-    "chapter":"IoT",
-    "type":"Product",
-    "owner": "Christophe Azemar"
-  },
-  {
-    "name":"Backend Device Management - IDAS",
-    "status": "Development",
-    "chapter":"IoT",
-    "type":"Product",
-    "owner": "Carlos Ralli Ucedo"
-  },
-  {
-    "name":"IoT Broker",
-    "status": "Development",
-    "chapter":"IoT",
-    "type":"Product",
-    "owner": "Stefan Gessler"
-  },
-  {
-    "name":"IoT Discovery",
-    "status": "Development",
-    "chapter":"IoT",
-    "type":"Product",
-    "owner": "Tarek Elsaleh"
-  },
-
-  {
-    "name":"Authorization PDP - AuthZForce",
-    "status": "Development",
-    "chapter":"Security",
-    "type":"Product",
-    "owner": "Cyril Dangerville"
-  },
-  {
-    "name":"Identity Management - KeyRock",
-    "status": "Development",
-    "chapter":"Security",
-    "type":"Product",
-    "owner": "Álvaro Alonso"
-  },
-  {
-    "name":"PEP Proxy - Wilma",
-    "status": "Development",
-    "chapter":"Security",
-    "type":"Product",
-    "owner": "Álvaro Alonso"
-  },
-  {
-    "name":"Privacy",
-    "status": "Incubated",
-    "chapter":"Security",
-    "type":"Product",
-    "owner": "Stephan Neuhaus"
-  },
-  {
-    "name": "Trustworthy Factory",
-    "status":"Deprecated",
-    "chapter":"Security",
-    "type":"Product",
-    "owner": "Sebastien Keller"
-  },
-  {
-    "name": "Cyber Security GE - CyberCAPTOR",
-    "status": "Deprecated",
-    "chapter":"Security",
-    "type":"Product",
-    "owner": "Olivier Bettan"
-  },
-
-  {
     "name":"2D-UI",
     "status": "Deprecated",
     "chapter": "WebUI",
@@ -287,11 +28,67 @@
     "owner": "Christian Schlinkmann"
   },
   {
+    "name":"Application Management - Murano",
+    "status": "Development",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner": "Fernando Lopez Aguilar"
+  },
+  {
+    "name":"Application Mashup - Wirecloud",
+    "status": "Development",
+    "chapter":"Apps",
+    "type":"Product",
+    "owner": "Alvaro Arranz"
+  },
+  {
     "name":"Augmented Reality",
     "status": "Incubated",
     "chapter":"WebUI",
     "type":"Product",
     "owner": "Torsten Spieldenner"
+  },
+  {
+    "name":"Authorization PDP - AuthZForce",
+    "status": "Development",
+    "chapter":"Security",
+    "type":"Product",
+    "owner": "Cyril Dangerville"
+  },
+  {
+    "name":"Backend Device Management - IDAS",
+    "status": "Development",
+    "chapter":"IoT",
+    "type":"Product",
+    "owner": "Carlos Ralli Ucedo"
+  },
+  {
+    "name":"BigData Analysis - Cosmos",
+    "status": "Development",
+    "chapter":"Data",
+    "type":"Service",
+    "owner": "Francisco Romero"
+  },
+  {
+    "name":"Business API Ecosystem - Biz Ecosystem RI",
+    "status": "Development",
+    "chapter":"Apps",
+    "type":"Product",
+    "owner": "Francisco de la Vega"
+  },
+  {
+    "name":"CKAN",
+    "status": "Support",
+    "chapter":"Data",
+    "type":"Product",
+    "owner": "Jo Barratt"
+  },
+  {
+    "name":"Cloud Messaging - AEON",
+    "status": "Incubated",
+    "chapter":"Data",
+    "type":"Product",
+    "owner": "Elisa Herrmann"
   },
   {
     "name":"Cloud Rendering",
@@ -301,11 +98,81 @@
     "owner": "Cvetan Stefanovski"
   },
   {
+    "name":"Complex Event Processing (CEP) - Proactive Technology Online",
+    "status":"Support",
+    "chapter":"Data",
+    "type":"Product",
+    "owner": "Uri Shani"
+  },
+  {
+    "name": "Cyber Security GE - CyberCAPTOR",
+    "status": "Deprecated",
+    "chapter":"Security",
+    "type":"Product",
+    "owner": "Olivier Bettan"
+  },
+  {
+    "name": "Cygnus",
+    "status": "Development",
+    "chapter":"Data",
+    "type":"Product",
+    "owner": "Joaquin Salvachua"
+  },
+  {
+    "name":"Data Visualization - Knowage",
+    "status": "Development",
+    "chapter":"Apps",
+    "type":"Service",
+    "owner": "Davide Zerbetto"
+  },
+  {
+    "name":"Data Visualization - SpagoBI",
+    "status": "Development",
+    "chapter":"Apps",
+    "type":"Service",
+    "owner": "Davide Zerbetto"
+  },
+  {
+    "name":"Docker",
+    "status":"Development",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner": "Kenneth Nagin"
+  },
+  {
+    "name":"Electronic Data Exchange - Domibus",
+    "status": "Incubated",
+    "chapter":"Data",
+    "type":"Product",
+    "owner": "Ioana Dragusanu"
+  },
+  {
+    "name":"Fast RTPS",
+    "status": "Incubated",
+    "chapter":"I2ND",
+    "type":"Product",
+    "owner": "Jaime Martin"
+  },
+  {
     "name":"GIS Data Provider - Geoserver/3D",
     "status": "Support",
     "chapter":"WebUI",
     "type":"Product",
     "owner": "Juha Hyvarinen"
+  },
+  {
+    "name":"IaaS GE",
+    "status": "Support",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner": "Ezra Silvera"
+  },
+  {
+    "name":"Identity Management - KeyRock",
+    "status": "Development",
+    "chapter":"Security",
+    "type":"Product",
+    "owner": "Alvaro Alonso"
   },
   {
     "name":"Interface Designer",
@@ -315,11 +182,109 @@
     "owner": "Cvetan Stefanovski"
   },
   {
+    "name":"IoT Broker",
+    "status": "Development",
+    "chapter":"IoT",
+    "type":"Product",
+    "owner": "Stefan Gessler"
+  },
+  {
+    "name":"IoT Data Edge Consolidation GE - Cepheus",
+    "status": "Support",
+    "chapter":"IoT",
+    "type":"Product",
+    "owner": "Christophe Azemar"
+  },
+  {
+    "name":"IoT Discovery",
+    "status": "Development",
+    "chapter":"IoT",
+    "type":"Product",
+    "owner": "Tarek Elsaleh"
+  },
+  {
+    "name":"Kiara Advanced Middleware",
+    "status": "Development",
+    "chapter":"I2ND",
+    "type":"Platform Component",
+    "owner": "Jaime Martin"
+  },
+  {
+    "name":"Marketplace - WMarket",
+    "status": "Deprecated",
+    "chapter":"Apps",
+    "type":"Product",
+    "owner": "Aitor Magan"
+  },
+  {
+    "name":"Monitoring GE - Sextant",
+    "status": "Deprecated",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner": "Fernando Lopez Aguilar"
+  },
+  {
+    "name":"Network Information and Control - OFNIC",
+    "status": "Support",
+    "chapter":"I2ND",
+    "type":"Component",
+    "owner": "Federico Cimorelli"
+  },
+  {
+    "name":"Object Storage",
+    "status": "Support",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner": "Yosef Moatti"
+  },
+  {
+    "name":"PaaS Manager - Pegasus",
+    "status": "Support",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner": "Henar Munoz"
+  },
+  {
+    "name":"PEP Proxy - Wilma",
+    "status": "Development",
+    "chapter":"Security",
+    "type":"Product",
+    "owner": "Alvaro Alonso"
+  },
+  {
     "name":"POI Data Provider",
     "status": "Support",
     "chapter":"WebUI",
     "type":"Product",
     "owner": "Ari Okkonen"
+  },
+  {
+    "name":"Policy Manager - Bosun",
+    "status": "Support",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner":"Fernando Lopez Aguilar"
+  },
+  {
+    "name":"Privacy",
+    "status": "Incubated",
+    "chapter":"Security",
+    "type":"Product",
+    "owner": "Stephan Neuhaus"
+  },
+  {
+    "name":"Protocol Adapter - MR CoAP",
+    "status": "Deprecated",
+    "chapter":"IoT",
+    "type":"Product",
+    "owner": "Matthias Thoma"
+  },
+  {
+    "name":"Publish/Subscribe Context Broker - Orion Context Broker",
+    "status": "Development",
+    "chapter":"Data",
+    "type":"Product",
+    "owner": "Fermin Galan"
   },
   {
     "name": "Real Virtual Interaction",
@@ -329,11 +294,67 @@
     "owner": "Cyberlightning"
   },
   {
+    "name":"Repository - Repository RI",
+    "status": "Deprecated",
+    "chapter":"Apps",
+    "type":"Product",
+    "owner": "Francisco de la Vega"
+  },
+  {
+    "name": "Revenue Settlement and Sharing System - RSS RI",
+    "status": "Deprecated",
+    "chapter":"Apps",
+    "type":"Service",
+    "owner": "Francisco de la Vega"
+  },
+  {
+    "name":"Security Monitoring",
+    "status": "Deprecated",
+    "chapter":"Security",
+    "type":"Procuvt",
+    "owner": "Susana Gzarzosa"
+  },
+  {
+    "name":"Self Service Interfaces - Cloud Portal",
+    "status": "Development",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner": "Alvaro Alonso"
+  },
+  {
+    "name":"Software Deployment & Configuration - Sagitta",
+    "status": "Support",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner": "Henar Munoz"
+  },
+  {
+    "name":"STH-Comet",
+    "status": "Development",
+    "chapter":"Data",
+    "type":"Product",
+    "owner": "Joaquin Salvachua"
+  },
+  {
+    "name":"Store - WStore",
+    "status": "Deprecated",
+    "chapter":"Apps",
+    "type":"Product",
+    "owner": "Francisco de la Vega"
+  },
+  {
+    "name":"Stream-oriented - Kurento",
+    "status": "Support",
+    "chapter":"Data",
+    "type":"Product",
+    "owner": "Javier Lopez Fernandez"
+  },
+  {
     "name":"Synchronization",
     "status": "Support",
     "chapter":"WebUI",
     "type":"Product",
-    "owner": "Jonne Väisänen"
+    "owner": "Jonne Vaisanen"
   },
   {
     "name":"Synchronization - FiVES",
@@ -343,11 +364,17 @@
     "owner": "Torsten Spieldenner"
   },
   {
+    "name": "Trustworthy Factory",
+    "status":"Deprecated",
+    "chapter":"Security",
+    "type":"Product",
+    "owner": "Sebastien Keller"
+  },
+  {
     "name": "Virtual Characters",
     "status": "Support",
     "chapter": "WebUI",
     "type": "Product",
-    "owner": "Lasse Öörni"
+    "owner": "Lasse Oorni"
   }
 ]
-

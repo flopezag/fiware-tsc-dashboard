@@ -77,6 +77,7 @@ class Dashboard:
     def generate_data(self):
         values = list()
         values.append(['Report date:', datetime.now().strftime('%d %b %Y at %H:%m')])
+        values.append(['Data sources updated on:', '30 Dec 2017'])
         values.append(['', ''])
         header = ['Source']
 
@@ -90,7 +91,7 @@ class Dashboard:
             units.extend([source.units])
 
         values.append(units)
-        values.append(['Enabler Impl'])
+        values.append(['Enabler Implementation'])
         values.append(['', ''])
 
         for status in ('Incubated', 'Development', 'Support', 'Deprecated'):

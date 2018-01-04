@@ -38,7 +38,7 @@ LOG_FILE = 'tsc-dashboard.log'
 # - SUPPORT
 # - DEPRECATED
 # - And 6 extra blank rows between them
-FIXED_ROWS = 15
+FIXED_ROWS = 30
 
 # We keep the firsts row without change in the sheet (sheet title)
 INITIAL_ROW = 2

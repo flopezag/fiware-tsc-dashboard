@@ -1,15 +1,15 @@
 [
   {
-    "shortname": "UPM", "name": "Universidad Politécnica de Madrid"
+    "shortname": "UPM", "name": "Universidad Politecnica de Madrid"
   },
   {
-    "shortname": "E-IIS", "name": "Engineering - Ingegneria Informatica Spa"
+    "shortname": "E-IIS", "name": "Engineering Ingegneria Informatica Spa"
   },
   {
-    "shortname": "IBM", "name": "IBM Israel - Science and Technology LTD"
+    "shortname": "IBM", "name": "IBM Israel Science and Technology LTD"
   },
   {
-    "shortname": "TID", "name": "Telefónica Investigación y Desarrollo SA"
+    "shortname": "TID", "name": "Telefonica Investigacion y Desarrollo SA"
   },
   {
     "shortname": "OKFN", "name": "Open Knowledge Foundation LBG"
@@ -27,7 +27,7 @@
     "shortname": "ZHAW", "name": "Zurcher Hochschule Fur Angewandte Wissenschaften"
   },
   {
-    "shortname": "ET", "name": "Etxe-tar SA"
+    "shortname": "ET", "name": "EtxeTar SA"
   },
   {
     "shortname": "ORANGE", "name": "Orange SA"
@@ -61,5 +61,8 @@
   },
   {
     "shortname": "EC", "name": "European Commission"
+  },
+  {
+    "shortname": "SAP", "name": "SAP"
   }
 ]
