@@ -15,7 +15,17 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
+
 ##
+#                                DataBase Structure
+#
+#  ________          _______          __________          ________          ________
+# |        |   1:M  |       |   1:M  |          |   1:M  |        |   1:1  |        |
+# | Entity |--------| Owner |--------| IEnabler |--------| Metric |--------| Source |
+# |        |        |       |        |          |        |        |        |        |
+#  --------          -------          ----------          --------          --------
+##
+
 from sqlalchemy.orm.exc import NoResultFound
 from dbase import db, Base, engine, Entity, Owner, Source, EnablerImp, Metric, Measurement
 from config import entities, owners, sources, enablers, endpoints
@@ -84,7 +94,8 @@ class Database:
     @staticmethod
     def __enablers__():
         for params in enablers:
-            # print(params)
+            print('\n>>> PARAMS <<<')
+            print(params)
             try:
                 owner = db.query(Owner).filter_by(name=params['owner']).one()
             except NoResultFound:
@@ -106,7 +117,8 @@ class Database:
     @staticmethod
     def __endpoints__():
         for params in endpoints:
-            # print(params)
+            print('\n>>> PARAMS __endpoints__() <<<')
+            print(params)
             try:
                 enabler = db.query(EnablerImp).filter_by(name=params['enabler']).one()
             except:

@@ -67,8 +67,6 @@ echo ""
 echo "Please, with root user, execute the following command:"
 echo ""
 echo "cp ./config/tsc-dashboard.logrotate /etc/logrotate.d/tsc-dashboard"
-echo ""
-echo ""
 
 
 

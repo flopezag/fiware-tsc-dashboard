@@ -77,6 +77,8 @@ class Dashboard:
     def generate_data(self):
         values = list()
         values.append(['Report date:', datetime.now().strftime('%d %b %Y at %H:%m')])
+        # TODO: Add the date of the database, created date.
+        values.append(['Data sources updated on:', '3 Jan 2018'])
         values.append(['', ''])
         header = ['Source']
 
@@ -90,7 +92,7 @@ class Dashboard:
             units.extend([source.units])
 
         values.append(units)
-        values.append(['Enabler Impl'])
+        values.append(['Enabler Implementation'])
         values.append(['', ''])
 
         for status in ('Incubated', 'Development', 'Support', 'Deprecated'):
@@ -142,3 +144,5 @@ if __name__ == "__main__":
 
     logger.info("Updating the Google Excel file...")
     dashboard.generate_data()
+
+    #TODO: Add footer to the Google sheet document.

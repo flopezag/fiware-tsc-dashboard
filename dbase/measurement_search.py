@@ -18,7 +18,7 @@
 ##
 from datetime import datetime
 from dbase import db, Source, Metric, Measurement
-from kernel import Readthedocs, Backlog, Helpdesk, Catalogue, Academy, Docker, GitHub, Coverall, ForgeWiki, Lab
+from kernel import Readthedocs, Backlog, Helpdesk, Catalogue, Academy, Docker, GitHub, Coverall
 from kernel.data_sources import NotImplemented, NotDefined
 from kernel.scrum import InvalidConection
 from config.log import logger
@@ -63,6 +63,7 @@ class MeasurementData:
                 db.add(measurement)
             else:
                 db.commit()
+
 
 if __name__ == "__main__":
     logger.info("Starting process to get measurements...")

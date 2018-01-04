@@ -1,5 +1,3 @@
-su fla fla
-
 /logs/tsc-dashboard.log {
         size 1k
         copytruncate

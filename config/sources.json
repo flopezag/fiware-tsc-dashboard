@@ -32,7 +32,7 @@
   {
     "name":"Academy",
     "content": "Course",
-    "url": "edu.fi-ware.org",
+    "url": "edu.fiware.org",
     "units": "#pageviews"
   },
   {
@@ -46,17 +46,5 @@
     "content": "Work",
     "url": "backlog.fiware.org",
     "units": "#features|#stories|#bugs"
-  },
-  {
-    "name":"ForgeWiki",
-    "content": "Specs",
-    "url": "",
-    "units": "#pageviews"
-  },
-  {
-    "name":"Lab",
-    "content": "Operation",
-    "url": "",
-    "units": ""
   }
 ]
