@@ -344,21 +344,3 @@ class Coverall(DataSource):
         else:
             raise NoValueFound
 
-'''
-class ForgeWiki(DataSource):
-    def __init__(self):
-        super(ForgeWiki, self).__init__()
-        self.source = db.query(Source).filter_by(name='ForgeWiki').one()
-
-    def get_measurement(self, metric):
-        raise NotImplemented
-
-
-class Lab(DataSource):
-    def __init__(self):
-        super(Lab, self).__init__()
-        self.source = db.query(Source).filter_by(name='Lab').one()
-
-    def get_measurement(self, metric):
-        raise NotImplemented
-'''
