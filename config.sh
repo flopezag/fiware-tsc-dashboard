@@ -83,7 +83,7 @@ if [ "$result" == "" ]; then
     touch /tmp/cronlock
 
     echo "# FIWARE TSC Enabler Dashboard" | crontab -
-    (crontab -l; echo "00 4 * * mon-fri "${working_directory}"/dashboard.py --noauth_local_webserver") | crontab -
+    (crontab -l; echo "00 4 * * * "${working_directory}"/dashboard.py --noauth_local_webserver") | crontab -
 
     rm -f /tmp/cronlock
 
@@ -96,7 +96,7 @@ else
     if [ "$line" == "" ]; then
         (crontab -l; echo "") | crontab -
         (crontab -l; echo "# FIWARE TSC Enabler Dashboard") | crontab -
-        (crontab -l; echo "00 4 * * mon-fri "${working_directory}"/dashboard.py --noauth_local_webserver") | crontab -
+        (crontab -l; echo "00 4 * * * "${working_directory}"/dashboard.py --noauth_local_webserver") | crontab -
     fi
 
     rm -f /tmp/cronlock
