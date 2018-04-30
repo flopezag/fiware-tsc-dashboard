@@ -1,11 +1,11 @@
-#<a name="top"></a>FIWARE TSC Enablers Dashboard
+# <a name="top"></a>FIWARE TSC Enablers Dashboard
 [![License badge](https://img.shields.io/badge/license-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Scripts to generate the Enablers Dashboard to evaluate the use of the different components.
 
 These scripts were developed in order to facilitate the activities in the FIWARE Technical Steering
 Committee. The purpose is generate automatically a google excel file in which we show the use of
-the differents Generic Enablers that are available in FIWARE.
+the different Generic Enablers that are available in FIWARE.
 
 These scripts were originally develop by Manuel Escriche from Telefónica I+D and now 
 is maintained by me. I just try to cover python style reorganize content to separate 

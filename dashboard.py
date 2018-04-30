@@ -104,7 +104,7 @@ class Dashboard:
         values = list()
         values.append(['Report date:', datetime.now().strftime('%d %b %Y at %H:%m')])
 
-        # TODO: Add the date of the database, created date.
+        # Add the date in which the database schema was created last time
         values.append(['Data sources updated on:', self.getdate()])
         values.append(['', ''])
         header = ['Source']
