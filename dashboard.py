@@ -17,6 +17,7 @@
 # under the License.
 ##
 import os
+import subprocess
 
 from datetime import datetime
 from dbase import db, EnablerImp, Source, Metric, Measurement
@@ -74,11 +75,37 @@ class Dashboard:
 
         self.__save__(values=values)
 
+    @staticmethod
+    def getdate():
+        """
+        Get the creation date of the file enablers-dashboard.db
+        :return: the creation date of the file
+        """
+        # I need to recovers when the file was created.
+        pwd = os.path.dirname(os.path.abspath(__file__))
+
+        db_file = os.path.join(pwd, os.path.join(DB_FOLDER, DB_NAME))
+
+        command = 'ls -di {} | awk {} '.format(db_file, "'{print $1}'")
+        i_node = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE).communicate()[0].strip('\n')
+
+        command = 'sudo df {} | tail -1 | awk {}'.format(db_file, "'{print $1}'")
+        fs = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE).communicate()[0].strip('\n')
+
+        command = "sudo debugfs -R 'stat <{}>' {} 2>/dev/null | grep -oP 'crtime.*--\s*\K.*'".format(i_node, fs)
+        created_time = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE).communicate()[0].strip('\n')
+
+        # Transform data from the format "<Day of the week> MM DD HH:MM:SS YYYY" to the format DD MM YYYY
+        created_time = datetime.strptime(created_time, '%a %b %d %H:%M:%S %Y').strftime('%d %b %Y')
+
+        return created_time
+
     def generate_data(self):
         values = list()
         values.append(['Report date:', datetime.now().strftime('%d %b %Y at %H:%m')])
+
         # TODO: Add the date of the database, created date.
-        values.append(['Data sources updated on:', '3 Jan 2018'])
+        values.append(['Data sources updated on:', self.getdate()])
         values.append(['', ''])
         header = ['Source']
 
@@ -145,4 +172,4 @@ if __name__ == "__main__":
     logger.info("Updating the Google Excel file...")
     dashboard.generate_data()
 
-    #TODO: Add footer to the Google sheet document.
+    # TODO: Add footer to the Google sheet document.
