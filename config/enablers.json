@@ -77,13 +77,6 @@
     "owner": "Francisco de la Vega"
   },
   {
-    "name":"CKAN",
-    "status": "Support",
-    "chapter":"Data",
-    "type":"Product",
-    "owner": "Jo Barratt"
-  },
-  {
     "name":"Cloud Messaging - AEON",
     "status": "Incubated",
     "chapter":"Data",
@@ -152,6 +145,20 @@
     "chapter":"I2ND",
     "type":"Product",
     "owner": "Jaime Martin"
+  },
+  {
+    "name":"FIWARE CKAN Extensions",
+    "status": "Development",
+    "chapter":"Data",
+    "type":"Product",
+    "owner": "Francisco de la Vega"
+  },
+  {
+    "name":"FogFlow",
+    "status": "Incubated",
+    "chapter":"Data",
+    "type":"Product",
+    "owner": "Bin Cheng"
   },
   {
     "name":"GIS Data Provider - Geoserver/3D",
@@ -236,6 +243,13 @@
     "chapter":"Cloud",
     "type":"Platform Component",
     "owner": "Yosef Moatti"
+  },
+  {
+    "name":"OpenMTC",
+    "status":"Incubated",
+    "chapter":"IoT",
+    "type":"Platform Component",
+    "owner":"Ronald Steinke"
   },
   {
     "name":"PaaS Manager - Pegasus",
@@ -344,7 +358,7 @@
   },
   {
     "name":"Stream-oriented - Kurento",
-    "status": "Support",
+    "status": "Development",
     "chapter":"Data",
     "type":"Product",
     "owner": "Javier Lopez Fernandez"

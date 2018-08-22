@@ -6,6 +6,12 @@
     "units": "#pageviews"
   },
   {
+    "name":"Academy",
+    "content": "Course",
+    "url": "edu.fiware.org",
+    "units": "#pageviews"
+  },
+  {
     "name":"Readthedocs",
     "content": "Doc",
     "url": "readthedocs.io",
@@ -28,12 +34,6 @@
     "content": "Test Stats",
     "url": "coveralls.io",
     "units": "%sourcecode"
-  },
-  {
-    "name":"Academy",
-    "content": "Course",
-    "url": "edu.fiware.org",
-    "units": "#pageviews"
   },
   {
     "name":"Helpdesk",

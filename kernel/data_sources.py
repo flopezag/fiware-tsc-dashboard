@@ -19,7 +19,6 @@
 import re
 import requests
 import json
-import pprint
 from datetime import date
 from github import Github
 from dbase import db, Source

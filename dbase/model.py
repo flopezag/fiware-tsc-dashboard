@@ -103,3 +103,17 @@ class Measurement(Base):
 
     def __repr__(self):
         return '<{0.id}:{0.value}:{1}>'.format(self, str(self.date))
+
+
+class Admin(Base):
+    """ Data about the creration of the DB """
+    __tablename__ = 'admin'
+    id = Column(Integer, primary_key=True)
+    date = Column(DateTime, nullable=False)
+
+    def __str__(self):
+        return '{0.id}:d={1}'\
+            .format(self, str(self.date))
+
+    def __repr__(self):
+        return '<{0.id}:{1}>'.format(self, str(self.date))

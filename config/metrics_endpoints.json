@@ -34,7 +34,7 @@
     "catalogue":"3d-ui-xml3d",
     "academy": "XML3D",
     "readthedocs":"xml3d",
-    "github": "",
+    "github": "xml3d/xml3d.js",
     "docker": "",
     "helpdesk":"XML3D",
     "backlog":"XML3D"
@@ -75,7 +75,7 @@
     "catalogue": "authorization-pdp-authzforce",
     "academy": "Auth(Z|z)(F|f)orce",
     "readthedocs":"authzforce-ce-fiware",
-    "github": ["authzforce/server", "authzforce/core", "authzforce/fiware",
+    "github": ["authzforce/server", "authzforce/core",
       "authzforce/core-pdp-api", "authzforce/pap-dao-flat-file", "authzforce/core-pap-api",
       "authzforce/parent", "authzforce/rest-api-model"],
     "docker": "authzforce-ce-server",
@@ -98,7 +98,7 @@
     "catalogue": "bigdata-analysis-cosmos",
     "academy": "Cosmos",
     "readthedocs":"fiware-cosmos",
-    "github": ["telefonicaid/fiware-sth-comet", "telefonicaid/fiware-cygnus", "telefonicaid/fiware-cosmos", "telefonicaid/fiware-sinfonier"],
+    "github": ["telefonicaid/fiware-cosmos", "telefonicaid/fiware-sinfonier"],
     "docker": "",
     "helpdesk":"Cosmos",
     "backlog":"Cosmos"
@@ -112,16 +112,6 @@
     "docker": "business-api-ecosystem",
     "helpdesk":"Business Ecosystem",
     "backlog":"Business Ecosystem"
-  },
-  {
-    "enabler": "CKAN",
-    "catalogue": "ckan",
-    "academy": "CKAN",
-    "readthedocs":"",
-    "github": "ckan/ckan",
-    "docker": "ckan",
-    "helpdesk":"CKAN",
-    "backlog":"CKAN"
   },
   {
     "enabler": "Cloud Messaging - AEON",
@@ -170,20 +160,21 @@
     "catalogue": "cygnus",
     "academy": "",
     "readthedocs":"fiware-cygnus",
-    "github": "",
+    "github": "telefonicaid/fiware-cygnus",
     "docker": "cygnus-ngsi",
-    "helpdesk":"",
-    "backlog":""
+    "helpdesk":"Cygnus",
+    "backlog":"Cygnus"
   },
   {
     "enabler": "Data Visualization - Knowage",
     "catalogue": "data-visualization-knowage",
     "academy": "",
     "readthedocs":"knowage",
-    "github": "KnowageLabs/Knowage-Server",
+    "github": ["KnowageLabs/Knowage-Server", "KnowageLabs/Knowage-Server-Docker", 
+       "KnowageLabs/Knowage-Documentation", "KnowageLabs/Knowage-Server-Chef"],
     "docker": "",
-    "helpdesk":"",
-    "backlog":""
+    "helpdesk":"Knowage",
+    "backlog":"Knowage"
   },
   {
     "enabler": "Data Visualization - SpagoBI",
@@ -210,7 +201,7 @@
     "catalogue": "electronic-data-exchange-domibus",
     "academy": "Electronic Data Exchange",
     "readthedocs":"",
-    "github": "",
+    "github": "Fiware/context.Domibus",
     "docker": "",
     "helpdesk":"",
     "backlog":""
@@ -222,6 +213,26 @@
     "readthedocs":"eprosima-fast-rtps",
     "github": "eProsima/Fast-RTPS",
     "docker": "",
+    "helpdesk":"",
+    "backlog":""
+  },
+  {
+    "enabler": "FIWARE CKAN Extensions",
+    "catalogue": "fiware-ckan-extensions",
+    "academy": "CKAN",
+    "readthedocs":"fiware-ckan-extensions",
+    "github":"conwetlab/FIWARE-CKAN-Extensions",
+    "docker": "",
+    "helpdesk":"CKAN",
+    "backlog":"CKAN"
+  },
+  {
+    "enabler": "FogFlow",
+    "catalogue": "fogflow",
+    "academy": "",
+    "readthedocs":"fogflow",
+    "github":"context.FogFlow",
+    "docker": "fogflow/broker",
     "helpdesk":"",
     "backlog":""
   },
@@ -240,7 +251,7 @@
     "catalogue": "iaas-ge-fiware-reference-implementation",
     "academy": "IaaS Resource Management",
     "readthedocs":"",
-    "github": "",
+    "github": ["openstack/nova","openstack/glance", "openstack/neutron","openstack/cinder"],
     "docker": "",
     "helpdesk":"IaaS RM",
     "backlog":"IaaS RM"
@@ -337,6 +348,17 @@
     "coverall":"renarsvilnis/fiware-object-storage-ge",
     "helpdesk":"Object Storage",
     "backlog":"Object Storage"
+  },
+  {
+    "enabler": "OpenMTC",
+    "catalogue": "openmtc",
+    "academy": "",
+    "readthedocs":"",
+    "github": "OpenMTC/OpenMTC",
+    "docker": "",
+    "coverall":"",
+    "helpdesk":"",
+    "backlog":""
   },
   {
     "enabler": "Network Information and Control - OFNIC",
@@ -488,8 +510,8 @@
     "readthedocs":"fiware-sth-comet",
     "github": "telefonicaid/fiware-sth-comet",
     "docker": "sth-comet",
-    "helpdesk":"",
-    "backlog":""
+    "helpdesk":"STH-Comet",
+    "backlog":"STH-Comet"
   },
   {
     "enabler": "Store - WStore",
@@ -529,7 +551,7 @@
     "catalogue": "synchronization-fives",
     "academy": "FiVES",
     "readthedocs":"fives",
-    "github": "",
+    "github": "fives-team/FiVES",
     "docker": "fives",
     "helpdesk":"Fives",
     "backlog":"Fives"

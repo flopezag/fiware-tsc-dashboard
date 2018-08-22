@@ -20,7 +20,7 @@ import os
 import subprocess
 
 from datetime import datetime
-from dbase import db, EnablerImp, Source, Metric, Measurement
+from dbase import db, EnablerImp, Source, Metric, Measurement, Admin
 from kernel.google import get_service
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy import desc
@@ -81,22 +81,7 @@ class Dashboard:
         Get the creation date of the file enablers-dashboard.db
         :return: the creation date of the file
         """
-        # I need to recovers when the file was created.
-        pwd = os.path.dirname(os.path.abspath(__file__))
-
-        db_file = os.path.join(pwd, os.path.join(DB_FOLDER, DB_NAME))
-
-        command = 'ls -di {} | awk {} '.format(db_file, "'{print $1}'")
-        i_node = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE).communicate()[0].strip('\n')
-
-        command = 'sudo df {} | tail -1 | awk {}'.format(db_file, "'{print $1}'")
-        fs = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE).communicate()[0].strip('\n')
-
-        command = "sudo debugfs -R 'stat <{}>' {} 2>/dev/null | grep -oP 'crtime.*--\s*\K.*'".format(i_node, fs)
-        created_time = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE).communicate()[0].strip('\n')
-
-        # Transform data from the format "<Day of the week> MM DD HH:MM:SS YYYY" to the format DD MM YYYY
-        created_time = datetime.strptime(created_time, '%a %b %d %H:%M:%S %Y').strftime('%d %b %Y')
+        created_time = db.query(Admin).one().date.strftime('%d %b %Y at %H:%m')
 
         return created_time
 

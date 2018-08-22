@@ -27,8 +27,9 @@
 ##
 
 from sqlalchemy.orm.exc import NoResultFound
-from dbase import db, Base, engine, Entity, Owner, Source, EnablerImp, Metric, Measurement
+from dbase import db, Base, engine, Entity, Owner, Source, EnablerImp, Metric, Measurement, Admin
 from config import entities, owners, sources, enablers, endpoints
+import datetime
 
 __author__ = 'Fernando López'
 
@@ -41,6 +42,7 @@ class Database:
         self.__sources__()
         self.__enablers__()
         self.__endpoints__()
+        self.__admin__()
 
     @staticmethod
     def __entities__():
@@ -142,6 +144,13 @@ class Database:
                         metric.details = m_params['details']
         else:
             db.commit()
+
+    @staticmethod
+    def __admin__():
+        params = {'date': datetime.datetime.now()}
+        db.add(Admin(**params))
+        db.commit()
+
 
     @staticmethod
     def show_data():
