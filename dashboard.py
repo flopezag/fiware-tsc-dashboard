@@ -154,6 +154,9 @@ if __name__ == "__main__":
         logger.info("Keeping data as it is in the DB...")
 
     logger.info("Updating the Google Excel file...")
+
     dashboard.generate_data()
+
+    logger.info("Data analysis finished")
 
     # TODO: Add footer to the Google sheet document.
