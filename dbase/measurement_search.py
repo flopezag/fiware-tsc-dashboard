@@ -18,7 +18,9 @@
 ##
 from datetime import datetime
 from dbase import db, Source, Metric, Measurement
-from kernel import Readthedocs, Backlog, Helpdesk, Catalogue, Academy, Docker, GitHub, Coverall
+from kernel import Readthedocs, Backlog, Helpdesk, Catalogue, Academy, Docker, GitHub, Coverall, \
+    GitHub_Open_Issues, GitHub_Closed_Issues, GitHub_Adopters, GitHub_Adopters_Open_Issues, \
+    GitHub_Adopters_Closed_Issues, GitHub_Commits
 from kernel.data_sources import NotImplemented, NotDefined
 from kernel.scrum import InvalidConection
 from config.log import logger

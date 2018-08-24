@@ -1,48 +1,84 @@
 [
   {
-    "name":"Catalogue",
+    "name": "Catalogue",
     "content": "Doc",
     "url": "catalogue.fiware.org",
     "units": "#pageviews"
   },
   {
-    "name":"Academy",
+    "name": "Academy",
     "content": "Course",
     "url": "edu.fiware.org",
     "units": "#pageviews"
   },
   {
-    "name":"Readthedocs",
+    "name": "Readthedocs",
     "content": "Doc",
     "url": "readthedocs.io",
     "units": "#pageviews"
   },
   {
-    "name":"Docker",
+    "name": "Docker",
     "content": "Software Image",
     "url": "hub.docker.com",
     "units": "#pulls"
   },
   {
-    "name":"GitHub",
+    "name": "GitHub",
     "content": "Source Code",
     "url": "github.com",
     "units": "#assets|#downloads"
   },
   {
-    "name":"Coverall",
+    "name": "GitHub_Open_Issues",
+    "content": "Source Code",
+    "url": "github.com",
+    "units": "#issues"
+  },
+  {
+    "name": "GitHub_Closed_Issues",
+    "content": "Source Code",
+    "url": "github.com",
+    "units": "#issues"
+  },
+  {
+    "name": "GitHub_Adopters",
+    "content": "Source Code",
+    "url": "github.com",
+    "units": "#adopters"
+  },
+  {
+    "name": "GitHub_Adopters_Open_Issues",
+    "content": "Source Code",
+    "url": "github.com",
+    "units": "#issues"
+  },
+  {
+    "name": "GitHub_Adopters_Closed_Issues",
+    "content": "Source Code",
+    "url": "github.com",
+    "units": "#issues"
+  },
+  {
+    "name": "GitHub_Commits",
+    "content": "Source Code",
+    "url": "github.com",
+    "units": "#commits"
+  },
+  {
+    "name": "Coverall",
     "content": "Test Stats",
     "url": "coveralls.io",
     "units": "%sourcecode"
   },
   {
-    "name":"Helpdesk",
+    "name": "Helpdesk",
     "content": "Work",
     "url": "backlog.fiware.org",
     "units": "#tickets(%pend)|#days"
   },
   {
-    "name":"Backlog",
+    "name": "Backlog",
     "content": "Work",
     "url": "backlog.fiware.org",
     "units": "#features|#stories|#bugs"

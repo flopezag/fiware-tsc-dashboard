@@ -45,8 +45,10 @@ FIXED_ROWS = 16
 INITIAL_ROW = 2
 
 # The number of columns to delete corresponds to:
-# Source, Catalogue, ReadTheDocs, Docker, GitHub, Coverall, Academy, HelpDesk, Backlog + Extra 2 = 11
-FIXED_COLUMNS = 11
+# Source, Catalogue, ReadTheDocs, Docker, GitHub, Coverall, Academy, HelpDesk, Backlog, GitHub_Open_Issues,
+# GitHub_Closed_Issues, GitHub_Adopters, GitHub_Adopters_Open_Issues, GitHub_Adopters_Closed_Issues,
+# GitHub_Comits + Extra 2 = 17
+FIXED_COLUMNS = 17
 
 # We start to delete from the initial column
 INITIAL_COLUMN = 1

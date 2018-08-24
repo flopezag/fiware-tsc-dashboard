@@ -26,8 +26,16 @@ from .google import get_service
 from .ganalytics import ga
 from .scrum import ScrumServer
 from config.settings import GITHUB_TOKEN
+import sys
+from config.log import logger
+
+
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF8')
 
 __author__ = 'Fernando López'
+
+github_stats = list()
 
 
 class NoViewFound(Exception):
@@ -280,13 +288,17 @@ class Docker(DataSource):
 
 
 class GitHub(DataSource):
+    global github_stats
+
     def __init__(self):
         super(GitHub, self).__init__()
         self.source = db.query(Source).filter_by(name='GitHub').one()
         self.gh = Github(login_or_token=GITHUB_TOKEN)
+        self.metric_id = 0
 
     def get_measurement(self, metric):
         super(GitHub, self).get_measurement(metric)
+        self.enabler_id = metric.enabler_id
         items = [metric.details] if isinstance(metric.details, str) else metric.details
         download_count = n_assets = 0
         if isinstance(items, list):
@@ -310,11 +322,75 @@ class GitHub(DataSource):
         n_assets = 0
         download_count = 0
 
+        # Get the number of assets and downloads
         for rel in releases:
             assets = rel._rawData['assets']
             for asset in assets:
                 n_assets += 1
                 download_count += asset['download_count']
+
+        # Obtain the number of issues opened and closed
+        open_issues = repo.get_issues()
+        total_issues = repo.get_issues(state='all')
+        list_open_issues = list(open_issues)
+        list_total_issues = list(total_issues)
+        len_open_issues = len(list_open_issues)
+        len_total_issues = len(list_total_issues)
+        len_closed_issues = len_total_issues - len_open_issues
+
+        # print('Total issues (Open/Closed): {} / {}'.format(len(list(open_issues)), closed_issues))
+
+        # Obtain the total number of adopters (persons who create issues and they are not authors
+        authors = [users.author.login for users in repo.get_stats_contributors()]
+        reporter_issues = [users.user.login for users in total_issues]
+        adopters = list(set(reporter_issues) - set(authors))
+        len_adopters = len(adopters)
+
+        # print("Total number of adopters: {}".format(len(adopters)))
+
+        # Obtain number of issues opened and closed created by adopters
+        open_issues_adopters = filter(lambda x: x.user.login in adopters, list_open_issues)
+        total_issues_adopters = filter(lambda x: x.user.login in adopters, list_total_issues)
+        len_open_issues_adopters = len(open_issues_adopters)
+        len_total_issues_adopters = len(total_issues_adopters)
+        len_closed_issues_adopters = len_total_issues_adopters - len_open_issues_adopters
+
+        # print('Total issues by adopters (Open/Closed): {} / {}'
+        # .format(len(list(open_issues_adopters)), closed_issues_adopters))
+
+        # Obtain the number of commits only for gh-pages and default branch (usually master)
+        commits = list()
+        commits.append(len(list(repo.get_commits(sha=repo.default_branch))))
+
+        try:
+            commits.append(len(list(repo.get_commits(sha='gh-pages'))))
+        except Exception as e:
+            print(e)
+
+        total_commits = sum([i for i in commits])
+
+        # print("Total number of commits in default and gh-pages branches: {}".format(total_commits))
+        logger.info("Project({}): open issues: {}, closed issues: {}, \n"
+                    "adopters: {}, open issues adopters: {}, closed issues adopters: {}, \n"
+                    "commits: {}".format(project,
+                                         len_open_issues,
+                                         len_closed_issues,
+                                         len_adopters,
+                                         len_open_issues_adopters,
+                                         len_closed_issues_adopters,
+                                         total_commits))
+
+        stat = {
+            'enabler_id': self.enabler_id,
+            'open_issues': len_open_issues,
+            'closed_issues': len_closed_issues,
+            'adopters': len_adopters,
+            'open_issues_adopters': len_open_issues_adopters,
+            'closed_issues_adopters': len_closed_issues_adopters,
+            'commits': total_commits
+        }
+
+        github_stats.append(stat)
 
         return n_assets, download_count
 
@@ -343,3 +419,68 @@ class Coverall(DataSource):
         else:
             raise NoValueFound
 
+
+class GitHub_Open_Issues(DataSource):
+    global github_stats
+
+    def __init__(self):
+        super(GitHub_Open_Issues, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+        return '{:4,d}'.format(value[0]['open_issues'])
+
+
+class GitHub_Closed_Issues(DataSource):
+    global github_stats
+
+    def __init__(self):
+        super(GitHub_Closed_Issues, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+        return '{:4,d}'.format(value[0]['closed_issues'])
+
+
+class GitHub_Adopters(DataSource):
+    global github_stats
+
+    def __init__(self):
+        super(GitHub_Adopters, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+        return '{:4,d}'.format(value[0]['adopters'])
+
+
+class GitHub_Adopters_Open_Issues(DataSource):
+    global github_stats
+
+    def __init__(self):
+        super(GitHub_Adopters_Open_Issues, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+        return '{:4,d}'.format(value[0]['open_issues_adopters'])
+
+
+class GitHub_Adopters_Closed_Issues(DataSource):
+    global github_stats
+
+    def __init__(self):
+        super(GitHub_Adopters_Closed_Issues, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+        return '{:4,d}'.format(value[0]['closed_issues_adopters'])
+
+
+class GitHub_Commits(DataSource):
+    global github_stats
+
+    def __init__(self):
+        super(GitHub_Commits, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+        return '{:4,d}'.format(value[0]['commits'])

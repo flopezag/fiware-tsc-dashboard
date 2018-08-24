@@ -72,6 +72,7 @@ class Database:
                     owner = query.one()
                 except NoResultFound:
                     db.add(Owner(**params))
+                    db.commit()
                 else:
                     for attr in ('shortname', 'email'):
                         if hasattr(owner, attr) and attr in params:

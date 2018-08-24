@@ -17,7 +17,6 @@
 # under the License.
 ##
 import os
-import subprocess
 
 from datetime import datetime
 from dbase import db, EnablerImp, Source, Metric, Measurement, Admin
