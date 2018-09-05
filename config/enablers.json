@@ -28,6 +28,13 @@
     "owner": "Christian Schlinkmann"
   },
   {
+    "name":"Application Management - Murano",
+    "status": "Development",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner": "Fernando Lopez Aguilar"
+  },
+  {
     "name":"Application Mashup - Wirecloud",
     "status": "Development",
     "chapter":"Apps",
@@ -161,6 +168,13 @@
     "owner": "Juha Hyvarinen"
   },
   {
+    "name":"IaaS GE",
+    "status": "Support",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner": "Ezra Silvera"
+  },
+  {
     "name":"Identity Management - KeyRock",
     "status": "Development",
     "chapter":"Security",
@@ -224,11 +238,25 @@
     "owner": "Federico Cimorelli"
   },
   {
+    "name":"Object Storage",
+    "status": "Support",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner": "Yosef Moatti"
+  },
+  {
     "name":"OpenMTC",
     "status":"Incubated",
     "chapter":"IoT",
     "type":"Platform Component",
     "owner":"Ronald Steinke"
+  },
+  {
+    "name":"PaaS Manager - Pegasus",
+    "status": "Support",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner": "Henar Munoz"
   },
   {
     "name":"PEP Proxy - Wilma",
@@ -243,6 +271,13 @@
     "chapter":"WebUI",
     "type":"Product",
     "owner": "Ari Okkonen"
+  },
+  {
+    "name":"Policy Manager - Bosun",
+    "status": "Support",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner":"Fernando Lopez Aguilar"
   },
   {
     "name":"Privacy",
@@ -301,6 +336,13 @@
     "owner": "Alvaro Alonso"
   },
   {
+    "name":"Software Deployment & Configuration - Sagitta",
+    "status": "Support",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner": "Henar Munoz"
+  },
+  {
     "name":"STH-Comet",
     "status": "Development",
     "chapter":"Data",
@@ -341,27 +383,6 @@
     "chapter":"Security",
     "type":"Product",
     "owner": "Sebastien Keller"
-  },
-  {
-    "name":"Software Deployment & Configuration - Sagitta",
-    "status": "Support",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner": "Henar Munoz"
-  },
-  {
-    "name":"PaaS Manager - Pegasus",
-    "status": "Support",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner": "Henar Munoz"
-  },
-  {
-    "name":"Policy Manager - Bosun",
-    "status": "Support",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner":"Fernando Lopez Aguilar"
   },
   {
     "name": "Virtual Characters",

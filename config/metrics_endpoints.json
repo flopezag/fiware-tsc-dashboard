@@ -64,6 +64,22 @@
     "backlog":"XML3D"
   },
   {
+    "enabler": "Application Management - Murano",
+    "catalogue": "application-management-murano",
+    "academy": "Murano",
+    "readthedocs":"murano",
+    "github": "",
+    "github_open_issues": "",
+    "github_closed_issues": "",
+    "github_adopters": "",
+    "github_adopters_open_issues": "",
+    "github_adopters_closed_issues": "",
+    "github_commits": "",
+    "docker": "murano",
+    "helpdesk":"Murano",
+    "backlog":"Murano"
+  },
+  {
     "enabler": "Application Mashup - Wirecloud",
     "catalogue": "application-mashup-wirecloud",
     "academy": "Wirecloud",
@@ -411,6 +427,22 @@
     "backlog":"GIS Provider"
   },
   {
+    "enabler": "IaaS GE",
+    "catalogue": "iaas-ge-fiware-reference-implementation",
+    "academy": "IaaS Resource Management",
+    "readthedocs":"",
+    "github": "",
+    "github_open_issues": "",
+    "github_closed_issues": "",
+    "github_adopters": "",
+    "github_adopters_open_issues": "",
+    "github_adopters_closed_issues": "",
+    "github_commits": "",
+    "docker": "",
+    "helpdesk":"IaaS RM",
+    "backlog":"IaaS RM"
+  },
+  {
     "enabler": "Identity Management - KeyRock",
     "catalogue": "identity-management-keyrock",
     "academy": "KeyRock",
@@ -539,6 +571,23 @@
     "coverall":"telefonicaid/fiware-monitoring",
     "helpdesk":"Monitoring",
     "backlog":"Monitoring"
+  },
+  {
+    "enabler": "Object Storage",
+    "catalogue": "object-storage-ge-fiware-implementation",
+    "academy": "Object Storage",
+    "readthedocs":"",
+    "github": "",
+    "github_open_issues": "",
+    "github_closed_issues": "",
+    "github_adopters": "",
+    "github_adopters_open_issues": "",
+    "github_adopters_closed_issues": "",
+    "github_commits": "",
+    "docker": "",
+    "coverall":"renarsvilnis/fiware-object-storage-ge",
+    "helpdesk":"Object Storage",
+    "backlog":"Object Storage"
   },
   {
     "enabler": "OpenMTC",

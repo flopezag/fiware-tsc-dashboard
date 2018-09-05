@@ -23,12 +23,13 @@ from dbase import db, EnablerImp, Source, Metric, Measurement, Admin
 from kernel.google import get_service
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy import desc
-from config.settings import SHEET_ID, METRIC_VALUES
+from config.settings import SHEET_ID, METRIC_VALUES, GITHUB_TOKEN
 from config.constants import DB_NAME, DB_FOLDER, FIXED_ROWS, INITIAL_ROW, FIXED_COLUMNS, INITIAL_COLUMN
 from dbase.database import Database
 from dbase.measurement_search import MeasurementData
 from config.log import logger
 from config import enablers
+from github import Github
 
 __author__ = 'Fernando López'
 
@@ -136,6 +137,17 @@ class Dashboard:
 
         self.__save__(values=values)
 
+    @staticmethod
+    def get_number_access():
+        gh = Github(login_or_token=GITHUB_TOKEN)
+
+        rate_limiting = gh.rate_limiting
+        rate_limiting_reset_time = gh.rate_limiting_resettime
+
+        rate_limiting_reset_time = datetime.fromtimestamp(rate_limiting_reset_time)
+
+        return rate_limiting, rate_limiting_reset_time
+
 
 if __name__ == "__main__":
     logger.info("Initializing the script...")
@@ -158,5 +170,9 @@ if __name__ == "__main__":
     dashboard.generate_data()
 
     logger.info("Data analysis finished")
+
+    rate_count, rate_count_reset_time = dashboard.get_number_access()
+    logger.info("GitHub rate limiting at finish: {}".format(rate_count))
+    logger.info("GitHub rate limiting reset time: {}".format(rate_count_reset_time))
 
     # TODO: Add footer to the Google sheet document.

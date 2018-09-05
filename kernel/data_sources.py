@@ -21,7 +21,7 @@ import re
 import requests
 import json
 import sys
-from datetime import date
+from datetime import date, datetime
 from github import Github
 from dbase import db, Source
 from .google import get_service
@@ -332,9 +332,8 @@ class GitHub(DataSource):
             download_count = reduce(lambda x, y: x + y, assets)
 
         # Obtain the number of issues opened and closed
-        open_issues = repo.get_issues()
         total_issues = repo.get_issues(state='all')
-        list_open_issues = map(lambda x: x.user.login, open_issues)
+        list_open_issues = map(lambda x: x.user.login, filter(lambda x: x.state == 'open', total_issues))
         list_total_issues = map(lambda x: x.user.login, total_issues)
         len_open_issues = len(list_open_issues)
         len_total_issues = len(list_total_issues)
