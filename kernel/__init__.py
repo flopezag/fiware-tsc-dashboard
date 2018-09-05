@@ -1,3 +1,5 @@
 __author__ = 'Manuel Escriche'
 
-from .data_sources import Readthedocs, Academy, Catalogue, Backlog, Helpdesk, Docker, Coverall, GitHub
+from .data_sources import Readthedocs, Backlog, Helpdesk, Catalogue, Academy, Docker, GitHub, Coverall, \
+    GitHub_Open_Issues, GitHub_Closed_Issues, GitHub_Adopters, GitHub_Adopters_Open_Issues, \
+    GitHub_Adopters_Closed_Issues, GitHub_Commits

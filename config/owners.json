@@ -1,0 +1,131 @@
+[
+  {
+    "name":"Aitor Magan", "shortname":"Aitor", "entity":"UPM"
+  },
+  {
+    "name":"Alvaro Alonso", "shortname":"Alvaro", "entity":"UPM"
+  },
+  {
+    "name":"Alvaro Arranz", "shortname":"Alvaro", "entity":"UPM"
+  },
+  {
+    "name":"Ari Okkonen", "shortname":"Ari", "entity":"CIE"
+  },
+  {
+    "name":"Bin Cheng", "shortname":"Bin", "entity":"NEC"
+  },
+  {
+    "name":"Carlos Ralli Ucedo", "shortname":"Carlos", "entity":"TID"
+  },
+  {
+    "name":"Christian Schlinkmann", "shortname":"Christian", "entity":"DFKI"
+  },
+  {
+    "name":"Christophe Azemar", "shortname":"Christophe", "entity":"ORANGE"
+  },
+  {
+    "name":"Cvetan Stefanovski", "shortname":"Cvetan", "entity":"ADMINO"
+  },
+  {
+    "name":"Cyberlightning", "shortname":"Cyber", "entity": "CYBER"
+  },
+  {
+    "name":"Cyril Dangerville", "shortname":"Cyril", "entity":"TS"
+  },
+  {
+    "name":"Davide Zerbetto", "shortname":"Davide", "entity":"E-IIS"
+  },
+  {
+    "name":"Elisa Herrmann", "shortname":"Elisa", "entity":"ATOS"
+  },
+  {
+    "name":"Ezra Silvera", "shortname":"Ezra", "entity":"IBM"
+  },
+  {
+    "name":"Federico Cimorelli", "shortname":"Federico", "entity":"UniRoma"
+  },
+  {
+    "name":"Fermin Galan", "shortname":"Fermin", "entity":"TID"
+  },
+  {
+    "name":"Fernando Lopez Aguilar", "shortname":"Fernando", "entity":"TID"
+  },
+  {
+    "name":"Francisco de la Vega", "shortname":"Fran", "entity":"UPM"
+  },
+  {
+    "name":"Francisco Romero", "shortname":"Paco", "entity":"TID"
+  },
+  {
+    "name":"Henar Munoz", "shortname":"Henar", "entity":"TID"
+  },
+  {
+    "name":"Ioana Dragusanu", "shortname":"Ioana", "entity":"EC"
+  },
+  {
+    "name":"Jaime Martin", "shortname":"Jaime", "entity":"EPROS"
+  },
+  {
+    "name":"Javier Diaz", "shortname":"Javier", "entity":"ET"
+  },
+  {
+    "name":"Javier Lopez Fernandez", "shortname":"Javier", "entity":"URJC"
+  },
+  {
+    "name":"Jo Barratt", "shortname":"Jo", "entity":"OKFN"
+  },
+  {
+    "name":"Joaquin Salvachua", "shortname":"Joaquin", "entity":"UPM"
+  },
+  {
+    "name":"Jonne Vaisanen", "shortname":"Jonne", "entity":"LUDO"
+  },
+  {
+    "name":"Juha Hyvarinen", "shortname":"Juha", "entity":"CYBER"
+  },
+  {
+    "name":"Kenneth Nagin", "shortname":"Kenneth", "entity":"IBM"
+  },
+  {
+    "name":"Lasse Oorni", "shortname":"Lasse", "entity":"LUDO"
+  },
+  {
+    "name":"Matthias Thoma", "shortname":"Matthias", "entity":"SAP"
+  },
+  {
+    "name":"Martial Granger", "shortname":"Martial", "entity":"ORANGE"
+  },
+  {
+    "name":"Olivier Bettan", "shortname":"Olivier", "entity":"TS"
+  },
+  {
+    "name":"Ronald Steinke", "shortname":"Ronald", "entity":"FHG"
+  },
+  {
+    "name":"Sebastien Keller", "shortname":"Sebastien", "entity":"TS"
+  },
+  {
+    "name":"Stefan Gessler", "shortname":"Stefan", "entity":"NEC"
+  },
+  {
+    "name":"Stephan Neuhaus", "shortname":"Stephan", "entity":"ZHAW"
+  },
+  {
+    "name":"Susana Gzarzosa", "shortname":"Susana", "entity":"ATOS"
+  },
+  {
+    "name":"Tarek Elsaleh", "shortname":"Tarek", "entity":"UNIS"
+  },
+  {
+    "name":"Thomas Michael Bohnert", "shortname":"Thomas", "entity":"ZHAW"
+  },
+  {
+    "name":"Torsten Spieldenner", "shortname":"Torsten", "entity":"DFKI"
+  },
+  {
+    "name":"Uri Shani", "shortname":"Uri", "entity":"IBM"
+  },
+  {
+    "name":"Yosef Moatti", "shortname":"Yosef", "entity":"IBM"
+  }
+]

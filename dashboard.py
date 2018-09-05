@@ -19,7 +19,7 @@
 import os
 
 from datetime import datetime
-from dbase import db, EnablerImp, Source, Metric, Measurement
+from dbase import db, EnablerImp, Source, Metric, Measurement, Admin
 from kernel.google import get_service
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy import desc
@@ -74,11 +74,22 @@ class Dashboard:
 
         self.__save__(values=values)
 
+    @staticmethod
+    def getdate():
+        """
+        Get the creation date of the file enablers-dashboard.db
+        :return: the creation date of the file
+        """
+        created_time = db.query(Admin).one().date.strftime('%d %b %Y at %H:%m')
+
+        return created_time
+
     def generate_data(self):
         values = list()
         values.append(['Report date:', datetime.now().strftime('%d %b %Y at %H:%m')])
-        # TODO: Add the date of the database, created date.
-        values.append(['Data sources updated on:', '3 Jan 2018'])
+
+        # Add the date in which the database schema was created last time
+        values.append(['Data sources updated on:', self.getdate()])
         values.append(['', ''])
         header = ['Source']
 
@@ -143,6 +154,9 @@ if __name__ == "__main__":
         logger.info("Keeping data as it is in the DB...")
 
     logger.info("Updating the Google Excel file...")
+
     dashboard.generate_data()
 
-    #TODO: Add footer to the Google sheet document.
+    logger.info("Data analysis finished")
+
+    # TODO: Add footer to the Google sheet document.

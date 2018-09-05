@@ -64,5 +64,8 @@
   },
   {
     "shortname": "SAP", "name": "SAP"
+  },
+  {
+    "shortname": "FHG", "name": "Fraunhofer"
   }
 ]

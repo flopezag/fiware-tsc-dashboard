@@ -16,10 +16,11 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ##
+import operator
 import re
 import requests
 import json
-import pprint
+import sys
 from datetime import date
 from github import Github
 from dbase import db, Source
@@ -27,8 +28,15 @@ from .google import get_service
 from .ganalytics import ga
 from .scrum import ScrumServer
 from config.settings import GITHUB_TOKEN
+from config.log import logger
+
+
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF8')
 
 __author__ = 'Fernando López'
+
+github_stats = list()
 
 
 class NoViewFound(Exception):
@@ -281,13 +289,17 @@ class Docker(DataSource):
 
 
 class GitHub(DataSource):
+    global github_stats
+
     def __init__(self):
         super(GitHub, self).__init__()
         self.source = db.query(Source).filter_by(name='GitHub').one()
         self.gh = Github(login_or_token=GITHUB_TOKEN)
+        self.enabler_id = 0
 
     def get_measurement(self, metric):
         super(GitHub, self).get_measurement(metric)
+        self.enabler_id = metric.enabler_id
         items = [metric.details] if isinstance(metric.details, str) else metric.details
         download_count = n_assets = 0
         if isinstance(items, list):
@@ -308,14 +320,61 @@ class GitHub(DataSource):
     def get_statistics(self, user, project):
         repo = self.gh.get_user(user).get_repo(project)
         releases = repo.get_releases()
-        n_assets = 0
-        download_count = 0
 
-        for rel in releases:
-            assets = rel._rawData['assets']
-            for asset in assets:
-                n_assets += 1
-                download_count += asset['download_count']
+        assets = map(lambda x: x.raw_data['assets'][0]['download_count'],
+                     filter(lambda x: len(x.raw_data['assets']) > 0, releases))
+
+        n_assets = len(assets)
+
+        if n_assets == 0:
+            download_count = 0
+        else:
+            download_count = reduce(lambda x, y: x + y, assets)
+
+        # Obtain the number of issues opened and closed
+        open_issues = repo.get_issues()
+        total_issues = repo.get_issues(state='all')
+        list_open_issues = map(lambda x: x.user.login, open_issues)
+        list_total_issues = map(lambda x: x.user.login, total_issues)
+        len_open_issues = len(list_open_issues)
+        len_total_issues = len(list_total_issues)
+        len_closed_issues = len_total_issues - len_open_issues
+
+        # Obtain the total number of adopters (persons who create issues and they are not authors
+        # authors = [users.author.login for users in repo.get_stats_contributors()]
+        list_authors = map(lambda x: x.author.login, repo.get_stats_contributors())
+
+        # Obtain the number of commits only for gh-pages and default branch (usually master)
+        commits = list()
+        commits.append(len(list(repo.get_commits(sha=repo.default_branch))))
+
+        try:
+            commits.append(len(list(repo.get_commits(sha='gh-pages'))))
+        except Exception as e:
+            url = 'https://github.com/{}/{}'.format(user, project)
+            logger.warning('The project \'{}\'({}) has no \'gh-pages\' branch'.format(project, url))
+
+        # total_commits = sum([i for i in commits])
+        total_commits = reduce(lambda x, y: x + y, commits)
+
+        logger.info("Project({}): open issues: {}, closed issues: {}, total issues: {}, authors: {}, commits: {}"
+                    .format(project,
+                            len_open_issues,
+                            len_closed_issues,
+                            len_total_issues,
+                            len(list_authors),
+                            total_commits))
+
+        stat = {
+            'enabler_id': self.enabler_id,
+            'open_issues': list_open_issues,
+            'total_issues': list_total_issues,
+            'closed_issues': len_closed_issues,
+            'authors': list_authors,
+            'commits': total_commits
+        }
+
+        github_stats.append(stat)
 
         return n_assets, download_count
 
@@ -344,3 +403,110 @@ class Coverall(DataSource):
         else:
             raise NoValueFound
 
+
+class GitHub_Open_Issues(DataSource):
+    global github_stats
+
+    def __init__(self):
+        super(GitHub_Open_Issues, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+
+        open_issues = map(lambda x: x['open_issues'], value)
+        total = len(reduce(operator.concat, open_issues))
+
+        return '{:4,d}'.format(total)
+
+
+class GitHub_Closed_Issues(DataSource):
+    global github_stats
+
+    def __init__(self):
+        super(GitHub_Closed_Issues, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+
+        closed_issues = reduce(lambda x, y: x+y, map(lambda x: x['closed_issues'], value))
+
+        return '{:4,d}'.format(closed_issues)
+
+
+class GitHub_Adopters(DataSource):
+    global github_stats
+
+    def __init__(self):
+        super(GitHub_Adopters, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+
+        authors = map(lambda x: x['authors'], value)
+        authors = set(reduce(operator.concat, authors))
+
+        total_issues = map(lambda x: x['total_issues'], value)
+        total_reporter_issues = set(reduce(operator.concat, total_issues))
+
+        adopters = len(list(total_reporter_issues - authors))
+
+        return '{:4,d}'.format(adopters)
+
+
+class GitHub_Adopters_Open_Issues(DataSource):
+    global github_stats
+
+    def __init__(self):
+        super(GitHub_Adopters_Open_Issues, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+
+        authors = set(reduce(operator.concat, map(lambda x: x['authors'], value)))
+        total_reporter_issues = set(reduce(operator.concat, map(lambda x: x['total_issues'], value)))
+
+        adopters = list(total_reporter_issues - authors)
+
+        open_issues = reduce(operator.concat, map(lambda x: x['open_issues'], value))
+        open_issues_adopters = len(filter(lambda x: x in adopters, open_issues))
+
+        return '{:4,d}'.format(open_issues_adopters)
+
+
+class GitHub_Adopters_Closed_Issues(DataSource):
+    global github_stats
+
+    def __init__(self):
+        super(GitHub_Adopters_Closed_Issues, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+
+        authors = set(reduce(operator.concat, map(lambda x: x['authors'], value)))
+        total_reporter_issues = set(reduce(operator.concat, map(lambda x: x['total_issues'], value)))
+
+        adopters = list(total_reporter_issues - authors)
+
+        open_issues = reduce(operator.concat, map(lambda x: x['open_issues'], value))
+        open_issues_adopters = len(filter(lambda x: x in adopters, open_issues))
+
+        total_issues = reduce(operator.concat, map(lambda x: x['total_issues'], value))
+        total_issues_adopters = len(filter(lambda x: x in adopters, total_issues))
+
+        closed_issues_adopters = total_issues_adopters - open_issues_adopters
+
+        return '{:4,d}'.format(closed_issues_adopters)
+
+
+class GitHub_Commits(DataSource):
+    global github_stats
+
+    def __init__(self):
+        super(GitHub_Commits, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+
+        commits = reduce(lambda x, y: x+y, map(lambda x: x['commits'], value))
+
+        return '{:4,d}'.format(commits)

@@ -100,6 +100,7 @@ dbase/*.db
 
 # IDE
 .idea
+.vscode
 
 # Configuration files
 config/owners.json

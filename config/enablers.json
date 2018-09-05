@@ -28,13 +28,6 @@
     "owner": "Christian Schlinkmann"
   },
   {
-    "name":"Application Management - Murano",
-    "status": "Development",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner": "Fernando Lopez Aguilar"
-  },
-  {
     "name":"Application Mashup - Wirecloud",
     "status": "Development",
     "chapter":"Apps",
@@ -75,13 +68,6 @@
     "chapter":"Apps",
     "type":"Product",
     "owner": "Francisco de la Vega"
-  },
-  {
-    "name":"CKAN",
-    "status": "Support",
-    "chapter":"Data",
-    "type":"Product",
-    "owner": "Jo Barratt"
   },
   {
     "name":"Cloud Messaging - AEON",
@@ -154,18 +140,25 @@
     "owner": "Jaime Martin"
   },
   {
+    "name":"FIWARE CKAN Extensions",
+    "status": "Development",
+    "chapter":"Data",
+    "type":"Product",
+    "owner": "Francisco de la Vega"
+  },
+  {
+    "name":"FogFlow",
+    "status": "Incubated",
+    "chapter":"Data",
+    "type":"Product",
+    "owner": "Bin Cheng"
+  },
+  {
     "name":"GIS Data Provider - Geoserver/3D",
     "status": "Support",
     "chapter":"WebUI",
     "type":"Product",
     "owner": "Juha Hyvarinen"
-  },
-  {
-    "name":"IaaS GE",
-    "status": "Support",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner": "Ezra Silvera"
   },
   {
     "name":"Identity Management - KeyRock",
@@ -231,18 +224,11 @@
     "owner": "Federico Cimorelli"
   },
   {
-    "name":"Object Storage",
-    "status": "Support",
-    "chapter":"Cloud",
+    "name":"OpenMTC",
+    "status":"Incubated",
+    "chapter":"IoT",
     "type":"Platform Component",
-    "owner": "Yosef Moatti"
-  },
-  {
-    "name":"PaaS Manager - Pegasus",
-    "status": "Support",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner": "Henar Munoz"
+    "owner":"Ronald Steinke"
   },
   {
     "name":"PEP Proxy - Wilma",
@@ -257,13 +243,6 @@
     "chapter":"WebUI",
     "type":"Product",
     "owner": "Ari Okkonen"
-  },
-  {
-    "name":"Policy Manager - Bosun",
-    "status": "Support",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner":"Fernando Lopez Aguilar"
   },
   {
     "name":"Privacy",
@@ -322,13 +301,6 @@
     "owner": "Alvaro Alonso"
   },
   {
-    "name":"Software Deployment & Configuration - Sagitta",
-    "status": "Support",
-    "chapter":"Cloud",
-    "type":"Platform Component",
-    "owner": "Henar Munoz"
-  },
-  {
     "name":"STH-Comet",
     "status": "Development",
     "chapter":"Data",
@@ -344,7 +316,7 @@
   },
   {
     "name":"Stream-oriented - Kurento",
-    "status": "Support",
+    "status": "Development",
     "chapter":"Data",
     "type":"Product",
     "owner": "Javier Lopez Fernandez"
@@ -369,6 +341,27 @@
     "chapter":"Security",
     "type":"Product",
     "owner": "Sebastien Keller"
+  },
+  {
+    "name":"Software Deployment & Configuration - Sagitta",
+    "status": "Support",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner": "Henar Munoz"
+  },
+  {
+    "name":"PaaS Manager - Pegasus",
+    "status": "Support",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner": "Henar Munoz"
+  },
+  {
+    "name":"Policy Manager - Bosun",
+    "status": "Support",
+    "chapter":"Cloud",
+    "type":"Platform Component",
+    "owner":"Fernando Lopez Aguilar"
   },
   {
     "name": "Virtual Characters",
