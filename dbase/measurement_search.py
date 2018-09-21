@@ -20,7 +20,8 @@ from datetime import datetime
 from dbase import db, Source, Metric, Measurement
 from kernel import Readthedocs, Backlog, Helpdesk, Catalogue, Academy, Docker, GitHub, Coverall, \
     GitHub_Open_Issues, GitHub_Closed_Issues, GitHub_Adopters, GitHub_Adopters_Open_Issues, \
-    GitHub_Adopters_Closed_Issues, GitHub_Commits
+    GitHub_Adopters_Closed_Issues, GitHub_Commits, GitHub_Forks, GitHub_Watchers, GitHub_Stars, \
+    Jira_WorkItem_Not_Closed, Jira_WorkItem_Closed
 from kernel.data_sources import NotImplemented, NotDefined
 from kernel.scrum import InvalidConection
 from config.log import logger

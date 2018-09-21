@@ -82,5 +82,35 @@
     "content": "Work",
     "url": "backlog.fiware.org",
     "units": "#features|#stories|#bugs"
+  },
+  {
+    "name": "GitHub_Forks",
+    "content": "Source Code",
+    "url": "github.com",
+    "units": "#forks"
+  },
+  {
+    "name": "GitHub_Watchers",
+    "content": "Source Code",
+    "url": "github.com",
+    "units": "#watchers"
+  },
+  {
+    "name": "GitHub_Stars",
+    "content": "Source Code",
+    "url": "github.com",
+    "units": "#stars"
+  },
+  {
+    "name": "Jira_WorkItem_Not_Closed",
+    "content": "Source Code",
+    "url": "jira.fiware.org",
+    "units": "#workitems"
+  },
+  {
+    "name": "Jira_WorkItem_Closed",
+    "content": "Source Code",
+    "url": "jira.fiware.org",
+    "units": "#workitems"
   }
 ]

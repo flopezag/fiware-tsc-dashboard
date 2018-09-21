@@ -29,6 +29,7 @@ from .ganalytics import ga
 from .scrum import ScrumServer
 from config.settings import GITHUB_TOKEN
 from config.log import logger
+from kernel.jira import Jira
 
 
 reload(sys)  # Reload does the trick!
@@ -37,6 +38,7 @@ sys.setdefaultencoding('UTF8')
 __author__ = 'Fernando López'
 
 github_stats = list()
+jira_stats = list()
 
 
 class NoViewFound(Exception):
@@ -370,7 +372,10 @@ class GitHub(DataSource):
             'total_issues': list_total_issues,
             'closed_issues': len_closed_issues,
             'authors': list_authors,
-            'commits': total_commits
+            'commits': total_commits,
+            'forks': repo.forks,
+            'watchers': repo.subscribers_count,
+            'stars': repo.watchers
         }
 
         github_stats.append(stat)
@@ -509,3 +514,86 @@ class GitHub_Commits(DataSource):
         commits = reduce(lambda x, y: x+y, map(lambda x: x['commits'], value))
 
         return '{:4,d}'.format(commits)
+
+
+class GitHub_Forks(DataSource):
+    global github_stats
+
+    def __init__(self):
+        super(GitHub_Forks, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+
+        forks = reduce(lambda x, y: x + y, map(lambda x: x['forks'], value))
+
+        return '{:4,d}'.format(forks)
+
+
+class GitHub_Watchers(DataSource):
+    global github_stats
+
+    def __init__(self):
+        super(GitHub_Watchers, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+
+        watchers = reduce(lambda x, y: x + y, map(lambda x: x['watchers'], value))
+
+        return '{:4,d}'.format(watchers)
+
+
+class GitHub_Stars(DataSource):
+    global github_stats
+
+    def __init__(self):
+        super(GitHub_Stars, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+
+        stars = reduce(lambda x, y: x + y, map(lambda x: x['stars'], value))
+
+        return '{:4,d}'.format(stars)
+
+
+class Jira_WorkItem_Not_Closed(DataSource):
+    global jira_stats
+
+    def __init__(self):
+        super(Jira_WorkItem_Not_Closed, self).__init__()
+        self.jira = Jira()
+
+    def get_measurement(self, metric):
+        result = self.jira.get_component_data(metric.details)
+
+        status = map(lambda x: x['fields']['status']['name'], result)
+
+        total_workitems = len(status)
+        closed_workitems = len(filter(lambda x: x == 'Closed', status))
+        rest_workitems = total_workitems - closed_workitems
+
+        stat = {
+            'enabler_id': metric.enabler_id,
+            'not_closed_workitems': rest_workitems,
+            'closed_workitems': closed_workitems,
+        }
+
+        jira_stats.append(stat)
+
+        return '{:4,d}'.format(rest_workitems)
+
+
+class Jira_WorkItem_Closed(DataSource):
+    global jira_stats
+
+    def __init__(self):
+        super(Jira_WorkItem_Closed, self).__init__()
+
+    def get_measurement(self, metric):
+        value = filter(lambda x: x['enabler_id'] == metric.enabler_id, jira_stats)
+
+        closed = reduce(lambda x, y: x + y, map(lambda x: x['closed_workitems'], value))
+
+        return '{:4,d}'.format(closed)

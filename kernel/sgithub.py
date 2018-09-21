@@ -47,3 +47,7 @@ except Exception as e:
 result = sum([i for i in out])
 
 print("Total number of commits in default and gh-pages branches: {}".format(result))
+
+print("Total forks: {}".format(repo.forks))
+print("Total watchers: {}".format(repo.subscribers_count))
+print("Total stars: {}".format(repo.watchers))

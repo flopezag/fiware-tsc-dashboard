@@ -114,6 +114,14 @@ if Config.sections():
     github_section = config_section_map("github")
 
     GITHUB_TOKEN = github_section['token']
+
+    # Jira section
+    jira_section = config_section_map("jira")
+
+    JIRA_DOMAIN = jira_section['domain']
+    JIRA_USERNAME = jira_section['username']
+    JIRA_PASSWORD = jira_section['password']
+
 else:
     msg = '\nERROR: There is not defined TSC_DASHBOARD_SETTINGS_FILE environment variable ' \
           '\n       pointing to configuration file or there is no tsc-dashboard.ini file' \
