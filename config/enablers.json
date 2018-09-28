@@ -2,56 +2,56 @@
   {
     "name":"2D-UI",
     "status": "Deprecated",
-    "chapter": "WebUI",
+    "chapter": "WEB",
     "type": "Product",
     "owner":"Cvetan Stefanovski"
   },
   {
     "name": "2D/3D Capture",
     "status":"Deprecated",
-    "chapter":"WebUI",
+    "chapter":"WEB",
     "type": "Product",
     "owner": "Cyberlightning"
   },
   {
     "name":"3DUI - WebTundra",
     "status": "Support",
-    "chapter":"WebUI",
+    "chapter":"WEB",
     "type":"Product",
     "owner": "Cvetan Stefanovski"
   },
   {
     "name":"3D-UI-XML3D",
     "status": "Development",
-    "chapter":"WebUI",
+    "chapter":"WEB",
     "type":"Product",
     "owner": "Christian Schlinkmann"
   },
   {
     "name":"Application Management - Murano",
     "status": "Development",
-    "chapter":"Cloud",
+    "chapter":"CLD",
     "type":"Platform Component",
     "owner": "Fernando Lopez Aguilar"
   },
   {
     "name":"Application Mashup - Wirecloud",
     "status": "Development",
-    "chapter":"Apps",
+    "chapter":"APP",
     "type":"Product",
     "owner": "Alvaro Arranz"
   },
   {
     "name":"Augmented Reality",
     "status": "Incubated",
-    "chapter":"WebUI",
+    "chapter":"WEB",
     "type":"Product",
     "owner": "Torsten Spieldenner"
   },
   {
     "name":"Authorization PDP - AuthZForce",
     "status": "Development",
-    "chapter":"Security",
+    "chapter":"SEC",
     "type":"Product",
     "owner": "Cyril Dangerville"
   },
@@ -72,7 +72,7 @@
   {
     "name":"Business API Ecosystem - Biz Ecosystem RI",
     "status": "Development",
-    "chapter":"Apps",
+    "chapter":"APP",
     "type":"Product",
     "owner": "Francisco de la Vega"
   },
@@ -86,7 +86,7 @@
   {
     "name":"Cloud Rendering",
     "status": "Support",
-    "chapter":"WebUI",
+    "chapter":"WEB",
     "type":"Product",
     "owner": "Cvetan Stefanovski"
   },
@@ -100,7 +100,7 @@
   {
     "name": "Cyber Security GE - CyberCAPTOR",
     "status": "Deprecated",
-    "chapter":"Security",
+    "chapter":"SEC",
     "type":"Product",
     "owner": "Olivier Bettan"
   },
@@ -114,21 +114,21 @@
   {
     "name":"Data Visualization - Knowage",
     "status": "Development",
-    "chapter":"Apps",
+    "chapter":"APP",
     "type":"Service",
     "owner": "Davide Zerbetto"
   },
   {
     "name":"Data Visualization - SpagoBI",
     "status": "Development",
-    "chapter":"Apps",
+    "chapter":"APP",
     "type":"Service",
     "owner": "Davide Zerbetto"
   },
   {
     "name":"Docker",
     "status":"Development",
-    "chapter":"Cloud",
+    "chapter":"CLD",
     "type":"Platform Component",
     "owner": "Kenneth Nagin"
   },
@@ -142,7 +142,7 @@
   {
     "name":"Fast RTPS",
     "status": "Incubated",
-    "chapter":"I2ND",
+    "chapter":"MIND",
     "type":"Product",
     "owner": "Jaime Martin"
   },
@@ -163,28 +163,28 @@
   {
     "name":"GIS Data Provider - Geoserver/3D",
     "status": "Support",
-    "chapter":"WebUI",
+    "chapter":"WEB",
     "type":"Product",
     "owner": "Juha Hyvarinen"
   },
   {
     "name":"IaaS GE",
     "status": "Support",
-    "chapter":"Cloud",
+    "chapter":"CLD",
     "type":"Platform Component",
     "owner": "Ezra Silvera"
   },
   {
     "name":"Identity Management - KeyRock",
     "status": "Development",
-    "chapter":"Security",
+    "chapter":"SEC",
     "type":"Product",
     "owner": "Alvaro Alonso"
   },
   {
     "name":"Interface Designer",
     "status": "Support",
-    "chapter":"WebUI",
+    "chapter":"WEB",
     "type":"Product",
     "owner": "Cvetan Stefanovski"
   },
@@ -212,35 +212,35 @@
   {
     "name":"Kiara Advanced Middleware",
     "status": "Development",
-    "chapter":"I2ND",
+    "chapter":"MIND",
     "type":"Platform Component",
     "owner": "Jaime Martin"
   },
   {
     "name":"Marketplace - WMarket",
     "status": "Deprecated",
-    "chapter":"Apps",
+    "chapter":"APP",
     "type":"Product",
     "owner": "Aitor Magan"
   },
   {
     "name":"Monitoring GE - Sextant",
     "status": "Deprecated",
-    "chapter":"Cloud",
+    "chapter":"CLD",
     "type":"Platform Component",
     "owner": "Fernando Lopez Aguilar"
   },
   {
     "name":"Network Information and Control - OFNIC",
     "status": "Support",
-    "chapter":"I2ND",
+    "chapter":"MIND",
     "type":"Component",
     "owner": "Federico Cimorelli"
   },
   {
     "name":"Object Storage",
     "status": "Support",
-    "chapter":"Cloud",
+    "chapter":"CLD",
     "type":"Platform Component",
     "owner": "Yosef Moatti"
   },
@@ -254,35 +254,35 @@
   {
     "name":"PaaS Manager - Pegasus",
     "status": "Support",
-    "chapter":"Cloud",
+    "chapter":"CLD",
     "type":"Platform Component",
     "owner": "Henar Munoz"
   },
   {
     "name":"PEP Proxy - Wilma",
     "status": "Development",
-    "chapter":"Security",
+    "chapter":"SEC",
     "type":"Product",
     "owner": "Alvaro Alonso"
   },
   {
     "name":"POI Data Provider",
     "status": "Support",
-    "chapter":"WebUI",
+    "chapter":"WEB",
     "type":"Product",
     "owner": "Ari Okkonen"
   },
   {
     "name":"Policy Manager - Bosun",
     "status": "Support",
-    "chapter":"Cloud",
+    "chapter":"CLD",
     "type":"Platform Component",
     "owner":"Fernando Lopez Aguilar"
   },
   {
     "name":"Privacy",
     "status": "Incubated",
-    "chapter":"Security",
+    "chapter":"SEC",
     "type":"Product",
     "owner": "Stephan Neuhaus"
   },
@@ -303,42 +303,42 @@
   {
     "name": "Real Virtual Interaction",
     "status":"Deprecated",
-    "chapter":"WebUI",
+    "chapter":"WEB",
     "type": "Product",
     "owner": "Cyberlightning"
   },
   {
     "name":"Repository - Repository RI",
     "status": "Deprecated",
-    "chapter":"Apps",
+    "chapter":"APP",
     "type":"Product",
     "owner": "Francisco de la Vega"
   },
   {
     "name": "Revenue Settlement and Sharing System - RSS RI",
     "status": "Deprecated",
-    "chapter":"Apps",
+    "chapter":"APP",
     "type":"Service",
     "owner": "Francisco de la Vega"
   },
   {
     "name":"Security Monitoring",
     "status": "Deprecated",
-    "chapter":"Security",
+    "chapter":"SEC",
     "type":"Procuvt",
     "owner": "Susana Gzarzosa"
   },
   {
     "name":"Self Service Interfaces - Cloud Portal",
     "status": "Development",
-    "chapter":"Cloud",
+    "chapter":"CLD",
     "type":"Platform Component",
     "owner": "Alvaro Alonso"
   },
   {
     "name":"Software Deployment & Configuration - Sagitta",
     "status": "Support",
-    "chapter":"Cloud",
+    "chapter":"CLD",
     "type":"Platform Component",
     "owner": "Henar Munoz"
   },
@@ -352,7 +352,7 @@
   {
     "name":"Store - WStore",
     "status": "Deprecated",
-    "chapter":"Apps",
+    "chapter":"APP",
     "type":"Product",
     "owner": "Francisco de la Vega"
   },
@@ -366,28 +366,28 @@
   {
     "name":"Synchronization",
     "status": "Support",
-    "chapter":"WebUI",
+    "chapter":"WEB",
     "type":"Product",
     "owner": "Jonne Vaisanen"
   },
   {
     "name":"Synchronization - FiVES",
     "status": "Development",
-    "chapter":"WebUI",
+    "chapter":"WEB",
     "type":"Product",
     "owner": "Torsten Spieldenner"
   },
   {
     "name": "Trustworthy Factory",
     "status":"Deprecated",
-    "chapter":"Security",
+    "chapter":"SEC",
     "type":"Product",
     "owner": "Sebastien Keller"
   },
   {
     "name": "Virtual Characters",
     "status": "Support",
-    "chapter": "WebUI",
+    "chapter": "WEB",
     "type": "Product",
     "owner": "Lasse Oorni"
   }

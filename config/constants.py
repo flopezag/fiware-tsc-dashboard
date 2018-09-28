@@ -47,8 +47,9 @@ INITIAL_ROW = 2
 # The number of columns to delete corresponds to:
 # Source, Catalogue, ReadTheDocs, Docker, GitHub, Coverall, Academy, HelpDesk, Backlog, GitHub_Open_Issues,
 # GitHub_Closed_Issues, GitHub_Adopters, GitHub_Adopters_Open_Issues, GitHub_Adopters_Closed_Issues,
-# GitHub_Comits + Extra 2 = 17
-FIXED_COLUMNS = 17
+# GitHub_Comits, GitHub_Forks, GitHub_Watchers, GitHub_Stars, Jira_WorkItem_Not_Closed, Jira_WorkItem_Closed
+#  + Extra 2 = 22
+FIXED_COLUMNS = 22
 
 # We start to delete from the initial column
 INITIAL_COLUMN = 1
