@@ -20,6 +20,9 @@ import base64
 import requests
 from config.settings import JIRA_DOMAIN, JIRA_PASSWORD, JIRA_USERNAME
 from config import enablers, endpoints
+from dateutil import parser
+import pytz
+import datetime
 
 __author__ = 'Fernando Lopez'
 
@@ -68,15 +71,28 @@ class Jira:
         self.session.headers.update({'Content-Type': 'application/json'})
 
     def get_component_data(self, comp_id):
-        start_at = 0
-
         jql = 'component = "{}" AND project = {} AND type = WorkItem AND summary !~ Agile'\
             .format(comp_id, self.enablers[comp_id])
 
-        payload = {'fields': self.fields,
-                   'maxResults': 1000, 'startAt': start_at,
-                   'jql': jql
-                   }
+        return self.get_data(jql)
+
+        return data
+
+    def get_helpdesk(self, comp_id):
+        jql = 'project = HELP AND HD-Enabler = {}'\
+            .format(comp_id)
+
+        return self.get_data(jql)
+
+    def get_data(self, jql):
+        start_at = 0
+
+        payload = {
+            'fields': self.fields,
+            'maxResults': 1000,
+            'startAt': start_at,
+            'jql': jql
+        }
 
         try:
             data = self.search(payload)
@@ -108,11 +124,25 @@ class Jira:
         data = answer.json()
         return data
 
+    def difference_time(self, a, b):
+        t_now = pytz.utc.localize(datetime.datetime.utcnow())
+        t_created = parser.parse(b)
+
+        if a is None:
+            t_resolved = t_now
+        else:
+            t_resolved = parser.parse(a)
+
+        # Translate the different in seconds to days (60sec*60min*24h = 86400)
+        time_resolve = (t_resolved - t_created).total_seconds() / 86400
+
+        return time_resolve
+
 
 if __name__ == "__main__":
     jira = Jira()
 
-    result = jira.get_component_data('Orion')
+    result = jira.get_component_data('FogFlow')
 
     status = map(lambda x: x['fields']['status']['name'], result)
 
@@ -121,3 +151,23 @@ if __name__ == "__main__":
     rest_workitems = total_workitems - closed_workitems
 
     print("Total WorkItems Not Closed: {}\nTotal WorkItems Closed: {}".format(rest_workitems, closed_workitems))
+
+    result = jira.get_helpdesk('FogFlow')
+
+    status = map(lambda x: x['fields']['status']['name'], result)
+
+    total_tickets = len(status)
+    closed_tickets = len(filter(lambda x: x == 'Closed', status))
+    rest_tickets = total_tickets - closed_tickets
+    pending_tickets = int(round(float(rest_tickets) / float(total_tickets) * 100))
+
+    resolutionDates = map(lambda x: parser.parse(x['fields']['resolutiondate']), result)
+    createdDates = map(lambda x: parser.parse(x['fields']['created']), result)
+    diff = map(lambda x: jira.difference_time(x['fields']['resolutiondate'], x['fields']['created']), result)
+
+    numberDays = reduce(lambda x,y: x+y, diff) / len(diff)
+    numberDays = int(round(numberDays))
+
+    print(pending_tickets)
+    print(diff)
+    print(numberDays)

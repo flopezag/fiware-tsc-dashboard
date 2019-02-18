@@ -1,5 +1,8 @@
 # <a name="top"></a>FIWARE TSC Enablers Dashboard
 [![License badge](https://img.shields.io/badge/license-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/flopezag/fiware-tsc-dashboard.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/flopezag/fiware-tsc-dashboard/context:python)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/flopezag/fiware-tsc-dashboard.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/flopezag/fiware-tsc-dashboard/alerts/)
+[![DepShield Badge](https://depshield.sonatype.org/badges/flopezag/fiware-tsc-dashboard/depshield.svg)](https://depshield.github.io)
 
 Scripts to generate the Enablers Dashboard to evaluate the use of the different components.
 

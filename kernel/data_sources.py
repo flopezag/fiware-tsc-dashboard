@@ -30,6 +30,9 @@ from .scrum import ScrumServer
 from config.settings import GITHUB_TOKEN
 from config.log import logger
 from kernel.jira import Jira
+import httplib
+from config.settings import DOCKER_ORGANIZATION, DOCKER_USERNAME, DOCKER_PASSWORD
+from dateutil import parser
 
 
 reload(sys)  # Reload does the trick!
@@ -243,28 +246,69 @@ class Backlog(DataSource):
 class Helpdesk(DataSource):
     def __init__(self):
         super(Helpdesk, self).__init__()
-        self.source = db.query(Source).filter_by(name='Helpdesk').one()
-        self.scrm = ScrumServer(self.source.url)
+        self.jira = Jira()
 
     def get_measurement(self, metric):
-        super(Helpdesk, self).get_measurement(metric)
-        enablername = metric.details
-        try:
-            value = self.scrm.gethelpdesk(enablername)
-        except:
-            raise
+        result = self.jira.get_helpdesk(metric.details)
+
+        status = map(lambda x: x['fields']['status']['name'], result)
+
+        total_tickets = len(status)
+        closed_tickets = len(filter(lambda x: x == 'Closed', status))
+        rest_tickets = total_tickets - closed_tickets
+        pending_tickets = int(round(float(rest_tickets) / float(total_tickets) * 100))
+
+        resolutionDates = map(lambda x: parser.parse(x['fields']['resolutiondate']), result)
+        createdDates = map(lambda x: parser.parse(x['fields']['created']), result)
+        diff = map(lambda x: self.jira.difference_time(x['fields']['resolutiondate'], x['fields']['created']), result)
+
+        numberDays = reduce(lambda x, y: x + y, diff) / len(diff)
+        numberDays = int(round(numberDays))
+
+        if total_tickets == 0:
+            result = '0 (0%) | -'
         else:
-            if value['stats']['n']:
-                return '{:3,d} ({:2.0%}) | {:2.0f}'\
-                    .format(value['stats']['n'], value['resolution_level'], value['stats']['mean'])
-            else:
-                return '{:3,d} (-%) | - '.format(value['stats']['n'])
+            result = '{:3,d} ({:2.0%}) | {:2.0f}'.format(total_tickets, pending_tickets, numberDays)
+
+        return result
 
 
 class Docker(DataSource):
     def __init__(self):
         super(Docker, self).__init__()
         self.source = db.query(Source).filter_by(name='Docker').one()
+
+        # 1st step: Retrieve a token from Docker Repository
+        url = 'https://{}/v2/users/login/'.format(self.source.url)
+
+        payload = {
+            "username": DOCKER_USERNAME,
+            "password": DOCKER_PASSWORD
+        }
+
+        headers = {"Content-type": "application/json"}
+
+        answer = requests.post(url, headers=headers, data=json.dumps(payload))
+
+        if answer.status_code == httplib.OK:
+            token = answer.json()['token']
+        else:
+            raise Exception('Error retrieving a token from Docker Registry.')
+
+        # 2nd step: Get list of repositories inside FIWARE organization
+        url = 'https://{}/v2/repositories/{}'.format(self.source.url, DOCKER_ORGANIZATION)
+        authorization = 'JWT {}'.format(token)
+        headers = {'Authorization': authorization}
+        params = {'page_size': 200}
+
+        answer = requests.get(url, headers=headers, params=params)
+
+        if answer.status_code == httplib.OK:
+            self.data = answer.json()['results']
+        else:
+            raise Exception('Error getting information of the different repositories under FIWARE organization.')
+
+        '''
         url = 'https://{}/u/fiware/'.format(self.source.url)
         pattern = re.compile(r'"name":"[\w\-\.]*".*?"pull_count":\d*')
         self.data = []
@@ -276,6 +320,7 @@ class Docker(DataSource):
 
             for match in re.finditer(pattern, answer.text):
                 self.data.append(json.loads('{' + match.group(0) + '}'))
+        '''
 
     def get_measurement(self, metric):
         super(Docker, self).get_measurement(metric)

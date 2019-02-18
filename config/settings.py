@@ -122,6 +122,12 @@ if Config.sections():
     JIRA_USERNAME = jira_section['username']
     JIRA_PASSWORD = jira_section['password']
 
+    # Docker section
+    docker_section = config_section_map("docker")
+
+    DOCKER_ORGANIZATION = docker_section['organization']
+    DOCKER_USERNAME = docker_section['username']
+    DOCKER_PASSWORD = docker_section['password']
 else:
     msg = '\nERROR: There is not defined TSC_DASHBOARD_SETTINGS_FILE environment variable ' \
           '\n       pointing to configuration file or there is no tsc-dashboard.ini file' \
