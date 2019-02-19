@@ -34,8 +34,8 @@ source = db.query(Source).filter_by(name='Docker').one()
 url = 'https://{}/v2/users/login/'.format(source.url)
 
 payload = {
-    "username": "flopez",
-    "password": "Docker04fla15"
+    "username": "<username>",
+    "password": "<password>"
 }
 
 headers = {"Content-type": "application/json"}
