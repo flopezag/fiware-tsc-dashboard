@@ -128,10 +128,20 @@ if Config.sections():
     DOCKER_ORGANIZATION = docker_section['organization']
     DOCKER_USERNAME = docker_section['username']
     DOCKER_PASSWORD = docker_section['password']
+
+    # Data from OpenStack section
+    openstack_section = config_section_map("openstack")
+
+    OS_PROJECT_ID = openstack_section['os_project_id']
+    OS_USERNAME = openstack_section['os_username']
+    OS_PASSWORD = openstack_section['os_password']
+    OS_AUTH_URL = openstack_section['os_auth_url']
+    OS_MONASCA_URL = openstack_section['os_monasca_url']
+
 else:
     msg = '\nERROR: There is not defined TSC_DASHBOARD_SETTINGS_FILE environment variable ' \
           '\n       pointing to configuration file or there is no tsc-dashboard.ini file' \
-          '\n       in the /etd/init.d directory.' \
+          '\n       in the /etd/fiware.d directory.' \
           '\n\n       Please correct at least one of them to execute the program.'
     exit(msg)
 

@@ -1,12 +1,12 @@
 [
   {
-    "name":"Aitor Magan", "shortname":"Aitor", "entity":"UPM"
+    "name":"Aitor Magán", "shortname":"Aitor", "entity":"UPM"
   },
   {
-    "name":"Alvaro Alonso", "shortname":"Alvaro", "entity":"UPM"
+    "name":"Álvaro Alonso", "shortname":"Alvaro", "entity":"UPM"
   },
   {
-    "name":"Alvaro Arranz", "shortname":"Alvaro", "entity":"UPM"
+    "name":"Álvaro Arranz", "shortname":"Alvaro", "entity":"UPM"
   },
   {
     "name":"Ari Okkonen", "shortname":"Ari", "entity":"CIE"
@@ -45,10 +45,13 @@
     "name":"Federico Cimorelli", "shortname":"Federico", "entity":"UniRoma"
   },
   {
-    "name":"Fermin Galan", "shortname":"Fermin", "entity":"TID"
+    "name":"Federico M. Facca", "shortname":"Federico", "entity":"MARTEL"
   },
   {
-    "name":"Fernando Lopez Aguilar", "shortname":"Fernando", "entity":"TID"
+    "name":"Fermín Galán", "shortname":"Fermin", "entity":"TID"
+  },
+  {
+    "name":"Fernando López Aguilar", "shortname":"Fernando", "entity":"FF"
   },
   {
     "name":"Francisco de la Vega", "shortname":"Fran", "entity":"UPM"
@@ -63,25 +66,28 @@
     "name":"Ioana Dragusanu", "shortname":"Ioana", "entity":"EC"
   },
   {
-    "name":"Jaime Martin", "shortname":"Jaime", "entity":"EPROS"
+    "name":"Jaime Martín", "shortname":"Jaime", "entity":"EPROS"
   },
   {
-    "name":"Javier Diaz", "shortname":"Javier", "entity":"ET"
+    "name":"Javier Díaz", "shortname":"Javier", "entity":"ET"
   },
   {
-    "name":"Javier Lopez Fernandez", "shortname":"Javier", "entity":"URJC"
+    "name":"Javier López Fernández", "shortname":"Javier", "entity":"URJC"
   },
   {
     "name":"Jo Barratt", "shortname":"Jo", "entity":"OKFN"
   },
   {
-    "name":"Joaquin Salvachua", "shortname":"Joaquin", "entity":"UPM"
+    "name":"Joaquín Salvachúa", "shortname":"Joaquín", "entity":"UPM"
   },
   {
     "name":"Jonne Vaisanen", "shortname":"Jonne", "entity":"LUDO"
   },
   {
     "name":"Juha Hyvarinen", "shortname":"Juha", "entity":"CYBER"
+  },
+  {
+    "name":"Ken Zangelin", "shortname":"Ken", "entity":"FF"
   },
   {
     "name":"Kenneth Nagin", "shortname":"Kenneth", "entity":"IBM"
@@ -96,10 +102,19 @@
     "name":"Martial Granger", "shortname":"Martial", "entity":"ORANGE"
   },
   {
+    "name":"Martino Maggio", "shortname":"Martino", "entity":"E-IIS"
+  },
+  {
     "name":"Olivier Bettan", "shortname":"Olivier", "entity":"TS"
   },
   {
+    "name":"Rafaél Fernández", "shortname":"Rafaél", "entity":"FICODES"
+  },
+  {
     "name":"Ronald Steinke", "shortname":"Ronald", "entity":"FHG"
+  },
+  {
+    "name":"Sakari Paloviita", "shortname":"Sakari", "entity":"APInf"
   },
   {
     "name":"Sebastien Keller", "shortname":"Sebastien", "entity":"TS"

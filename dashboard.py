@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env /Users/fernandolopez/Documents/workspace/python/fiware-tsc-dashboard/env/bin/python
 # -*- encoding: utf-8 -*-
 ##
 # Copyright 2017 FIWARE Foundation, e.V.
@@ -30,6 +30,8 @@ from dbase.measurement_search import MeasurementData
 from config.log import logger
 from config import enablers
 from github import Github
+from kernel.monasca import Monasca
+from kernel.keystone import Keystone
 
 __author__ = 'Fernando López'
 
@@ -41,6 +43,15 @@ class Dashboard:
         self.sources = db.query(Source)
 
         self.service = get_service('sheets')
+        self.keystone = Keystone()
+
+    def __publish__(self, values):
+        # Send measurements to Monasca
+        token = self.keystone.get_token()
+
+        monasca = Monasca(x_auth_token=token)
+
+        monasca.send_measurements(measurements=values)
 
     def __save__(self, values):
         # for row in values: print(row)
@@ -135,6 +146,7 @@ class Dashboard:
                 values.append(raw)
             values.append([''])
 
+        self.__publish__(values=values)
         self.__save__(values=values)
 
     @staticmethod

@@ -74,7 +74,7 @@
   {
     "name": "Helpdesk",
     "content": "Work",
-    "url": "backlog.fiware.org",
+    "url": "jira.fiware.org",
     "units": "#tickets(%pend)|#days"
   },
   {

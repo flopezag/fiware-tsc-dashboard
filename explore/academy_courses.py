@@ -1,11 +1,12 @@
-import pprint
 from datetime import date
 from dbase import db, Source
 from kernel.ganalytics import ga
 from kernel.google import get_service
+import re
 
 __author__ = 'Manuel Escriche'
 
+# Get the number of page views from the old academy platform
 source = db.query(Source).filter_by(name='Academy').one()
 view = ga().search_view(source.url)
 service = get_service('analyticsreporting')
@@ -33,4 +34,12 @@ except:
     raise
 
 courses = [row['dimensions'][0] for row in data['reports'][0]['data']['rows']]
-pprint.pprint(courses)
+print(courses)
+
+pattern = eval("r'{}'".format('Orion Context Broker'))
+
+rows = filter(lambda x: re.search(pattern, x['dimensions'][0]), data['reports'][0]['data']['rows'])
+values = map((lambda x: int(x['metrics'][0]['values'][0])), rows)
+value = reduce((lambda x, y: x + y), values)
+
+print(value)

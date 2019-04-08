@@ -1,0 +1,56 @@
+Catalogue -> unique per all the FIWARE, if we want to measure the access to each of them we should have one repository (catalogue) per GE
+
+             Ref: https://developer.github.com/v3/repos/traffic/
+               Traffic -> Views
+
+             Get the total number of views and breakdown per day or week for the last 14 days. Timestamps are aligned
+             to UTC midnight of the beginning of the day or week. Week begins on Monday.
+     
+             Send and email to Jason in order to coordinate this issue.
+             (Issue #28)
+
+Academy -> Global, each GE has its own page (e.g. https://fiware-academy.readthedocs.io/en/latest/core/quantum-leap/index.html)
+
+           Check: Could be possible to measure in Google Analytics at a level of page? Need to investigate it.
+           Email to Jason to coordinate this action.
+           (Issue #29)
+
+ReadTheDocs -> Still on going. Nothing change here.
+
+Docker -> Still on going -> pending to upload the changes (locally) in the following release.
+          (Issue #30)
+
+Github (Assets) -> Still on going, nothing change
+
+Github_* -> still on going, nothing change.
+
+Coverall (Coverage) -> At the moment, it is useless... only Telefónica stuff almost, check with Jason Unit Tests.
+                       Nevertheless, I discovered in the FIWARE Requirements (https://docs.google.com/spreadsheets/d/13Pzhbq-xwd8gTCvYqeNkfaoDt-iGCedc1zlb_elxv2M/edit)
+                       that there is a MAY about this field and several of them mention that they configure it.
+                       Probably it is a matter to update the content.
+                       (Issue #31)
+
+HelpDesk -> Check meaning, We provide the information about the total number of tickets, the percentage of still not
+            closed tickets and the mean of resolve time of them in the Help Desk. It was obtained from the backlog tool
+            (https://backlog.fiware.org/) but we decide to dismiss it —> Need to redefine the source of information to
+            obtain this information.
+            (Issue #32)
+
+Backlog -> How to measure the progress of the Roadmap... Currently, It is useless…
+           Sent an email to Jason in order to coordinate this metric. Pending more details to evolve this metric.
+           (Issue #33)
+
+Jira WorkItems -> No changes, related to the FIWARE GE project in JIRA, not used any more.
+                  If there is no use, we can dismiss these metrics from the overall process. Let me confirm it before
+                  delete the functionality from the current version.
+                  (Issue #34)
+
+
+NEW COMPONENTS TO ANALYZE
+-------------------------
+MICRO XRCE-DDS (Issue #35):
+    * Docker Image: not provided
+    * Github repository: https://github.com/eProsima/Micro-XRCE-DDS
+    * ReadTheDocs: https://micro-xrce-dds.rtfd.io/
+    * Academy: https://fiware-academy.readthedocs.io/en/latest/robotics/micro-xrcd-dds
+    * Catalogue: https://github.com/FIWARE/catalogue/tree/master/robotics#seedling-micro-xrce-dds-incubated
