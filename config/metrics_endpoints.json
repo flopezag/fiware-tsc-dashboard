@@ -335,9 +335,7 @@
         "backlog": "",
         "jira_workitem": "",
         "coverall": "",
-        "github": [
-            "ec.europa.eu"
-        ],
+        "github": [],
         "docker": [
             "fiware/domibus-tomcat"
         ]
