@@ -38,7 +38,7 @@
         "name": "APInf",
         "status": "incubating",
         "chapter": "api-management",
-        "type": "",
+        "type": "product",
         "owner": "Ilari Mikkonen"
     },
     {
@@ -46,27 +46,34 @@
         "status": "deprecated",
         "chapter": "",
         "type": "",
-        "owner": "Cyril Dangerville"
+        "owner": "Torsten Spieldenner"
     },
     {
         "name": "AuthZForce",
         "status": "full",
         "chapter": "security",
-        "type": "",
+        "type": "product",
         "owner": "Cyril Dangerville"
+    },
+    {
+        "name": "Biz Framework",
+        "status": "full",
+        "chapter": "data-monetization",
+        "type": "product",
+        "owner": "Francisco de la Vega"
     },
     {
         "name": "Bosun - Policy Manager",
         "status": "deprecated",
         "chapter": "",
         "type": "",
-        "owner": "Fernando Lopez Aguilar"
+        "owner": "Fernando López Aguilar"
     },
     {
-        "name": "Business API Ecosystem",
+        "name": "CKAN extensions",
         "status": "full",
-        "chapter": "data-monetization",
-        "type": "",
+        "chapter": "data-publication",
+        "type": "platform component",
         "owner": "Francisco de la Vega"
     },
     {
@@ -79,9 +86,9 @@
     {
         "name": "Cloud Portal",
         "status": "full",
-        "chapter": "",
-        "type": "",
-        "owner": "Alvaro Alonso"
+        "chapter": "fiware-lab",
+        "type": "platform component",
+        "owner": "Álvaro Alonso"
     },
     {
         "name": "Cloud Rendering",
@@ -91,17 +98,17 @@
         "owner": "Cvetan Stefanovski"
     },
     {
-        "name": "Comet - Short Time Historic",
+        "name": "Comet",
         "status": "full",
         "chapter": "core",
-        "type": "",
-        "owner": "Joaquin Salvachua"
+        "type": "product",
+        "owner": "Fermín Galán"
     },
     {
         "name": "Cosmos",
         "status": "full",
         "chapter": "processing",
-        "type": "",
+        "type": "service",
         "owner": "Joaquin Salvachua"
     },
     {
@@ -122,8 +129,8 @@
         "name": "Cygnus",
         "status": "full",
         "chapter": "core",
-        "type": "",
-        "owner": "Fermin Galan"
+        "type": "product",
+        "owner": "Fermín Galán"
     },
     {
         "name": "Docker",
@@ -136,29 +143,22 @@
         "name": "Domibus",
         "status": "incubating",
         "chapter": "third-party",
-        "type": "",
+        "type": "product",
         "owner": "Ioana Dragusanu"
     },
     {
         "name": "Draco",
         "status": "incubating",
         "chapter": "core",
-        "type": "",
+        "type": "service",
         "owner": "Joaquin Salvachua"
-    },
-    {
-        "name": "FIWARE's Extended CKAN",
-        "status": "full",
-        "chapter": "data-publication",
-        "type": "",
-        "owner": "Francisco de la Vega"
     },
     {
         "name": "Fast-RTPS",
         "status": "incubating",
         "chapter": "robotics",
-        "type": "",
-        "owner": "Jaime Martin"
+        "type": "product",
+        "owner": "Jaime Martín"
     },
     {
         "name": "FiVES - Flexible Virtual Environment Server",
@@ -171,11 +171,11 @@
         "name": "FogFlow",
         "status": "full",
         "chapter": "processing",
-        "type": "",
+        "type": "product",
         "owner": "Bin Cheng"
     },
     {
-        "name": "GIS Data Provider ",
+        "name": "GIS Data Provider",
         "status": "deprecated",
         "chapter": "",
         "type": "",
@@ -192,7 +192,7 @@
         "name": "Idra",
         "status": "incubating",
         "chapter": "data-publication",
-        "type": "",
+        "type": "product",
         "owner": "Martino Maggio"
     },
     {
@@ -203,53 +203,53 @@
         "owner": "Cvetan Stefanovski"
     },
     {
-        "name": "IoT Agent Node.JS Library",
+        "name": "IoT Agent Node.js Library",
         "status": "full",
         "chapter": "iot-agents",
-        "type": "",
-        "owner": "Carlos Ralli Ucedo"
+        "type": "platform component",
+        "owner": "Fermín Galán"
     },
     {
         "name": "IoT Agent for JSON",
         "status": "full",
         "chapter": "iot-agents",
-        "type": "",
-        "owner": "Fermin Galan"
+        "type": "product",
+        "owner": "Fermín Galán"
     },
     {
-        "name": "IoT Agent for Lightweight M2M",
+        "name": "IoT Agent for LWM2M",
         "status": "full",
         "chapter": "iot-agents",
-        "type": "",
+        "type": "product",
         "owner": "Daniel Calvo"
     },
     {
-        "name": "IoT Agent for LoRaWan",
+        "name": "IoT Agent for LoRaWAN",
         "status": "full",
         "chapter": "iot-agents",
-        "type": "",
+        "type": "product",
         "owner": "Daniel Calvo"
     },
     {
-        "name": "IoT Agent for OPC UA",
+        "name": "IoT Agent for OPC-UA",
         "status": "incubating",
         "chapter": "iot-agents",
-        "type": "",
+        "type": "product",
         "owner": "Angelo Marguglio"
     },
     {
-        "name": "IoT Agent for SigFox",
+        "name": "IoT Agent for Sigfox",
         "status": "incubating",
         "chapter": "iot-agents",
-        "type": "",
-        "owner": "Fermin Galan"
+        "type": "product",
+        "owner": "Fermín Galán"
     },
     {
         "name": "IoT Agent for Ultralight",
         "status": "full",
         "chapter": "iot-agents",
-        "type": "",
-        "owner": "Fermin Galan"
+        "type": "product",
+        "owner": "Fermín Galán"
     },
     {
         "name": "IoT Broker",
@@ -266,11 +266,11 @@
         "owner": "Tarek Elsaleh"
     },
     {
-        "name": "Keyrock - Identity Manager",
+        "name": "Keyrock",
         "status": "full",
         "chapter": "security",
-        "type": "",
-        "owner": "Alvaro Alonso"
+        "type": "product",
+        "owner": "Álvaro Alonso"
     },
     {
         "name": "Kiara",
@@ -283,15 +283,15 @@
         "name": "Knowage",
         "status": "full",
         "chapter": "visualization",
-        "type": "",
+        "type": "product",
         "owner": "Davide Zerbetto"
     },
     {
         "name": "Kurento",
         "status": "full",
         "chapter": "media-streams",
-        "type": "",
-        "owner": "Javier Lopez Fernandez"
+        "type": "product",
+        "owner": "Javier López Fernández"
     },
     {
         "name": "MR CoAP - Protocol Adapter",
@@ -301,18 +301,18 @@
         "owner": "Matthias Thoma"
     },
     {
-        "name": "Micro-XRCE-DDS",
+        "name": "Micro XRCE-DDS",
         "status": "incubating",
         "chapter": "robotics",
-        "type": "",
-        "owner": "Julian Bermudez"
+        "type": "product",
+        "owner": "Julián Bermúdez"
     },
     {
         "name": "Murano",
         "status": "deprecated",
         "chapter": "",
         "type": "",
-        "owner": "Fernando Lopez Aguilar"
+        "owner": "Fernando López Aguilar"
     },
     {
         "name": "OFNIC - Network Information & Control",
@@ -329,18 +329,18 @@
         "owner": "Yosef Moatti"
     },
     {
-        "name": "OpenMTC - oneM2M",
+        "name": "OpenMTC",
         "status": "incubating",
         "chapter": "iot-agents",
-        "type": "",
+        "type": "product",
         "owner": "Ronald Steinke"
     },
     {
         "name": "Orion - Context Broker",
         "status": "full",
         "chapter": "core",
-        "type": "",
-        "owner": "Fermin Galan"
+        "type": "product",
+        "owner": "Fermín Galán"
     },
     {
         "name": "POI Data Provider",
@@ -354,14 +354,14 @@
         "status": "deprecated",
         "chapter": "",
         "type": "",
-        "owner": "Henar Munoz"
+        "owner": "Henar Muñoz"
     },
     {
         "name": "Perseo",
         "status": "incubating",
         "chapter": "processing",
-        "type": "",
-        "owner": "Rafael Fern\u00e1ndez"
+        "type": "product",
+        "owner": "Fermín Galán"
     },
     {
         "name": "Privacy",
@@ -378,11 +378,11 @@
         "owner": "Uri Shani"
     },
     {
-        "name": "QuantumLeap",
+        "name": "Quantum Leap",
         "status": "incubating",
         "chapter": "core",
-        "type": "",
-        "owner": "Tomas Aliaga"
+        "type": "product",
+        "owner": "Tomás Aliaga"
     },
     {
         "name": "RSS-RI - Revenue Settlement and Sharing System",
@@ -410,7 +410,7 @@
         "status": "deprecated",
         "chapter": "",
         "type": "",
-        "owner": "Henar Munoz"
+        "owner": "Henar Muñoz"
     },
     {
         "name": "Security Monitoring",
@@ -424,7 +424,7 @@
         "status": "deprecated",
         "chapter": "",
         "type": "",
-        "owner": "Fernando Lopez Aguilar"
+        "owner": "Fernando López Aguilar"
     },
     {
         "name": "SpagoBI",
@@ -459,7 +459,7 @@
         "status": "deprecated",
         "chapter": "",
         "type": "",
-        "owner": "Aitor Magan"
+        "owner": "Aitor Magán"
     },
     {
         "name": "WStore",
@@ -469,17 +469,17 @@
         "owner": "Francisco de la Vega"
     },
     {
-        "name": "Wilma - PEP Proxy",
+        "name": "Wilma",
         "status": "full",
         "chapter": "security",
-        "type": "",
-        "owner": "Alvaro Alonso"
+        "type": "product",
+        "owner": "Álvaro Alonso"
     },
     {
         "name": "Wirecloud",
         "status": "full",
         "chapter": "visualization",
-        "type": "",
-        "owner": "Alvaro Arranz"
+        "type": "product",
+        "owner": "Álvaro Arranz"
     }
 ]

@@ -119,26 +119,7 @@
         ]
     },
     {
-        "enabler": "Bosun - Policy Manager",
-        "catalogue": "policy-manager-bosun",
-        "academy": "Policy Manager GE",
-        "readthedocs": "fiware-cloto",
-        "helpdesk": "Bosun",
-        "backlog": "",
-        "jira_workitem": "",
-        "coverall": "",
-        "coverll": "telefonicaid/fiware-facts",
-        "github": [
-            "telefonicaid/fiware-facts",
-            "telefonicaid/fiware-cloto"
-        ],
-        "docker": [
-            "fiware/bosun-cloto",
-            "fiware/bosun-facts"
-        ]
-    },
-    {
-        "enabler": "Business API Ecosystem",
+        "enabler": "Biz Framework",
         "catalogue": "business-api-ecosystem-biz-ecosystem-ri",
         "academy": "Business API Ecosystem",
         "readthedocs": "business-api-ecosystem",
@@ -167,6 +148,46 @@
         ]
     },
     {
+        "enabler": "Bosun - Policy Manager",
+        "catalogue": "policy-manager-bosun",
+        "academy": "Policy Manager GE",
+        "readthedocs": "fiware-cloto",
+        "helpdesk": "Bosun",
+        "backlog": "",
+        "jira_workitem": "",
+        "coverall": "telefonicaid/fiware-facts",
+        "github": [
+            "telefonicaid/fiware-facts",
+            "telefonicaid/fiware-cloto"
+        ],
+        "docker": [
+            "fiware/bosun-cloto",
+            "fiware/bosun-facts"
+        ]
+    },
+    {
+        "enabler": "CKAN extensions",
+        "catalogue": "fiware-ckan-extensions",
+        "academy": "CKAN",
+        "readthedocs": "fiware-ckan-extensions",
+        "helpdesk": "CKAN",
+        "backlog": "",
+        "jira_workitem": "",
+        "coverall": "",
+        "github": [
+            "FIWARE-TMForum/ckanext-baepublisher",
+            "conwetlab/FIWARE-CKAN-Extensions",
+            "conwetlab/ckanext-datarequests",
+            "conwetlab/ckanext-oauth2",
+            "conwetlab/ckanext-privatedatasets",
+            "conwetlab/ckanext-right_time_context",
+            "conwetlab/ckanext-wirecloud_view"
+        ],
+        "docker": [
+            "fiware/ckan-extended"
+        ]
+    },
+    {
         "enabler": "Cepheus",
         "catalogue": "iot-data-edge-consolidation-ge-cepheus",
         "academy": "",
@@ -174,8 +195,7 @@
         "helpdesk": "Cepheus",
         "backlog": "",
         "jira_workitem": "",
-        "coverall": "",
-        "coverll": "Orange-OpenSource/fiware-cepheus",
+        "coverall": "Orange-OpenSource/fiware-cepheus",
         "github": [
             "Orange-OpenSource/fiware-cepheus"
         ],
@@ -215,7 +235,7 @@
         "docker": []
     },
     {
-        "enabler": "Comet - Short Time Historic",
+        "enabler": "Comet",
         "catalogue": "sth-comet",
         "academy": "",
         "readthedocs": "fiware-sth-comet",
@@ -257,8 +277,7 @@
         "jira_workitem": "",
         "coverall": "",
         "github": [
-            "telefonicaid/fiware-cosmos",
-            "telefonicaid/fiware-sinfonier"
+            "telefonicaid/fiware-cosmos"
         ],
         "docker": []
     },
@@ -325,7 +344,7 @@
     },
     {
         "enabler": "Draco",
-        "catalogue": "",
+        "catalogue": "draco",
         "academy": "",
         "readthedocs": "fiware-draco",
         "helpdesk": "Draco",
@@ -337,28 +356,6 @@
         ],
         "docker": [
             "ging/fiware-draco"
-        ]
-    },
-    {
-        "enabler": "FIWARE's Extended CKAN",
-        "catalogue": "fiware-ckan-extensions",
-        "academy": "CKAN",
-        "readthedocs": "fiware-ckan-extensions",
-        "helpdesk": "CKAN",
-        "backlog": "",
-        "jira_workitem": "",
-        "coverall": "",
-        "github": [
-            "FIWARE-TMForum/ckanext-baepublisher",
-            "conwetlab/FIWARE-CKAN-Extensions",
-            "conwetlab/ckanext-datarequests",
-            "conwetlab/ckanext-oauth2",
-            "conwetlab/ckanext-privatedatasets",
-            "conwetlab/ckanext-right_time_context",
-            "conwetlab/ckanext-wirecloud_view"
-        ],
-        "docker": [
-            "fiware/ckan-extended"
         ]
     },
     {
@@ -423,7 +420,7 @@
         ]
     },
     {
-        "enabler": "GIS Data Provider ",
+        "enabler": "GIS Data Provider",
         "catalogue": "gis-data-provider-geoserver3d",
         "academy": "GIS",
         "readthedocs": "gisdataprovider",
@@ -482,7 +479,7 @@
         "docker": []
     },
     {
-        "enabler": "IoT Agent Node.JS Library",
+        "enabler": "IoT Agent Node.js Library",
         "catalogue": "",
         "academy": "",
         "readthedocs": "iotagent-node-lib",
@@ -512,7 +509,7 @@
         ]
     },
     {
-        "enabler": "IoT Agent for Lightweight M2M",
+        "enabler": "IoT Agent for LWM2M",
         "catalogue": "",
         "academy": "IDAS",
         "readthedocs": "fiware-iotagent-lwm2m",
@@ -528,7 +525,7 @@
         ]
     },
     {
-        "enabler": "IoT Agent for LoRaWan",
+        "enabler": "IoT Agent for LoRaWAN",
         "catalogue": "",
         "academy": "",
         "readthedocs": "fiware-lorawan",
@@ -544,7 +541,7 @@
         ]
     },
     {
-        "enabler": "IoT Agent for OPC UA",
+        "enabler": "IoT Agent for OPC-UA",
         "catalogue": "",
         "academy": "",
         "readthedocs": "iotagent-opcua",
@@ -560,7 +557,7 @@
         ]
     },
     {
-        "enabler": "IoT Agent for SigFox",
+        "enabler": "IoT Agent for Sigfox",
         "catalogue": "",
         "academy": "IDAS",
         "readthedocs": "iotagent-sigfox",
@@ -626,7 +623,7 @@
         ]
     },
     {
-        "enabler": "Keyrock - Identity Manager",
+        "enabler": "Keyrock",
         "catalogue": "identity-management-keyrock",
         "academy": "KeyRock",
         "readthedocs": "fiware-idm",
@@ -705,8 +702,8 @@
         "docker": []
     },
     {
-        "enabler": "Micro-XRCE-DDS",
-        "catalogue": "fast-rtps",
+        "enabler": "Micro XRCE-DDS",
+        "catalogue": "",
         "academy": "",
         "readthedocs": "",
         "helpdesk": "Micro-XRCE-DDS",
@@ -756,15 +753,14 @@
         "helpdesk": "Object Storage",
         "backlog": "",
         "jira_workitem": "",
-        "coverall": "",
-        "coverll": "renarsvilnis/fiware-object-storage-ge",
+        "coverall": "renarsvilnis/fiware-object-storage-ge",
         "github": [
             "renarsvilnis/fiware-object-storage-ge"
         ],
         "docker": []
     },
     {
-        "enabler": "OpenMTC - oneM2M",
+        "enabler": "OpenMTC",
         "catalogue": "openmtc",
         "academy": "",
         "readthedocs": "fiware-openmtc",
@@ -830,8 +826,7 @@
         "helpdesk": "Pegasus",
         "backlog": "",
         "jira_workitem": "",
-        "coverall": "",
-        "coverll": "telefonicaid/fiware-paas",
+        "coverall": "telefonicaid/fiware-paas",
         "github": [
             "telefonicaid/fiware-paas"
         ],
@@ -839,7 +834,7 @@
     },
     {
         "enabler": "Perseo",
-        "catalogue": "kurento",
+        "catalogue": "",
         "academy": "",
         "readthedocs": "",
         "helpdesk": "Perseo",
@@ -850,7 +845,10 @@
             "telefonicaid/perseo-core",
             "telefonicaid/perseo-fe"
         ],
-        "docker": []
+        "docker": [
+            "fiware/perseo",
+            "fiware/perseo-core"
+        ]
     },
     {
         "enabler": "Privacy",
@@ -881,7 +879,7 @@
         ]
     },
     {
-        "enabler": "QuantumLeap",
+        "enabler": "Quantum Leap",
         "catalogue": "",
         "academy": "",
         "readthedocs": "quantumleap",
@@ -952,8 +950,7 @@
         "helpdesk": "Sagitta",
         "backlog": "",
         "jira_workitem": "",
-        "coverall": "",
-        "coverll": "telefonicaid/fiware-sdc",
+        "coverall": "telefonicaid/fiware-sdc",
         "github": [
             "telefonicaid/fiware-sdc"
         ],
@@ -979,8 +976,7 @@
         "helpdesk": "Monitoring",
         "backlog": "",
         "jira_workitem": "",
-        "coverall": "",
-        "coverll": "telefonicaid/fiware-monitoring",
+        "coverall": "telefonicaid/fiware-monitoring",
         "github": [
             "telefonicaid/fiware-monitoring"
         ],
@@ -1073,7 +1069,7 @@
         ]
     },
     {
-        "enabler": "Wilma - PEP Proxy",
+        "enabler": "Wilma",
         "catalogue": "pep-proxy-wilma",
         "academy": "Wilma",
         "readthedocs": "fiware-pep-proxy",
@@ -1096,8 +1092,7 @@
         "helpdesk": "Wirecloud",
         "backlog": "",
         "jira_workitem": "",
-        "coverall": "",
-        "coverll": "Wirecloud/wirecloud",
+        "coverall": "Wirecloud/wirecloud",
         "github": [
             "conwetlab/ngsijs",
             "conwetlab/ngsi-proxy",
