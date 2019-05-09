@@ -19,7 +19,7 @@
 import requests
 import json
 from dbase import db, Source
-import httplib
+from http import HTTPStatus
 
 __author__ = 'Fernando López'
 
@@ -42,7 +42,7 @@ headers = {"Content-type": "application/json"}
 
 answer = requests.post(url, headers=headers, data=json.dumps(payload))
 
-if answer.status_code == httplib.OK:
+if answer.status_code == HTTPStatus.OK:
     token = answer.json()['token']
 else:
     raise Exception('Error retrieving a token from Docker Registry.')
@@ -55,9 +55,9 @@ param = {'page_size': 200}
 
 answer = requests.get(url, headers=headers, params=param)
 
-if answer.status_code == httplib.OK:
+if answer.status_code == HTTPStatus.OK:
     data = answer.json()['results']
 
-    map(lambda x: print_data(x), data)
+    list(map(lambda x: print_data(x), data))
 else:
     raise Exception('Error getting information of the different repositories under FIWARE organization.')
