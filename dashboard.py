@@ -118,7 +118,7 @@ class Dashboard:
         values.append(['Enabler Implementation'])
         values.append(['', ''])
 
-        for status in ('Incubated', 'Development', 'Support', 'Quarantine', 'Deprecated'):
+        for status in ('incubated', 'full', 'quarantine', 'deprecated'):
             values.append([status.upper(), ''])
             for enabler in self.enablers:
                 raw = []
@@ -146,7 +146,7 @@ class Dashboard:
                 values.append(raw)
             values.append([''])
 
-        self.__publish__(values=values)
+        # python3.7: self.__publish__(values=values)
         self.__save__(values=values)
 
     @staticmethod

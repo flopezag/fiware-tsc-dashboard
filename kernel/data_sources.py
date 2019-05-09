@@ -21,7 +21,7 @@ import re
 import requests
 import json
 import sys
-from datetime import date, datetime
+from datetime import date
 from github import Github
 from dbase import db, Source
 from .google import get_service
@@ -30,13 +30,13 @@ from .scrum import ScrumServer
 from config.settings import GITHUB_TOKEN
 from config.log import logger
 from kernel.jira import Jira
-import httplib
-from config.settings import DOCKER_ORGANIZATION, DOCKER_USERNAME, DOCKER_PASSWORD
+from config.settings import DOCKER_USERNAME, DOCKER_PASSWORD
 from dateutil import parser
-
+from importlib import reload
+from functools import reduce
+from http import HTTPStatus
 
 reload(sys)  # Reload does the trick!
-sys.setdefaultencoding('UTF8')
 
 __author__ = 'Fernando López'
 
@@ -172,8 +172,8 @@ class Catalogue(DataSource):
         super(Catalogue, self).get_measurement(metric)
         token = metric.details
 
-        rows = filter(lambda x: token in x['dimensions'][0], self.data['reports'][0]['data']['rows'])
-        values = map((lambda x: int(x['metrics'][0]['values'][0])), rows)
+        rows = list(filter(lambda x: token in x['dimensions'][0], self.data['reports'][0]['data']['rows']))
+        values = list(map((lambda x: int(x['metrics'][0]['values'][0])), rows))
         value = reduce((lambda x, y: x + y), values)
 
         return '{:6,d}'.format(value)
@@ -251,16 +251,16 @@ class Helpdesk(DataSource):
     def get_measurement(self, metric):
         result = self.jira.get_helpdesk(metric.details)
 
-        status = map(lambda x: x['fields']['status']['name'], result)
+        status = list(map(lambda x: x['fields']['status']['name'], result))
 
         total_tickets = len(status)
-        closed_tickets = len(filter(lambda x: x == 'Closed', status))
+        closed_tickets = len(list(filter(lambda x: x == 'Closed', status)))
         rest_tickets = total_tickets - closed_tickets
         pending_tickets = int(round(float(rest_tickets) / float(total_tickets) * 100))
 
-        resolutionDates = map(lambda x: parser.parse(x['fields']['resolutiondate']), result)
-        createdDates = map(lambda x: parser.parse(x['fields']['created']), result)
-        diff = map(lambda x: self.jira.difference_time(x['fields']['resolutiondate'], x['fields']['created']), result)
+        resolutionDates = list(map(lambda x: parser.parse(x['fields']['resolutiondate']), result))
+        createdDates = list(map(lambda x: parser.parse(x['fields']['created']), result))
+        diff = list(map(lambda x: self.jira.difference_time(x['fields']['resolutiondate'], x['fields']['created']), result))
 
         numberDays = reduce(lambda x, y: x + y, diff) / len(diff)
         numberDays = int(round(numberDays))
@@ -277,55 +277,74 @@ class Docker(DataSource):
     def __init__(self):
         super(Docker, self).__init__()
         self.source = db.query(Source).filter_by(name='Docker').one()
+        self.data = dict()
 
-        # 1st step: Retrieve a token from Docker Repository
-        url = 'https://{}/v2/users/login/'.format(self.source.url)
+    def get_docker_hub_data(self, namespace):
 
-        payload = {
-            "username": DOCKER_USERNAME,
-            "password": DOCKER_PASSWORD
-        }
+        if namespace not in self.data:
+            # 1st step: Retrieve a token from Docker Repository
+            url = 'https://{}/v2/users/login/'.format(self.source.url)
 
-        headers = {"Content-type": "application/json"}
+            payload = {
+                "username": DOCKER_USERNAME,
+                "password": DOCKER_PASSWORD
+            }
 
-        answer = requests.post(url, headers=headers, data=json.dumps(payload))
+            headers = {"Content-type": "application/json"}
 
-        if answer.status_code == httplib.OK:
-            token = answer.json()['token']
-        else:
-            raise Exception('Error retrieving a token from Docker Registry.')
+            answer = requests.post(url, headers=headers, data=json.dumps(payload))
 
-        # 2nd step: Get list of repositories inside FIWARE organization
-        url = 'https://{}/v2/repositories/{}'.format(self.source.url, DOCKER_ORGANIZATION)
-        authorization = 'JWT {}'.format(token)
-        headers = {'Authorization': authorization}
-        params = {'page_size': 200}
+            if answer.status_code == HTTPStatus.OK:
+                token = answer.json()['token']
+            else:
+                raise Exception('Error retrieving a token from Docker Registry.')
 
-        answer = requests.get(url, headers=headers, params=params)
+            # 2nd step: Get list of repositories inside FIWARE organization
+            url = 'https://{}/v2/repositories/{}'.format(self.source.url, namespace)
+            authorization = 'JWT {}'.format(token)
+            headers = {'Authorization': authorization}
+            params = {'page_size': 200}
 
-        if answer.status_code == httplib.OK:
-            self.data = answer.json()['results']
-        else:
-            raise Exception('Error getting information of the different repositories under FIWARE organization.')
+            answer = requests.get(url, headers=headers, params=params)
 
-        '''
-        url = 'https://{}/u/fiware/'.format(self.source.url)
-        pattern = re.compile(r'"name":"[\w\-\.]*".*?"pull_count":\d*')
-        self.data = []
-        for n in range(10):
-            answer = requests.get(url, params={'page': n})
+            if answer.status_code == HTTPStatus.OK:
+                self.data[namespace] = answer.json()['results']
+            else:
+                raise Exception('Error getting information of the different repositories under FIWARE organization.')
 
-            if not answer.ok:
-                continue
-
-            for match in re.finditer(pattern, answer.text):
-                self.data.append(json.loads('{' + match.group(0) + '}'))
-        '''
+            '''
+            url = 'https://{}/u/fiware/'.format(self.source.url)
+            pattern = re.compile(r'"name":"[\w\-\.]*".*?"pull_count":\d*')
+            self.data = []
+            for n in range(10):
+                answer = requests.get(url, params={'page': n})
+    
+                if not answer.ok:
+                    continue
+    
+                for match in re.finditer(pattern, answer.text):
+                    self.data.append(json.loads('{' + match.group(0) + '}'))
+            '''
 
     def get_measurement(self, metric):
         super(Docker, self).get_measurement(metric)
-        pattern = eval("r'{}'".format(metric.details))
-        records = filter(lambda x: re.search(pattern, x['name']), self.data)
+
+        keys = metric.details[0].split('/')
+
+        if len(keys) == 1:
+            # There is no namespace, therefore we confider fiware as a value
+            # check if we have information from fiware docker repository and if
+            # not get that information
+            namespace = 'fiware'
+            name = keys[0]
+
+        elif len(keys) == 2:
+            # We have the namespace and the name of the hub docker repository
+            namespace, name = keys
+
+        self.get_docker_hub_data(namespace)
+
+        records = list(filter(lambda x: x['name'] == name and x['namespace'] == namespace, self.data[namespace]))
 
         value = 0
         values = [int(record['pull_count']) for record in records]
@@ -368,8 +387,8 @@ class GitHub(DataSource):
         repo = self.gh.get_user(user).get_repo(project)
         releases = repo.get_releases()
 
-        assets = map(lambda x: x.raw_data['assets'][0]['download_count'],
-                     filter(lambda x: len(x.raw_data['assets']) > 0, releases))
+        aux = list(filter(lambda x: len(x.raw_data['assets']) > 0, releases))
+        assets = list(map(lambda x: x.raw_data['assets'][0]['download_count'], aux))
 
         n_assets = len(assets)
 
@@ -380,15 +399,15 @@ class GitHub(DataSource):
 
         # Obtain the number of issues opened and closed
         total_issues = repo.get_issues(state='all')
-        list_open_issues = map(lambda x: x.user.login, filter(lambda x: x.state == 'open', total_issues))
-        list_total_issues = map(lambda x: x.user.login, total_issues)
+        list_open_issues = list(map(lambda x: x.user.login, list(filter(lambda x: x.state == 'open', total_issues))))
+        list_total_issues = list(map(lambda x: x.user.login, total_issues))
         len_open_issues = len(list_open_issues)
         len_total_issues = len(list_total_issues)
         len_closed_issues = len_total_issues - len_open_issues
 
         # Obtain the total number of adopters (persons who create issues and they are not authors
         # authors = [users.author.login for users in repo.get_stats_contributors()]
-        list_authors = map(lambda x: x.author.login, repo.get_stats_contributors())
+        list_authors = list(map(lambda x: x.author.login, repo.get_stats_contributors()))
 
         # Obtain the number of commits only for gh-pages and default branch (usually master)
         commits = list()
@@ -489,12 +508,12 @@ class GitHub_Adopters(DataSource):
         super(GitHub_Adopters, self).__init__()
 
     def get_measurement(self, metric):
-        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+        value = list(filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats))
 
-        authors = map(lambda x: x['authors'], value)
+        authors = list(map(lambda x: x['authors'], value))
         authors = set(reduce(operator.concat, authors))
 
-        total_issues = map(lambda x: x['total_issues'], value)
+        total_issues = list(map(lambda x: x['total_issues'], value))
         total_reporter_issues = set(reduce(operator.concat, total_issues))
 
         adopters = len(list(total_reporter_issues - authors))
@@ -509,15 +528,15 @@ class GitHub_Adopters_Open_Issues(DataSource):
         super(GitHub_Adopters_Open_Issues, self).__init__()
 
     def get_measurement(self, metric):
-        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+        value = list(filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats))
 
-        authors = set(reduce(operator.concat, map(lambda x: x['authors'], value)))
-        total_reporter_issues = set(reduce(operator.concat, map(lambda x: x['total_issues'], value)))
+        authors = set(reduce(operator.concat, list(map(lambda x: x['authors'], value))))
+        total_reporter_issues = set(reduce(operator.concat, list(map(lambda x: x['total_issues'], value))))
 
         adopters = list(total_reporter_issues - authors)
 
-        open_issues = reduce(operator.concat, map(lambda x: x['open_issues'], value))
-        open_issues_adopters = len(filter(lambda x: x in adopters, open_issues))
+        open_issues = reduce(operator.concat, list(map(lambda x: x['open_issues'], value)))
+        open_issues_adopters = len(list(filter(lambda x: x in adopters, open_issues)))
 
         return '{:4,d}'.format(open_issues_adopters)
 
@@ -529,18 +548,18 @@ class GitHub_Adopters_Closed_Issues(DataSource):
         super(GitHub_Adopters_Closed_Issues, self).__init__()
 
     def get_measurement(self, metric):
-        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+        value = list(filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats))
 
-        authors = set(reduce(operator.concat, map(lambda x: x['authors'], value)))
-        total_reporter_issues = set(reduce(operator.concat, map(lambda x: x['total_issues'], value)))
+        authors = set(reduce(operator.concat, list(map(lambda x: x['authors'], value))))
+        total_reporter_issues = set(reduce(operator.concat, list(map(lambda x: x['total_issues'], value))))
 
         adopters = list(total_reporter_issues - authors)
 
-        open_issues = reduce(operator.concat, map(lambda x: x['open_issues'], value))
-        open_issues_adopters = len(filter(lambda x: x in adopters, open_issues))
+        open_issues = reduce(operator.concat, list(map(lambda x: x['open_issues'], value)))
+        open_issues_adopters = len(list(filter(lambda x: x in adopters, open_issues)))
 
-        total_issues = reduce(operator.concat, map(lambda x: x['total_issues'], value))
-        total_issues_adopters = len(filter(lambda x: x in adopters, total_issues))
+        total_issues = reduce(operator.concat, list(map(lambda x: x['total_issues'], value)))
+        total_issues_adopters = len(list(filter(lambda x: x in adopters, total_issues)))
 
         closed_issues_adopters = total_issues_adopters - open_issues_adopters
 

@@ -25,5 +25,6 @@ for metric in source.metrics:
         for release in releases:
             try:
                 print("\t->", release, ' published at {}'.format(release.raw_data['published_at']))
-            except:
+            except Exception as ex:
+                print(ex)
                 continue

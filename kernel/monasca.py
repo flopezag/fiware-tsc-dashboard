@@ -21,8 +21,8 @@ import requests
 import sys
 from config.settings import OS_MONASCA_URL
 from config.log import logger
-from keystone import Keystone
-from monasca_data import Monasca_Data
+from kernel.keystone import Keystone
+from kernel.monasca_data import Monasca_Data
 
 
 __author__ = 'fla'

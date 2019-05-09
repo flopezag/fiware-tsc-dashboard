@@ -60,9 +60,10 @@ def config_section_map(section):
             dict1[option] = Config.get(section, option)
             if dict1[option] == -1:
                 print("skip: %s" % option)
-        except:
-            print("exception on %s!" % option)
+        except Exception as ex:
+            print("exception on %s!".format(ex))
             dict1[option] = None
+
     return dict1
 
 
@@ -125,7 +126,6 @@ if Config.sections():
     # Docker section
     docker_section = config_section_map("docker")
 
-    DOCKER_ORGANIZATION = docker_section['organization']
     DOCKER_USERNAME = docker_section['username']
     DOCKER_PASSWORD = docker_section['password']
 

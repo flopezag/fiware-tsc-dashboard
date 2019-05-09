@@ -22,7 +22,7 @@ import re
 __author__ = 'fla'
 
 
-class Monasca_Data:
+class MonascaData:
     def __init__(self, data):
         self.timestamp = int(round(time.time() * 1000))
 
@@ -58,7 +58,7 @@ class Monasca_Data:
 
         keys = data[3]
         values = [i for i in data[7:]
-                  if i[0] not in ['INCUBATED', 'DEVELOPMENT', 'SUPPORT', 'QUARANTINE', 'DEPRECATED', '']]
+                  if i[0] not in ['INCUBATED', 'FULL', 'QUARANTINE', 'DEPRECATED', '']]
 
         result_list = list(map(lambda value: create_dict(key=keys, value=value), values))
         result_dict = dict((key, d[key]) for d in result_list for key in d)
@@ -92,7 +92,7 @@ class Monasca_Data:
         for k1, v1 in self.data.items():
             for k2, v2 in v1.items():
 
-                if v2.lower() not in ['not defined', 'no impl', 'no connect', 'no access']:
+                if v2.lower() not in ['not defined', 'no impl', 'no connect', 'no access', 'no data']:
                     if k2.lower() not in ['github', 'helpdesk']:
                         v2 = int(v2)
 
@@ -196,8 +196,12 @@ if __name__ == "__main__":
         ['Enabler Implementation'],
         ['', ''],
         ['INCUBATED', ''],
-        [u'OpenMTC', u' 1050', u'Not Defined', u'Not Defined', u'Not Defined', u' 0 |     0', u'  12', u'  24', u'  10', u'   3', u'  14', u' 115', u'Not Defined', u'12 (8%) | 24', u'Not Defined', u'  13', u'  15', u'  26', u'   0', u'   0'],
-        [u'Orion-LD', u'Not Defined', u'Not Defined', u'Not Defined', u' 141', u' 0 |     0', u'  23', u'  19', u'   0', u'   0', u'   0', u'13457', 'Not defined', u'0 (-%) | -', u'Not Defined', u'   0', u'   7', u'   0', u'No Access', u'No Access'],
+        [u'OpenMTC', u' 1050', u'Not Defined', u'Not Defined', u'Not Defined', u' 0 |     0', u'  12', u'  24', u'  10',
+         u'   3', u'  14', u' 115', u'Not Defined', u'12 (8%) | 24', u'Not Defined', u'  13', u'  15', u'  26', u'   0',
+         u'   0'],
+        [u'Orion-LD', u'Not Defined', u'Not Defined', u'Not Defined', u' 141', u' 0 |     0', u'  23', u'  19', u'   0',
+         u'   0', u'   0', u'13457', 'Not defined', u'0 (-%) | -', u'Not Defined', u'   0', u'   7', u'   0',
+         u'No Access', u'No Access'],
         [''],
         ['DEVELOPMENT', ''],
         [''],
@@ -209,6 +213,6 @@ if __name__ == "__main__":
         ['']
     ]
 
-    monasca_data = Monasca_Data(data=content)
-    result = monasca_data.generate_payload()
+    monascaData = MonascaData(data=content)
+    result = monascaData.generate_payload()
     print(result)

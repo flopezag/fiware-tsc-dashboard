@@ -23,6 +23,7 @@ from config import enablers, endpoints
 from dateutil import parser
 import pytz
 import datetime
+from functools import reduce
 
 __author__ = 'Fernando Lopez'
 
@@ -38,9 +39,9 @@ class Jira:
                  'resolution,assignee,created,updated,duedate,resolutiondate,fixVersions,releaseDate,issuelinks,' \
                  'customfield_11103,customfield_11104,customfield_11105'
 
-        aux = map(lambda x: dict([(x['name'], x['chapter'])]), enablers)
+        aux = list(map(lambda x: dict([(x['name'], x['chapter'])]), enablers))
         aux = reduce(lambda a, b: dict(a, **b), aux)
-        aux = map(lambda x: dict([(x['jira_workitem_closed'], aux[x['enabler']])]), endpoints)
+        aux = list(map(lambda x: dict([(x['helpdesk'], aux[x['enabler']])]), endpoints))
         self.enablers = reduce(lambda a, b: dict(a, **b), aux)
 
         self.verify = False
@@ -52,10 +53,10 @@ class Jira:
             'issue': '/rest/api/latest/issue'
         }
 
-        auth = '{}:{}'.format(JIRA_USERNAME, JIRA_PASSWORD)
+        auth = '{}:{}'.format(JIRA_USERNAME, JIRA_PASSWORD).encode("utf-8")
         keyword = base64.b64encode(auth)
 
-        headers = {'Content-Type': 'application/json', "Authorization": "Basic {}".format(keyword)}
+        headers = {'Content-Type': 'application/json', "Authorization": "Basic {}".format(keyword.decode("utf-8"))}
 
         self.root_url = 'https://{}'.format(JIRA_DOMAIN)
         self.session = requests.session()
