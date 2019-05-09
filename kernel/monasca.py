@@ -22,7 +22,7 @@ import sys
 from config.settings import OS_MONASCA_URL
 from config.log import logger
 from kernel.keystone import Keystone
-from kernel.monasca_data import Monasca_Data
+from kernel.monasca_data import MonascaData
 
 
 __author__ = 'fla'
@@ -39,7 +39,7 @@ class Monasca:
     def send_measurements(self, measurements):
         logger.info('Sending measurements to Monasca...')
 
-        monasca_data = Monasca_Data(data=measurements)
+        monasca_data = MonascaData(data=measurements)
         measurements = monasca_data.generate_payload()
 
         logger.debug('Payload: {}'.format(measurements))

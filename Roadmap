@@ -54,3 +54,7 @@ MICRO XRCE-DDS (Issue #35):
     * ReadTheDocs: https://micro-xrce-dds.rtfd.io/
     * Academy: https://fiware-academy.readthedocs.io/en/latest/robotics/micro-xrcd-dds
     * Catalogue: https://github.com/FIWARE/catalogue/tree/master/robotics#seedling-micro-xrce-dds-incubated
+
+Update the content of enablers.json file together with new owners in owners.json file (Issue #36)
+
+Update the content of the file metrics_endpoints (Issue #37)
