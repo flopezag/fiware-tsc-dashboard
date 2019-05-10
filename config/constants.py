@@ -34,7 +34,7 @@ LOG_FILE = 'tsc-dashboard.log'
 # - Source
 # - Units
 # - Enabler Impl
-# - INCUBATED
+# - INCUBATING
 # - DEVELOPMENT
 # - SUPPORT
 # - DEPRECATED

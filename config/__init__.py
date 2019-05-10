@@ -24,9 +24,9 @@ with open(os.path.join(home, 'metrics_endpoints.json')) as file:
 new_list = list()
 for endpoint in endpoints:
     # Expand Jira endpoints
-    endpoint['jira_workitem_not_closed'] = endpoint['jira_workitem']
-    endpoint['jira_workitem_closed'] = endpoint['jira_workitem']
-    del endpoint['jira_workitem']
+    # endpoint['jira_workitem_not_closed'] = endpoint['jira_workitem']
+    # endpoint['jira_workitem_closed'] = endpoint['jira_workitem']
+    # del endpoint['jira_workitem']
 
     # expand Github endpoints
     endpoint['github_open_issues'] = endpoint['github']

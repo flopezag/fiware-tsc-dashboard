@@ -109,7 +109,7 @@
         "status": "full",
         "chapter": "processing",
         "type": "service",
-        "owner": "Joaquin Salvachua"
+        "owner": "Joaquín Salvachúa"
     },
     {
         "name": "Cosmos - BigData Analysis",
@@ -151,7 +151,7 @@
         "status": "incubating",
         "chapter": "core",
         "type": "service",
-        "owner": "Joaquin Salvachua"
+        "owner": "Joaquín Salvachúa"
     },
     {
         "name": "Fast-RTPS",
@@ -277,7 +277,7 @@
         "status": "deprecated",
         "chapter": "",
         "type": "",
-        "owner": "Jaime Martin"
+        "owner": "Jaime Martín"
     },
     {
         "name": "Knowage",

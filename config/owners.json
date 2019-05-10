@@ -9,6 +9,9 @@
     "name":"Álvaro Arranz", "shortname":"Alvaro", "entity":"UPM"
   },
   {
+    "name":"Angelo Marguglio", "shortname":"Angelo", "entity":"E-IIS"
+  },
+  {
     "name":"Ari Okkonen", "shortname":"Ari", "entity":"CIE"
   },
   {
@@ -31,6 +34,9 @@
   },
   {
     "name":"Cyril Dangerville", "shortname":"Cyril", "entity":"TS"
+  },
+  {
+    "name":"Daniel Calvo", "shortname":"Daniel", "entity":"ATOS"
   },
   {
     "name":"Davide Zerbetto", "shortname":"Davide", "entity":"E-IIS"
@@ -60,7 +66,7 @@
     "name":"Francisco Romero", "shortname":"Paco", "entity":"TID"
   },
   {
-    "name":"Henar Munoz", "shortname":"Henar", "entity":"TID"
+    "name":"Henar Muñoz", "shortname":"Henar", "entity":"TID"
   },
   {
     "name":"Ioana Dragusanu", "shortname":"Ioana", "entity":"EC"
@@ -85,6 +91,9 @@
   },
   {
     "name":"Juha Hyvarinen", "shortname":"Juha", "entity":"CYBER"
+  },
+  {
+    "name":"Julián Bermúdez", "shortname":"Julián", "entity":"CYBER"
   },
   {
     "name":"Ken Zangelin", "shortname":"Ken", "entity":"FF"
@@ -117,6 +126,9 @@
     "name":"Sakari Paloviita", "shortname":"Sakari", "entity":"APInf"
   },
   {
+    "name":"Ilari Mikkonen", "shortname":"Ilari", "entity":"APInf"
+  },
+  {
     "name":"Sebastien Keller", "shortname":"Sebastien", "entity":"TS"
   },
   {
@@ -133,6 +145,9 @@
   },
   {
     "name":"Thomas Michael Bohnert", "shortname":"Thomas", "entity":"ZHAW"
+  },
+  {
+    "name":"Tomás Aliaga", "shortname":"Tomás", "entity":"ZHAW"
   },
   {
     "name":"Torsten Spieldenner", "shortname":"Torsten", "entity":"DFKI"

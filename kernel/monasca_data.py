@@ -58,7 +58,7 @@ class MonascaData:
 
         keys = data[3]
         values = [i for i in data[7:]
-                  if i[0] not in ['INCUBATED', 'FULL', 'QUARANTINE', 'DEPRECATED', '']]
+                  if i[0] not in ['INCUBATING', 'FULL', 'QUARANTINE', 'DEPRECATED', '']]
 
         result_list = list(map(lambda value: create_dict(key=keys, value=value), values))
         result_dict = dict((key, d[key]) for d in result_list for key in d)
@@ -195,7 +195,7 @@ if __name__ == "__main__":
         ],
         ['Enabler Implementation'],
         ['', ''],
-        ['INCUBATED', ''],
+        ['INCUBATING', ''],
         [u'OpenMTC', u' 1050', u'Not Defined', u'Not Defined', u'Not Defined', u' 0 |     0', u'  12', u'  24', u'  10',
          u'   3', u'  14', u' 115', u'Not Defined', u'12 (8%) | 24', u'Not Defined', u'  13', u'  15', u'  26', u'   0',
          u'   0'],

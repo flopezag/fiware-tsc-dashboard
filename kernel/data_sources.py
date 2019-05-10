@@ -31,7 +31,6 @@ from config.settings import GITHUB_TOKEN
 from config.log import logger
 from kernel.jira import Jira
 from config.settings import DOCKER_USERNAME, DOCKER_PASSWORD
-from dateutil import parser
 from importlib import reload
 from functools import reduce
 from http import HTTPStatus
@@ -256,19 +255,16 @@ class Helpdesk(DataSource):
         total_tickets = len(status)
         closed_tickets = len(list(filter(lambda x: x == 'Closed', status)))
         rest_tickets = total_tickets - closed_tickets
-        pending_tickets = int(round(float(rest_tickets) / float(total_tickets) * 100))
+        pending_tickets = (float(rest_tickets) / float(total_tickets) * 100)
 
-        resolutionDates = list(map(lambda x: parser.parse(x['fields']['resolutiondate']), result))
-        createdDates = list(map(lambda x: parser.parse(x['fields']['created']), result))
         diff = list(map(lambda x: self.jira.difference_time(x['fields']['resolutiondate'], x['fields']['created']), result))
 
         numberDays = reduce(lambda x, y: x + y, diff) / len(diff)
-        numberDays = int(round(numberDays))
 
         if total_tickets == 0:
             result = '0 (0%) | -'
         else:
-            result = '{:3,d} ({:2.0%}) | {:2.0f}'.format(total_tickets, pending_tickets, numberDays)
+            result = '{:3,d} ({:2.2}%) | {:2.2f}d'.format(total_tickets, pending_tickets, numberDays)
 
         return result
 

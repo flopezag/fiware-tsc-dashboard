@@ -5,8 +5,6 @@
         "academy": "2D-UI",
         "readthedocs": "",
         "helpdesk": "2D-UI",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [],
         "docker": []
@@ -17,8 +15,6 @@
         "academy": "2D 3D capture GE",
         "readthedocs": "",
         "helpdesk": "2D-3D Capture",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "Cyberlightning/Cyber-WeX"
@@ -31,8 +27,6 @@
         "academy": "XML3D",
         "readthedocs": "xml3d",
         "helpdesk": "XML3D",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "xml3d/xml3d.js"
@@ -45,8 +39,6 @@
         "academy": "WebTundra",
         "readthedocs": "webtundra",
         "helpdesk": "Web Tundra 3D",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "realXtend/WebTundra"
@@ -59,8 +51,6 @@
         "academy": "AEON",
         "readthedocs": "aeon-platform",
         "helpdesk": "Aeon",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "atos-ari-aeon/fiware-cloud-messaging-dashboard",
@@ -77,8 +67,6 @@
         "academy": "",
         "readthedocs": "",
         "helpdesk": "APInf",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "apinf/apinf-umbrella",
@@ -94,8 +82,6 @@
         "academy": "Augmented Reality",
         "readthedocs": "fiware-augmentedreality",
         "helpdesk": "Augmented Reality",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "Chiru/FIWARE-AugmentedReality"
@@ -108,8 +94,6 @@
         "academy": "Auth(Z|z)(F|f)orce",
         "readthedocs": "authzforce-ce-fiware",
         "helpdesk": "AuthZForce",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "authzforce/server"
@@ -124,8 +108,6 @@
         "academy": "Business API Ecosystem",
         "readthedocs": "business-api-ecosystem",
         "helpdesk": "Business Ecosystem",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "FIWARE-TMForum/DSBILLINGMANAGEMENT",
@@ -153,8 +135,6 @@
         "academy": "Policy Manager GE",
         "readthedocs": "fiware-cloto",
         "helpdesk": "Bosun",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "telefonicaid/fiware-facts",
         "github": [
             "telefonicaid/fiware-facts",
@@ -171,8 +151,6 @@
         "academy": "CKAN",
         "readthedocs": "fiware-ckan-extensions",
         "helpdesk": "CKAN",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "FIWARE-TMForum/ckanext-baepublisher",
@@ -193,8 +171,6 @@
         "academy": "",
         "readthedocs": "fiware-cepheus",
         "helpdesk": "Cepheus",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "Orange-OpenSource/fiware-cepheus",
         "github": [
             "Orange-OpenSource/fiware-cepheus"
@@ -210,8 +186,6 @@
         "academy": "Cloud Portal",
         "readthedocs": "fiware-cloud-portal",
         "helpdesk": "Cloud Portal",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "ging/fiware-cloud-portal"
@@ -226,8 +200,6 @@
         "academy": "Cloud Rendering",
         "readthedocs": "cloud-renderer",
         "helpdesk": "Cloud Render",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "tospie/fiware-cloud-rendering-service"
@@ -240,8 +212,6 @@
         "academy": "",
         "readthedocs": "fiware-sth-comet",
         "helpdesk": "STH-Comet",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "telefonicaid/fiware-sth-comet"
@@ -256,8 +226,6 @@
         "academy": "",
         "readthedocs": "fiware-cosmos-flink",
         "helpdesk": "Cosmos",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "ging/fiware-cosmos-orion-flink-connector",
@@ -273,8 +241,6 @@
         "academy": "Cosmos",
         "readthedocs": "fiware-cosmos",
         "helpdesk": "Cosmos",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "telefonicaid/fiware-cosmos"
@@ -287,8 +253,6 @@
         "academy": "Cyber seCurity",
         "readthedocs": "cybercaptor",
         "helpdesk": "Cyber Security",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [],
         "docker": [
@@ -304,8 +268,6 @@
         "academy": "",
         "readthedocs": "fiware-cygnus",
         "helpdesk": "Cygnus",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "telefonicaid/fiware-cygnus"
@@ -320,8 +282,6 @@
         "academy": "Docker",
         "readthedocs": "",
         "helpdesk": "Docker",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [],
         "docker": []
@@ -332,8 +292,6 @@
         "academy": "Electronic Data Exchange",
         "readthedocs": "",
         "helpdesk": "Domibus",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [],
         "docker": [
@@ -346,8 +304,6 @@
         "academy": "",
         "readthedocs": "fiware-draco",
         "helpdesk": "Draco",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "ging/fiware-draco"
@@ -362,8 +318,6 @@
         "academy": "",
         "readthedocs": "eprosima-fast-rtps",
         "helpdesk": "FastRTPS",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "eProsima/Fast-RTPS"
@@ -376,8 +330,6 @@
         "academy": "FiVES",
         "readthedocs": "fives",
         "helpdesk": "Fives",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "fives-team/FiVES"
@@ -392,8 +344,6 @@
         "academy": "",
         "readthedocs": "fogflow",
         "helpdesk": "FogFlow",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "smartfog/fogflow"
@@ -423,8 +373,6 @@
         "academy": "GIS",
         "readthedocs": "gisdataprovider",
         "helpdesk": "GIS Provider",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "Cyberlightning/geoserver",
@@ -440,8 +388,6 @@
         "academy": "IaaS Resource Management",
         "readthedocs": "",
         "helpdesk": "IaaS RM",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [],
         "docker": []
@@ -452,8 +398,6 @@
         "academy": "",
         "readthedocs": "idra",
         "helpdesk": "IDRA",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "OPSILab/Idra"
@@ -468,8 +412,6 @@
         "academy": "Interface Designer",
         "readthedocs": "interface-designer",
         "helpdesk": "UI Designer",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "Adminotech/fiware-interface-designer"
@@ -482,8 +424,6 @@
         "academy": "",
         "readthedocs": "iotagent-node-lib",
         "helpdesk": "IDAS",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "telefonicaid/iotagent-node-lib"
@@ -496,8 +436,6 @@
         "academy": "IDAS",
         "readthedocs": "fiware-iotagent-json",
         "helpdesk": "IDAS",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "telefonicaid/iotagent-json"
@@ -512,8 +450,6 @@
         "academy": "IDAS",
         "readthedocs": "fiware-iotagent-lwm2m",
         "helpdesk": "IDAS",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "telefonicaid/lightweightm2m-iotagent"
@@ -528,8 +464,6 @@
         "academy": "",
         "readthedocs": "fiware-lorawan",
         "helpdesk": "IDAS",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "Atos-Research-and-Innovation/IoTagent-LoRaWAN"
@@ -544,8 +478,6 @@
         "academy": "",
         "readthedocs": "iotagent-opcua",
         "helpdesk": "IDAS",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "Engineering-Research-and-Development/iotagent-opcua"
@@ -560,8 +492,6 @@
         "academy": "IDAS",
         "readthedocs": "iotagent-sigfox",
         "helpdesk": "IDAS",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "telefonicaid/sigfox-iotagent"
@@ -576,8 +506,6 @@
         "academy": "IDAS",
         "readthedocs": "fiware-iotagent-ul",
         "helpdesk": "IDAS",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "telefonicaid/iotagent-ul"
@@ -592,8 +520,6 @@
         "academy": "IoT Broker",
         "readthedocs": "fiware-iot-broker",
         "helpdesk": "IoT Broker",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "Aeronbroker/Aeron",
@@ -609,8 +535,6 @@
         "academy": "IoT Discovery",
         "readthedocs": "fiware-iot-discovery-ngsi9",
         "helpdesk": "IoT Discovery",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "UniSurreyIoT/fiware-iot-discovery-s2w",
@@ -626,8 +550,6 @@
         "academy": "KeyRock",
         "readthedocs": "fiware-idm",
         "helpdesk": "KeyRock",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "ging/fiware-idm"
@@ -642,8 +564,6 @@
         "academy": "KIARA Advanced Middleware",
         "readthedocs": "",
         "helpdesk": "Kiara",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "FIWARE-Middleware/KIARA"
@@ -656,8 +576,6 @@
         "academy": "",
         "readthedocs": "knowage",
         "helpdesk": "Knowage",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "KnowageLabs/Knowage-Documentation",
@@ -675,8 +593,6 @@
         "academy": "Kurento",
         "readthedocs": "doc-kurento",
         "helpdesk": "Kurento",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "Kurento/doc-fiware-readthedocs",
@@ -693,8 +609,6 @@
         "academy": "Protocol Adapter",
         "readthedocs": "",
         "helpdesk": "",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [],
         "docker": []
@@ -705,8 +619,6 @@
         "academy": "",
         "readthedocs": "",
         "helpdesk": "Micro-XRCE-DDS",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "eProsima/Micro-XRCE-DDS"
@@ -719,8 +631,6 @@
         "academy": "Murano",
         "readthedocs": "murano",
         "helpdesk": "Murano",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [],
         "docker": [
@@ -733,8 +643,6 @@
         "academy": "OFNIC",
         "readthedocs": "fiware-ofnic",
         "helpdesk": "OFNIC",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "FIWARE-UNIROMA1/FIWARE-OFNIC"
@@ -749,8 +657,6 @@
         "academy": "Object Storage",
         "readthedocs": "",
         "helpdesk": "Object Storage",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "renarsvilnis/fiware-object-storage-ge",
         "github": [
             "renarsvilnis/fiware-object-storage-ge"
@@ -763,8 +669,6 @@
         "academy": "",
         "readthedocs": "fiware-openmtc",
         "helpdesk": "OpenMTC",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "OpenMTC/OpenMTC"
@@ -792,8 +696,6 @@
         "academy": "Orion Context Broker",
         "readthedocs": "fiware-orion",
         "helpdesk": "Orion",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "telefonicaid/fiware-orion"
@@ -808,8 +710,6 @@
         "academy": "POI Data Provider",
         "readthedocs": "fiware-poidataprovider",
         "helpdesk": "POI Provider",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "Chiru/FIWARE-POIDataProvider"
@@ -822,8 +722,6 @@
         "academy": "Pegasus",
         "readthedocs": "fiware-paas",
         "helpdesk": "Pegasus",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "telefonicaid/fiware-paas",
         "github": [
             "telefonicaid/fiware-paas"
@@ -836,8 +734,6 @@
         "academy": "",
         "readthedocs": "",
         "helpdesk": "Perseo",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "telefonicaid/perseo-core",
@@ -854,8 +750,6 @@
         "academy": "Privacy",
         "readthedocs": "",
         "helpdesk": "Privacy",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [],
         "docker": []
@@ -866,8 +760,6 @@
         "academy": "Complex Event Processing",
         "readthedocs": "proactive-technology-online",
         "helpdesk": "CEP",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "ishkin/Proton"
@@ -882,8 +774,6 @@
         "academy": "",
         "readthedocs": "quantumleap",
         "helpdesk": "Quantum-Leap",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "smartsdk/ngsi-timeseries-api"
@@ -898,8 +788,6 @@
         "academy": "Revenue Settlement and Sharing System",
         "readthedocs": "fiware-rss",
         "helpdesk": "Revenue",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "conwetlab/fiware-rss"
@@ -914,8 +802,6 @@
         "academy": "Real Virtual Interaction",
         "readthedocs": "realvirtualinteraction",
         "helpdesk": "Real Virtual Interaction",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "Cyberlightning/RealVirtualInteraction"
@@ -930,8 +816,6 @@
         "academy": "Repository RI",
         "readthedocs": "repository-ri",
         "helpdesk": "Repository",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "conwetlab/Repository-RI"
@@ -946,8 +830,6 @@
         "academy": "Sagitta",
         "readthedocs": "fiware-sdc",
         "helpdesk": "Sagitta",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "telefonicaid/fiware-sdc",
         "github": [
             "telefonicaid/fiware-sdc"
@@ -960,8 +842,6 @@
         "academy": "Security Monitoring",
         "readthedocs": "",
         "helpdesk": "",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [],
         "docker": []
@@ -972,8 +852,6 @@
         "academy": "Monitoring GE",
         "readthedocs": "",
         "helpdesk": "Monitoring",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "telefonicaid/fiware-monitoring",
         "github": [
             "telefonicaid/fiware-monitoring"
@@ -986,8 +864,6 @@
         "academy": "SpagoBI",
         "readthedocs": "spagobi",
         "helpdesk": "SpagoBI",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "SpagoBILabs/SpagoBI"
@@ -1002,8 +878,6 @@
         "academy": "Synchronization GE",
         "readthedocs": "synchronization-tundra-urho3d",
         "helpdesk": "Synch - Tundra",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [],
         "docker": []
@@ -1014,8 +888,6 @@
         "academy": "Tr(us|su)tworthy Factory",
         "readthedocs": "factory",
         "helpdesk": "Trust",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [],
         "docker": []
@@ -1026,8 +898,6 @@
         "academy": "Virtual Characters",
         "readthedocs": "",
         "helpdesk": "Web Tundra Avatar",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "realXtend/WebTundra"
@@ -1040,8 +910,6 @@
         "academy": "WMarket",
         "readthedocs": "wmarket",
         "helpdesk": "Marketplace",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "conwetlab/WMarket"
@@ -1056,8 +924,6 @@
         "academy": "WStore",
         "readthedocs": "wstore",
         "helpdesk": "WStore",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "conwetlab/wstore"
@@ -1072,8 +938,6 @@
         "academy": "Wilma",
         "readthedocs": "fiware-pep-proxy",
         "helpdesk": "Wilma",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "",
         "github": [
             "ging/fiware-pep-proxy"
@@ -1088,8 +952,6 @@
         "academy": "Wirecloud",
         "readthedocs": "wirecloud",
         "helpdesk": "Wirecloud",
-        "backlog": "",
-        "jira_workitem": "",
         "coverall": "Wirecloud/wirecloud",
         "github": [
             "conwetlab/ngsijs",
