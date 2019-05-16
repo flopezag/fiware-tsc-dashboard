@@ -80,7 +80,7 @@ class Jira:
         return data
 
     def get_helpdesk(self, comp_id):
-        jql = 'project = HELP AND HD-Enabler = {}'\
+        jql = 'project = HELP AND HD-Enabler = "{}"'\
             .format(comp_id)
 
         return self.get_data(jql)
@@ -166,7 +166,7 @@ if __name__ == "__main__":
     createdDates = map(lambda x: parser.parse(x['fields']['created']), result)
     diff = map(lambda x: jira.difference_time(x['fields']['resolutiondate'], x['fields']['created']), result)
 
-    numberDays = reduce(lambda x,y: x+y, diff) / len(diff)
+    numberDays = reduce(lambda x, y: x+y, diff) / len(diff)
     numberDays = int(round(numberDays))
 
     print(pending_tickets)

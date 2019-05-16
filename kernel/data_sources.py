@@ -250,21 +250,21 @@ class Helpdesk(DataSource):
     def get_measurement(self, metric):
         result = self.jira.get_helpdesk(metric.details)
 
-        status = list(map(lambda x: x['fields']['status']['name'], result))
+        if result:
+            status = list(map(lambda x: x['fields']['status']['name'], result))
 
-        total_tickets = len(status)
-        closed_tickets = len(list(filter(lambda x: x == 'Closed', status)))
-        rest_tickets = total_tickets - closed_tickets
-        pending_tickets = (float(rest_tickets) / float(total_tickets) * 100)
+            total_tickets = len(status)
+            closed_tickets = len(list(filter(lambda x: x == 'Closed', status)))
+            rest_tickets = total_tickets - closed_tickets
+            pending_tickets = (float(rest_tickets) / float(total_tickets) * 100)
 
-        diff = list(map(lambda x: self.jira.difference_time(x['fields']['resolutiondate'], x['fields']['created']), result))
+            diff = list(map(lambda x: self.jira.difference_time(x['fields']['resolutiondate'], x['fields']['created']), result))
 
-        numberDays = reduce(lambda x, y: x + y, diff) / len(diff)
+            numberDays = reduce(lambda x, y: x + y, diff) / len(diff)
 
-        if total_tickets == 0:
-            result = '0 (0%) | -'
+            result = '{:3,d} ({:2.2f}%) | {:2.2f}d'.format(total_tickets, pending_tickets, numberDays)
         else:
-            result = '{:3,d} ({:2.2}%) | {:2.2f}d'.format(total_tickets, pending_tickets, numberDays)
+            result = '0 (0%) | -'
 
         return result
 
@@ -492,7 +492,8 @@ class GitHub_Closed_Issues(DataSource):
     def get_measurement(self, metric):
         value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
 
-        closed_issues = reduce(lambda x, y: x+y, map(lambda x: x['closed_issues'], value))
+        aux = list(map(lambda x: x['closed_issues'], value))
+        closed_issues = reduce(lambda x, y: x+y, aux)
 
         return '{:4,d}'.format(closed_issues)
 
@@ -571,7 +572,8 @@ class GitHub_Commits(DataSource):
     def get_measurement(self, metric):
         value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
 
-        commits = reduce(lambda x, y: x+y, map(lambda x: x['commits'], value))
+        aux = list(map(lambda x: x['commits'], value))
+        commits = reduce(lambda x, y: x+y, aux)
 
         return '{:4,d}'.format(commits)
 
@@ -585,7 +587,8 @@ class GitHub_Forks(DataSource):
     def get_measurement(self, metric):
         value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
 
-        forks = reduce(lambda x, y: x + y, map(lambda x: x['forks'], value))
+        aux = list(map(lambda x: x['forks'], value))
+        forks = reduce(lambda x, y: x + y, aux)
 
         return '{:4,d}'.format(forks)
 
@@ -599,7 +602,8 @@ class GitHub_Watchers(DataSource):
     def get_measurement(self, metric):
         value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
 
-        watchers = reduce(lambda x, y: x + y, map(lambda x: x['watchers'], value))
+        aux = list(map(lambda x: x['watchers'], value))
+        watchers = reduce(lambda x, y: x + y, aux)
 
         return '{:4,d}'.format(watchers)
 
@@ -613,7 +617,8 @@ class GitHub_Stars(DataSource):
     def get_measurement(self, metric):
         value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
 
-        stars = reduce(lambda x, y: x + y, map(lambda x: x['stars'], value))
+        aux = list(map(lambda x: x['stars'], value))
+        stars = reduce(lambda x, y: x + y, aux)
 
         return '{:4,d}'.format(stars)
 
