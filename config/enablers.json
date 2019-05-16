@@ -277,7 +277,7 @@
         "status": "deprecated",
         "chapter": "",
         "type": "",
-        "owner": "Jaime Martín"
+        "owner": "Jaime Martin"
     },
     {
         "name": "Knowage",
@@ -341,6 +341,13 @@
         "chapter": "core",
         "type": "product",
         "owner": "Fermín Galán"
+    },
+    {
+        "name": "Orion LD",
+        "status": "incubating",
+        "chapter": "core",
+        "type": "product",
+        "owner": "Ken Zangelin"
     },
     {
         "name": "POI Data Provider",

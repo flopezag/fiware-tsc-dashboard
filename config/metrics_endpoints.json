@@ -705,6 +705,20 @@
         ]
     },
     {
+        "enabler": "Orion LD",
+        "catalogue": "",
+        "academy": "",
+        "readthedocs": "",
+        "helpdesk": "Orion-LD",
+        "coverall": "",
+        "github": [
+            "fiware/context.Orion-LD"
+        ],
+        "docker": [
+            "fiware/orion-ld"
+        ]
+    },
+    {
         "enabler": "POI Data Provider",
         "catalogue": "poi-data-provider",
         "academy": "POI Data Provider",
@@ -960,7 +974,7 @@
             "Wirecloud/docker-wirecloud"
         ],
         "docker": [
-            "Wirecloud/docker-wirecloud"
+            "fiware/wirecloud"
         ]
     }
 ]
