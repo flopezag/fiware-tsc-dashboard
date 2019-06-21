@@ -16,6 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 4,
+  "iteration": 1561011709741,
   "links": [],
   "panels": [
     {
@@ -74,8 +75,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -84,7 +85,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: Catalogue Page Views",
+      "title": "$GE: Catalogue Page Views",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -177,8 +178,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -187,7 +188,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: Academy Page Views",
+      "title": "$GE: Academy Page Views",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -280,8 +281,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -290,7 +291,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: ReadTheDocs Page Views",
+      "title": "$GE: ReadTheDocs Page Views",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -383,8 +384,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -393,7 +394,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: Docker Pulls",
+      "title": "$GE: Docker Pulls",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -486,8 +487,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -496,7 +497,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: GitHub Total Assets",
+      "title": "$GE: GitHub Total Assets",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -589,8 +590,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -599,7 +600,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: GitHub Download Assets",
+      "title": "$GE: GitHub Download Assets",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -692,8 +693,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -702,7 +703,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: GitHub Open Issues",
+      "title": "$GE: GitHub Open Issues",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -795,8 +796,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -805,7 +806,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: GitHub Closed Issues",
+      "title": "$GE: GitHub Closed Issues",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -898,8 +899,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -908,7 +909,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: GitHub Total Adopters",
+      "title": "$GE: GitHub Total Adopters",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1001,8 +1002,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -1011,7 +1012,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: GitHub Open Issues from Adopters",
+      "title": "$GE: GitHub Open Issues from Adopters",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1104,8 +1105,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -1114,7 +1115,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: GitHub Closed Issues from Adopters",
+      "title": "$GE: GitHub Closed Issues from Adopters",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1207,8 +1208,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -1217,7 +1218,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: GitHub Commits",
+      "title": "$GE: GitHub Commits",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1310,8 +1311,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -1320,7 +1321,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: Coveralls",
+      "title": "$GE: Coveralls",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1413,8 +1414,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -1423,7 +1424,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: Help-Desk tickets",
+      "title": "$GE: Help-Desk tickets",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1516,8 +1517,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -1526,7 +1527,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: Help-Desk Pending Tockets",
+      "title": "$GE: Help-Desk Pending Tickets",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1619,8 +1620,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -1629,7 +1630,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: Help-Desk Mean Pending Tickets",
+      "title": "$GE: Help-Desk Mean Pending Tickets",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1722,8 +1723,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -1732,7 +1733,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: GitHub Forks",
+      "title": "$GE: GitHub Forks",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1825,8 +1826,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -1835,7 +1836,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: GitHub Watchers",
+      "title": "$GE: GitHub Watchers",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1928,8 +1929,8 @@
           "tags": [
             {
               "key": "ge",
-              "operator": "=",
-              "value": "OpenMTC"
+              "operator": "=~",
+              "value": "/^$GE$/"
             }
           ]
         }
@@ -1938,7 +1939,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "OpenMTC: GitHub Stars",
+      "title": "$GE: GitHub Stars",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1980,7 +1981,36 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "Orion-LD",
+          "value": "Orion-LD"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Generic Enabler",
+        "multi": false,
+        "name": "GE",
+        "options": [
+          {
+            "selected": false,
+            "text": "Orion - Context Broker",
+            "value": "Orion - Context Broker"
+          },
+          {
+            "selected": true,
+            "text": "Orion-LD",
+            "value": "Orion-LD"
+          }
+        ],
+        "query": "Orion - Context Broker, Orion-LD",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
   },
   "time": {
     "from": "now-6h",
@@ -2012,7 +2042,7 @@
     ]
   },
   "timezone": "",
-  "title": "FIWARE GEs metrics: OpenMTC",
+  "title": "FIWARE GEs metrics dashboard",
   "uid": "0CNJ2e6mz",
-  "version": 26
+  "version": 57
 }

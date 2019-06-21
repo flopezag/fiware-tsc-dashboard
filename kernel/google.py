@@ -28,14 +28,17 @@ from config.constants import APPLICATION_NAME, CREDENTIAL_DIR, CREDENTIAL_FILE
 from oauth2client.service_account import ServiceAccountCredentials
 from config.log import logger
 
-try:
-    import argparse
-    flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
-except ImportError:
-    flags = None
+# try:
+#     import argparse
+#     flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
+#
+#    otro = tools.argparser.parse_args()
+#    print(otro)
+#except ImportError:
+#    flags = None
 
 
-def get_credentials(api):
+def get_credentials(api, flags):
     """Gets valid user credentials from storage.
 
     If nothing has been stored, or if the stored credentials are invalid,
@@ -83,7 +86,7 @@ def get_credentials(api):
     return credentials
 
 
-def get_service(api_name):
+def get_service(api_name, flags):
     logger.info("Get Google service for API {}".format(api_name))
 
     service = {'sheets': 'v4', 'analytics': 'v3', 'analyticsreporting': 'v4'}
@@ -94,7 +97,7 @@ def get_service(api_name):
     }
 
     try:
-        credentials = get_credentials(api=api_name)
+        credentials = get_credentials(api=api_name, flags=flags)
 
     except ValueError:
         raise

@@ -16,6 +16,22 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ##
+"""
+Generate the Enabler Dashboard: https://docs.google.com/spreadsheets/d/1yyZNUlAPDcqjnD-gIoGOd5SZfVDJXO36G75xTDL0HgA/edit#gid=0
+and forward the data to the InfluxDB for historical analysis: http://127.0.0.1:3000/d/0CNJ2e6mz/fiware-ges-metrics-dashboard?orgId=1
+
+Usage:
+  dashboard -h | --help
+  dashboard -v | --version
+  dashboard -u | --DBUpdate
+  dashboard -n | --noauth_local_webserver
+
+Options:
+  -h --help      Show this screen.
+  -v --version   Show version.
+  -u --DBUpdate  Update the metrics DB.
+  -n --noauth_local_webserver  Google Analytics API access without local browser in python
+"""
 import os
 
 from datetime import datetime
@@ -32,17 +48,21 @@ from config import enablers
 from github import Github
 from kernel.monasca import Monasca
 from kernel.keystone import Keystone
+from docopt import docopt
+from kernel.clioperations import validate, process_arguments
+import time
 
 __author__ = 'Fernando López'
+__version__ = '2.2.0'
 
 
 class Dashboard:
-    def __init__(self):
+    def __init__(self, flags=None):
         self.check_database()
         self.enablers = db.query(EnablerImp)
         self.sources = db.query(Source)
 
-        self.service = get_service('sheets')
+        self.service = get_service('sheets', flags)
         self.keystone = Keystone()
 
     def __publish__(self, values):
@@ -146,7 +166,7 @@ class Dashboard:
                 values.append(raw)
             values.append([''])
 
-        # python3.7: self.__publish__(values=values)
+        self.__publish__(values=values)
         self.__save__(values=values)
 
     @staticmethod
@@ -162,15 +182,26 @@ class Dashboard:
 
 
 if __name__ == "__main__":
+    start_time = time.time()
+
+    version = "Generate the Enabler Dashboard panel v{}".format(__version__)
+    arguments = docopt(__doc__, version=version)
+
+    # Validate the value of the arguments
+    arguments = validate(params=arguments)
+
+    # Process the received arguments
+    flags = process_arguments(params=arguments)
+
     logger.info("Initializing the script...")
-    dashboard = Dashboard()
+    dashboard = Dashboard(flags)
 
     logger.info("Cleaning the Google Excel file...")
     dashboard.cleanup()
 
     if METRIC_VALUES == 'update':
         logger.info("Starting process to get measurements...")
-        measurements = MeasurementData()
+        measurements = MeasurementData(flags=flags)
 
         measurements.obtain()
         logger.info("Finished process to get measurements...")
@@ -188,3 +219,4 @@ if __name__ == "__main__":
     logger.info("GitHub rate limiting reset time: {}".format(rate_count_reset_time))
 
     # TODO: Add footer to the Google sheet document.
+    print("--- %s seconds ---" % (time.time() - start_time))

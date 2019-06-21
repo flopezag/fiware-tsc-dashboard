@@ -30,7 +30,8 @@ __author__ = 'Fernando López'
 
 
 class MeasurementData:
-    def __init__(self):
+    def __init__(self, flags):
+        self.flags = flags
         pass
 
     def obtain(self):
@@ -41,6 +42,7 @@ class MeasurementData:
 
             try:
                 op_source = eval('{}()'.format(source.name))
+                op_source.add_flags(self.flags)
             except Exception as e:
                 logger.error('source {} is not implemented'.format(source.name))
                 logger.error(e)

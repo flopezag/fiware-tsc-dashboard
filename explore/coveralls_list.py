@@ -18,7 +18,9 @@ if not answer.ok:
 match = re.search(pattern, answer.text)
 
 if match:
-    print(match.group(1).strip())
+    value = match.group(1).strip().strip('%')
+    value = float(value) / 100
+    print('{:1.2f}'.format(value))
 else:
     print('not match')
 

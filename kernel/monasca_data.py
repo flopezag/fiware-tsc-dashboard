@@ -94,7 +94,7 @@ class MonascaData:
 
                 if v2.lower() not in ['not defined', 'no impl', 'no connect', 'no access', 'no data']:
                     if k2.lower() not in ['github', 'helpdesk']:
-                        v2 = int(v2)
+                        v2 = float(v2)  # int(v2)
 
                         try:
                             k2 = self.dict_names[k2]

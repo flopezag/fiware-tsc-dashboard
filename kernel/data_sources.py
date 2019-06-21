@@ -75,6 +75,9 @@ class DataSource(object):
         if not metric.details:
             raise NotDefined
 
+    def add_flags(self, flags):
+        self.flags = flags
+
 
 class Readthedocs(DataSource):
     def __init__(self):
@@ -92,7 +95,7 @@ class Readthedocs(DataSource):
         if not view:
             raise NoViewFound
 
-        service = get_service('analyticsreporting')
+        service = get_service('analyticsreporting', self.flags)
         body = {'reportRequests': [{'viewId': view['profile_id'],
                                     'dateRanges': [{
                                          "startDate": "2015-09-01",
@@ -137,8 +140,13 @@ class Catalogue(DataSource):
         super(Catalogue, self).__init__()
         self.source = db.query(Source).filter_by(name='Catalogue').one()
         self.ga = ga()
+
+        # pages = [row['dimensions'][0] for row in self.data['reports'][0]['data']['rows']]
+        # pprint.pprint(pages)
+
+    def __get_data__(self):
         view = self.ga.search_view(self.source.url)
-        service = get_service('analyticsreporting')
+        service = get_service('analyticsreporting', self.flags)
         body = {'reportRequests': [{'viewId': view['profile_id'],
                                     'dateRanges': [{
                                          "startDate": "2015-09-01",
@@ -164,12 +172,11 @@ class Catalogue(DataSource):
         except:
             raise
 
-        # pages = [row['dimensions'][0] for row in self.data['reports'][0]['data']['rows']]
-        # pprint.pprint(pages)
-
     def get_measurement(self, metric):
         super(Catalogue, self).get_measurement(metric)
         token = metric.details
+
+        self.__get_data__()
 
         rows = list(filter(lambda x: token in x['dimensions'][0], self.data['reports'][0]['data']['rows']))
         values = list(map((lambda x: int(x['metrics'][0]['values'][0])), rows))
@@ -183,8 +190,10 @@ class Academy(DataSource):
         super(Academy, self).__init__()
         self.source = db.query(Source).filter_by(name='Academy').one()
         self.ga = ga()
+
+    def __get_data(self):
         view = self.ga.search_view(self.source.url)
-        service = get_service('analyticsreporting')
+        service = get_service('analyticsreporting', self.flags)
         body = {'reportRequests': [{'viewId': view['profile_id'],
                                     'dateRanges': [{
                                          "startDate": "2015-09-01",
@@ -216,6 +225,8 @@ class Academy(DataSource):
     def get_measurement(self, metric):
         super(Academy, self).get_measurement(metric)
         pattern = eval("r'{}'".format(metric.details))
+
+        self.__get_data()
 
         rows = filter(lambda x: re.search(pattern, x['dimensions'][0]), self.data['reports'][0]['data']['rows'])
         values = map((lambda x: int(x['metrics'][0]['values'][0])), rows)
@@ -462,8 +473,9 @@ class Coverall(DataSource):
         match = re.search(self.pattern, answer.text)
 
         if match:
-            value = match.group(1).strip()
-            return '{:2}'.format(value)
+            value = match.group(1).strip().strip('%')
+            value = float(value) / 100
+            return '{:1.2f}'.format(value)
         else:
             raise NoValueFound
 
@@ -478,7 +490,10 @@ class GitHub_Open_Issues(DataSource):
         value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
 
         open_issues = map(lambda x: x['open_issues'], value)
-        total = len(reduce(operator.concat, open_issues))
+
+        total = len(list(open_issues))
+        if total != 0:
+            total = len(reduce(operator.concat, open_issues))
 
         return '{:4,d}'.format(total)
 
@@ -492,10 +507,13 @@ class GitHub_Closed_Issues(DataSource):
     def get_measurement(self, metric):
         value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
 
-        aux = list(map(lambda x: x['closed_issues'], value))
-        closed_issues = reduce(lambda x, y: x+y, aux)
+        closed_issues = list(map(lambda x: x['closed_issues'], value))
 
-        return '{:4,d}'.format(closed_issues)
+        total = len(closed_issues)
+        if total != 0:
+            total = reduce(lambda x, y: x+y, closed_issues)
+
+        return '{:4,d}'.format(total)
 
 
 class GitHub_Adopters(DataSource):
@@ -508,12 +526,18 @@ class GitHub_Adopters(DataSource):
         value = list(filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats))
 
         authors = list(map(lambda x: x['authors'], value))
-        authors = set(reduce(operator.concat, authors))
+
+        total_authors = len(authors)
+        if total_authors != 0:
+            total_authors = set(reduce(operator.concat, authors))
 
         total_issues = list(map(lambda x: x['total_issues'], value))
-        total_reporter_issues = set(reduce(operator.concat, total_issues))
 
-        adopters = len(list(total_reporter_issues - authors))
+        total_reporter_issues = len(total_issues)
+        if total_reporter_issues != 0:
+            total_reporter_issues = set(reduce(operator.concat, total_issues))
+
+        adopters = len(list(total_reporter_issues - total_authors))
 
         return '{:4,d}'.format(adopters)
 
@@ -573,7 +597,10 @@ class GitHub_Commits(DataSource):
         value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
 
         aux = list(map(lambda x: x['commits'], value))
-        commits = reduce(lambda x, y: x+y, aux)
+
+        commits = len(aux)
+        if commits != 0:
+            commits = reduce(lambda x, y: x+y, aux)
 
         return '{:4,d}'.format(commits)
 
@@ -588,7 +615,10 @@ class GitHub_Forks(DataSource):
         value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
 
         aux = list(map(lambda x: x['forks'], value))
-        forks = reduce(lambda x, y: x + y, aux)
+
+        forks = len(aux)
+        if forks != 0:
+            forks = reduce(lambda x, y: x + y, aux)
 
         return '{:4,d}'.format(forks)
 
@@ -603,7 +633,10 @@ class GitHub_Watchers(DataSource):
         value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
 
         aux = list(map(lambda x: x['watchers'], value))
-        watchers = reduce(lambda x, y: x + y, aux)
+
+        watchers = len(aux)
+        if watchers != 0:
+            watchers = reduce(lambda x, y: x + y, aux)
 
         return '{:4,d}'.format(watchers)
 
@@ -618,7 +651,10 @@ class GitHub_Stars(DataSource):
         value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
 
         aux = list(map(lambda x: x['stars'], value))
-        stars = reduce(lambda x, y: x + y, aux)
+
+        stars = len(aux)
+        if stars != 0:
+            stars = reduce(lambda x, y: x + y, aux)
 
         return '{:4,d}'.format(stars)
 
@@ -626,7 +662,7 @@ class GitHub_Stars(DataSource):
 class Jira_WorkItem_Not_Closed(DataSource):
     global jira_stats
 
-    def __init__(self):
+    def __init__(self, flags):
         super(Jira_WorkItem_Not_Closed, self).__init__()
         self.jira = Jira()
 
