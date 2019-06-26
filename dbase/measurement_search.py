@@ -30,19 +30,23 @@ __author__ = 'Fernando López'
 
 
 class MeasurementData:
-    def __init__(self, flags):
+    def __init__(self, flags, filter=None):
         self.flags = flags
+        self.filter = filter
         pass
 
     def obtain(self):
         for source in db.query(Source):
             logger.info(source.name)
-            # if source.name != 'Academy': continue
+
             metrics = db.query(Metric).filter_by(source_id=source.id).all()
 
+            # If there is filter apply filter to the metrics
+            if filter is not None:
+                metrics = list(filter(lambda x: x.enabler_imp.name == self.filter, metrics))
+
             try:
-                op_source = eval('{}()'.format(source.name))
-                op_source.add_flags(self.flags)
+                op_source = eval('{}(flags={})'.format(source.name, self.flags))
             except Exception as e:
                 logger.error('source {} is not implemented'.format(source.name))
                 logger.error(e)

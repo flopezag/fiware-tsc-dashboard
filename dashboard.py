@@ -21,16 +21,15 @@ Generate the Enabler Dashboard: https://docs.google.com/spreadsheets/d/1yyZNUlAP
 and forward the data to the InfluxDB for historical analysis: http://127.0.0.1:3000/d/0CNJ2e6mz/fiware-ges-metrics-dashboard?orgId=1
 
 Usage:
-  dashboard -h | --help
-  dashboard -v | --version
-  dashboard -u | --DBUpdate
-  dashboard -n | --noauth_local_webserver
+  dashboard.py [options]
 
 Options:
   -h --help      Show this screen.
   -v --version   Show version.
   -u --DBUpdate  Update the metrics DB.
   -n --noauth_local_webserver  Google Analytics API access without local browser in python
+  -f --filter <enabler>  Filter the data for the specific enabler
+  -p --publish   Publish the information in Monasca for historical purpose
 """
 import os
 
@@ -57,13 +56,14 @@ __version__ = '2.2.0'
 
 
 class Dashboard:
-    def __init__(self, flags=None):
+    def __init__(self, flags=None, publish=None):
         self.check_database()
         self.enablers = db.query(EnablerImp)
         self.sources = db.query(Source)
 
         self.service = get_service('sheets', flags)
         self.keystone = Keystone()
+        self.publish = publish
 
     def __publish__(self, values):
         # Send measurements to Monasca
@@ -166,7 +166,9 @@ class Dashboard:
                 values.append(raw)
             values.append([''])
 
-        self.__publish__(values=values)
+        if self.publish:
+            self.__publish__(values=values)
+
         self.__save__(values=values)
 
     @staticmethod
@@ -191,17 +193,17 @@ if __name__ == "__main__":
     arguments = validate(params=arguments)
 
     # Process the received arguments
-    flags = process_arguments(params=arguments)
+    flag, filterenabler, publish = process_arguments(params=arguments)
 
     logger.info("Initializing the script...")
-    dashboard = Dashboard(flags)
+    dashboard = Dashboard(flags=flag, publish=publish)
 
     logger.info("Cleaning the Google Excel file...")
     dashboard.cleanup()
 
     if METRIC_VALUES == 'update':
         logger.info("Starting process to get measurements...")
-        measurements = MeasurementData(flags=flags)
+        measurements = MeasurementData(flags=flag, filter=filterenabler)
 
         measurements.obtain()
         logger.info("Finished process to get measurements...")
@@ -219,4 +221,4 @@ if __name__ == "__main__":
     logger.info("GitHub rate limiting reset time: {}".format(rate_count_reset_time))
 
     # TODO: Add footer to the Google sheet document.
-    print("--- %s seconds ---" % (time.time() - start_time))
+    logger.info("--- %s seconds ---" % (time.time() - start_time))

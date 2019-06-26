@@ -16,8 +16,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ##
-from schema import Schema, Or, SchemaError
+from schema import Schema, Or, Use, And, SchemaError
 from oauth2client.tools import argparser, run_flow
+from config import enablers
 
 __author__ = 'fla'
 
@@ -31,21 +32,24 @@ def process_arguments(params):
     """
     print(params)
 
-    flags = argparser.parse_args()
+    help = params['--help']
+    dbupdate = params['--DBUpdate']
+    flag = params['--noauth_local_webserver']
+    version = params['--version']
+    filter = params['--filter']
+    publish = params['--publish']
 
-    # keys = ['DBUpdate']
+    # TODO: Add help, version and DBUpdate operations
+    if help:
+        help_message()
 
-    # options = {keys[0]: DBUpdate}
+    if version:
+        version_message()
 
-    # Get the option introduced in the CLI
-    # for i in range(0, len(keys)):
-    #     if params[keys[i]] is True:
-    #         break
+    if dbupdate:
+        delete_db()
 
-    # Call the corresponding method to process the request
-    # options[keys[i]](sprint=sprint)
-
-    return flags
+    return flag, filter, publish
 
 
 def validate(params):
@@ -60,7 +64,9 @@ def validate(params):
             '--help': Or(True, False),
             '--version': Or(True, False),
             '--DBUpdate': Or(True, False),
-            '--noauth_local_webserver': Or(True, False)
+            '--noauth_local_webserver': Or(True, False),
+            '--publish': Or(True, False),
+            '--filter': And(str, lambda s: len(s) > 3)
         }
     )
 
@@ -73,7 +79,7 @@ def validate(params):
     return params
 
 
-def DBUpdate():
+def delete_db():
     """
     It is required an update in the DB? if the answer is True, we delete the previous DB
     and the service will regenerate the DB, in case False, we do nothing. Default value
@@ -83,6 +89,18 @@ def DBUpdate():
     """
 
     # We have to delete the corresponding DB.
+    # TODO
+
+    print("TBD")
+
+
+def help_message():
+    # TODO
+
+    print("TBD")
+
+
+def version_message():
     # TODO
 
     print("TBD")

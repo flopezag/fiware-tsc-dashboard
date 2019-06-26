@@ -22,7 +22,7 @@ import requests
 import json
 import sys
 from datetime import date
-from github import Github
+from github import Github, RateLimitExceededException
 from dbase import db, Source
 from .google import get_service
 from .ganalytics import ga
@@ -34,6 +34,7 @@ from config.settings import DOCKER_USERNAME, DOCKER_PASSWORD
 from importlib import reload
 from functools import reduce
 from http import HTTPStatus
+from time import sleep
 
 reload(sys)  # Reload does the trick!
 
@@ -68,20 +69,17 @@ class NotDefined(Exception):
 
 
 class DataSource(object):
-    def __init__(self):
-        pass
+    def __init__(self, flags=None):
+        self.flags = flags
 
     def get_measurement(self, metric):
         if not metric.details:
             raise NotDefined
 
-    def add_flags(self, flags):
-        self.flags = flags
-
 
 class Readthedocs(DataSource):
-    def __init__(self):
-        super(Readthedocs, self).__init__()
+    def __init__(self, flags=None):
+        super(Readthedocs, self).__init__(flags=flags)
         self.source = db.query(Source).filter_by(name='Readthedocs').one()
         self.ga = ga()
 
@@ -136,8 +134,8 @@ class Catalogue(DataSource):
     We obtain the complete sum of all the pages.
     """
 
-    def __init__(self):
-        super(Catalogue, self).__init__()
+    def __init__(self, flags=None):
+        super(Catalogue, self).__init__(flags=flags)
         self.source = db.query(Source).filter_by(name='Catalogue').one()
         self.ga = ga()
 
@@ -186,8 +184,8 @@ class Catalogue(DataSource):
 
 
 class Academy(DataSource):
-    def __init__(self):
-        super(Academy, self).__init__()
+    def __init__(self, flags=None):
+        super(Academy, self).__init__(flags=flags)
         self.source = db.query(Source).filter_by(name='Academy').one()
         self.ga = ga()
 
@@ -236,7 +234,7 @@ class Academy(DataSource):
 
 
 class Backlog(DataSource):
-    def __init__(self):
+    def __init__(self, flags=None):
         super(Backlog, self).__init__()
         self.source = db.query(Source).filter_by(name='Backlog').one()
         self.scrm = ScrumServer(self.source.url)
@@ -254,7 +252,7 @@ class Backlog(DataSource):
 
 
 class Helpdesk(DataSource):
-    def __init__(self):
+    def __init__(self, flags=None):
         super(Helpdesk, self).__init__()
         self.jira = Jira()
 
@@ -281,7 +279,7 @@ class Helpdesk(DataSource):
 
 
 class Docker(DataSource):
-    def __init__(self):
+    def __init__(self, flags=None):
         super(Docker, self).__init__()
         self.source = db.query(Source).filter_by(name='Docker').one()
         self.data = dict()
@@ -364,7 +362,7 @@ class Docker(DataSource):
 class GitHub(DataSource):
     global github_stats
 
-    def __init__(self):
+    def __init__(self, flags=None):
         super(GitHub, self).__init__()
         self.source = db.query(Source).filter_by(name='GitHub').one()
         self.gh = Github(login_or_token=GITHUB_TOKEN)
@@ -391,8 +389,24 @@ class GitHub(DataSource):
         return '{:2} | {:5,d}'.format(n_assets, download_count)
 
     def get_statistics(self, user, project):
-        repo = self.gh.get_user(user).get_repo(project)
-        releases = repo.get_releases()
+        try:
+            repo = self.gh.get_user(user).get_repo(project)
+            releases = repo.get_releases()
+        except RateLimitExceededException:
+            logger.warning(
+                'The available request limit was exceeded for the Github API, waiting 1h until refresh it5....')
+
+            # Start to wait 1h
+            for i in range(0, 20):
+                logger.warning('      Process {}%'.format(i*5))
+                sleep(300)
+
+            # Wait an extra minute
+            sleep(60)
+
+            # Repeat the last GitHub Operations to follow
+            repo = self.gh.get_user(user).get_repo(project)
+            releases = repo.get_releases()
 
         aux = list(filter(lambda x: len(x.raw_data['assets']) > 0, releases))
         assets = list(map(lambda x: x.raw_data['assets'][0]['download_count'], aux))
@@ -455,7 +469,7 @@ class GitHub(DataSource):
 
 
 class Coverall(DataSource):
-    def __init__(self):
+    def __init__(self, flags=None):
         super(Coverall, self).__init__()
         self.source = db.query(Source).filter_by(name='Coverall').one()
         self.url = 'https://{}/github'.format(self.source.url)
@@ -483,15 +497,15 @@ class Coverall(DataSource):
 class GitHub_Open_Issues(DataSource):
     global github_stats
 
-    def __init__(self):
+    def __init__(self, flags=None):
         super(GitHub_Open_Issues, self).__init__()
 
     def get_measurement(self, metric):
-        value = filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats)
+        value = list(filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats))
 
-        open_issues = map(lambda x: x['open_issues'], value)
+        open_issues = list(map(lambda x: x['open_issues'], value))
 
-        total = len(list(open_issues))
+        total = len(open_issues)
         if total != 0:
             total = len(reduce(operator.concat, open_issues))
 
@@ -501,7 +515,7 @@ class GitHub_Open_Issues(DataSource):
 class GitHub_Closed_Issues(DataSource):
     global github_stats
 
-    def __init__(self):
+    def __init__(self, flags=None):
         super(GitHub_Closed_Issues, self).__init__()
 
     def get_measurement(self, metric):
@@ -519,7 +533,7 @@ class GitHub_Closed_Issues(DataSource):
 class GitHub_Adopters(DataSource):
     global github_stats
 
-    def __init__(self):
+    def __init__(self, flags=None):
         super(GitHub_Adopters, self).__init__()
 
     def get_measurement(self, metric):
@@ -545,7 +559,7 @@ class GitHub_Adopters(DataSource):
 class GitHub_Adopters_Open_Issues(DataSource):
     global github_stats
 
-    def __init__(self):
+    def __init__(self, flags=None):
         super(GitHub_Adopters_Open_Issues, self).__init__()
 
     def get_measurement(self, metric):
@@ -565,7 +579,7 @@ class GitHub_Adopters_Open_Issues(DataSource):
 class GitHub_Adopters_Closed_Issues(DataSource):
     global github_stats
 
-    def __init__(self):
+    def __init__(self, flags=None):
         super(GitHub_Adopters_Closed_Issues, self).__init__()
 
     def get_measurement(self, metric):
@@ -590,7 +604,7 @@ class GitHub_Adopters_Closed_Issues(DataSource):
 class GitHub_Commits(DataSource):
     global github_stats
 
-    def __init__(self):
+    def __init__(self, flags=None):
         super(GitHub_Commits, self).__init__()
 
     def get_measurement(self, metric):
@@ -608,7 +622,7 @@ class GitHub_Commits(DataSource):
 class GitHub_Forks(DataSource):
     global github_stats
 
-    def __init__(self):
+    def __init__(self, flags=None):
         super(GitHub_Forks, self).__init__()
 
     def get_measurement(self, metric):
@@ -626,7 +640,7 @@ class GitHub_Forks(DataSource):
 class GitHub_Watchers(DataSource):
     global github_stats
 
-    def __init__(self):
+    def __init__(self, flags=None):
         super(GitHub_Watchers, self).__init__()
 
     def get_measurement(self, metric):
@@ -644,7 +658,7 @@ class GitHub_Watchers(DataSource):
 class GitHub_Stars(DataSource):
     global github_stats
 
-    def __init__(self):
+    def __init__(self, flags=None):
         super(GitHub_Stars, self).__init__()
 
     def get_measurement(self, metric):
@@ -662,7 +676,7 @@ class GitHub_Stars(DataSource):
 class Jira_WorkItem_Not_Closed(DataSource):
     global jira_stats
 
-    def __init__(self, flags):
+    def __init__(self, flags=None):
         super(Jira_WorkItem_Not_Closed, self).__init__()
         self.jira = Jira()
 
@@ -689,7 +703,7 @@ class Jira_WorkItem_Not_Closed(DataSource):
 class Jira_WorkItem_Closed(DataSource):
     global jira_stats
 
-    def __init__(self):
+    def __init__(self, flags=None):
         super(Jira_WorkItem_Closed, self).__init__()
 
     def get_measurement(self, metric):

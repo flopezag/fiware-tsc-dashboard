@@ -28,15 +28,6 @@ from config.constants import APPLICATION_NAME, CREDENTIAL_DIR, CREDENTIAL_FILE
 from oauth2client.service_account import ServiceAccountCredentials
 from config.log import logger
 
-# try:
-#     import argparse
-#     flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
-#
-#    otro = tools.argparser.parse_args()
-#    print(otro)
-#except ImportError:
-#    flags = None
-
 
 def get_credentials(api, flags):
     """Gets valid user credentials from storage.
@@ -46,11 +37,16 @@ def get_credentials(api, flags):
 
     :param api:
         api - API from which we want to obtain the credentials.
+    :param flags:
+        flags - Boolean to indicate if we need to activate the flag: noauth_local_server
 
     :return:
         Credentials, the obtained credential.
     """
     logger.info("Get Google credential for API {}".format(api))
+
+    if flags:
+        flags = {'--noauth_local_webserver': True}
 
     # If modifying these scopes, delete your previously saved credentials
     # at ./.credentials/sheets.googleapis.com.json

@@ -4,8 +4,8 @@ __author__ = 'Manuel Escriche'
 
 
 class ga:
-    def __init__(self):
-        service = get_service('analytics')
+    def __init__(self, flags=None):
+        service = get_service('analytics', flags=flags)
         accounts = service.management().accountSummaries().list().execute()
         self.views = []
 
