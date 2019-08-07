@@ -30,8 +30,6 @@ def process_arguments(params):
     :param params: The CLI arguments introduced by the user.
     :return: Nothing.
     """
-    print(params)
-
     help = params['--help']
     dbupdate = params['--DBUpdate']
     flag = params['--noauth_local_webserver']
@@ -66,7 +64,7 @@ def validate(params):
             '--DBUpdate': Or(True, False),
             '--noauth_local_webserver': Or(True, False),
             '--publish': Or(True, False),
-            '--filter': And(str, lambda s: len(s) > 3)
+            '--filter': Or(None, And(str, lambda s: len(s) > 3))
         }
     )
 

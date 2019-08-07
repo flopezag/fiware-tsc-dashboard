@@ -4,8 +4,10 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/flopezag/fiware-tsc-dashboard.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/flopezag/fiware-tsc-dashboard/alerts/)
 [![DepShield Badge](https://depshield.sonatype.org/badges/flopezag/fiware-tsc-dashboard/depshield.svg)](https://depshield.github.io)
 
-Scripts to generate the Enablers Dashboard to evaluate the use of the different components.
-
+This service automatically generate the [Enabler Dashboard](https://docs.google.com/spreadsheets/d/1yyZNUlAPDcqjnD-gIoGOd5SZfVDJXO36G75xTDL0HgA/edit#gid=0)
+and forward the data to the [InfluxDB Global Monitoring instance](http://127.0.0.1:3000/d/0CNJ2e6mz/fiware-ges-metrics-dashboard?orgId=1)
+for historical analysis in order to evaluate the use of the different components.
+ 
 These scripts were developed in order to facilitate the activities in the FIWARE Technical Steering
 Committee. The purpose is generate automatically a google excel file in which we show the use of
 the different Generic Enablers that are available in FIWARE.
@@ -61,9 +63,26 @@ not exist, the scripts will give you an error.
 
 ## Run
 
-To execute the scripts, you only need to execute the following command:
+To execute the service, you have several options:
 
-$ ./dashboard.py --noauth_local_webserver
+```bash
+Usage:
+  dashboard.py [options]
+
+Options:
+  -h --help                    Show this screen.
+  -v --version                 Show version.
+  -u --DBUpdate                Update the metrics DB.
+  -n --noauth_local_webserver  Google Analytics API access without local browser in python
+  -f --filter <enabler>        Filter the data for an specific enabler. The parameter has to be equal to the "name" 
+                               field in the enabler.json file.
+  -p --publish                 Publish the information in Monasca for historical purpose
+  
+Examples:
+  $ ./dashboard.py --noauth_local_webserver                        Make the analysis of the complete list of GEs
+
+  $ ./dashboard.py --filter "Orion-LD" --noauth_local_webserver    Make the analysis of one specific GE
+```
 
 The first time that you execute it, you will be requested to provide access and write
 a verification code for your application. The following ones, you do not need to 

@@ -42,7 +42,7 @@ class MeasurementData:
             metrics = db.query(Metric).filter_by(source_id=source.id).all()
 
             # If there is filter apply filter to the metrics
-            if filter is not None:
+            if self.filter is not None:
                 metrics = list(filter(lambda x: x.enabler_imp.name == self.filter, metrics))
 
             try:

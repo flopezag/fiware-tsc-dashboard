@@ -257,23 +257,30 @@ class Helpdesk(DataSource):
         self.jira = Jira()
 
     def get_measurement(self, metric):
-        result = self.jira.get_helpdesk(metric.details)
+        try:
+            result = self.jira.get_helpdesk(metric.details)
+        except:
+            # There is no ticket with that HD-Enabler
+            raise NotDefined
 
-        if result:
-            status = list(map(lambda x: x['fields']['status']['name'], result))
-
-            total_tickets = len(status)
-            closed_tickets = len(list(filter(lambda x: x == 'Closed', status)))
-            rest_tickets = total_tickets - closed_tickets
-            pending_tickets = (float(rest_tickets) / float(total_tickets) * 100)
-
-            diff = list(map(lambda x: self.jira.difference_time(x['fields']['resolutiondate'], x['fields']['created']), result))
-
-            numberDays = reduce(lambda x, y: x + y, diff) / len(diff)
-
-            result = '{:3,d} ({:2.2f}%) | {:2.2f}d'.format(total_tickets, pending_tickets, numberDays)
         else:
-            result = '0 (0%) | -'
+            if result:
+                status = list(map(lambda x: x['fields']['status']['name'], result))
+
+                # TODO: ERROR:'total', MR CoAP - Protocol Adapter & Security Monitoring
+
+                total_tickets = len(status)
+                closed_tickets = len(list(filter(lambda x: x == 'Closed', status)))
+                rest_tickets = total_tickets - closed_tickets
+                pending_tickets = (float(rest_tickets) / float(total_tickets) * 100)
+
+                diff = list(map(lambda x: self.jira.difference_time(x['fields']['resolutiondate'], x['fields']['created']), result))
+
+                numberDays = reduce(lambda x, y: x + y, diff) / len(diff)
+
+                result = '{:3,d} ({:2.2f}%) | {:2.2f}d'.format(total_tickets, pending_tickets, numberDays)
+            else:
+                result = '0 (0%) | -'
 
         return result
 
@@ -539,6 +546,8 @@ class GitHub_Adopters(DataSource):
     def get_measurement(self, metric):
         value = list(filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats))
 
+        # TODO: ERROR:'int' object is not iterable
+
         authors = list(map(lambda x: x['authors'], value))
 
         total_authors = len(authors)
@@ -565,6 +574,8 @@ class GitHub_Adopters_Open_Issues(DataSource):
     def get_measurement(self, metric):
         value = list(filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats))
 
+        # TODO: ERROR:reduce() of empty sequence with no initial value
+
         authors = set(reduce(operator.concat, list(map(lambda x: x['authors'], value))))
         total_reporter_issues = set(reduce(operator.concat, list(map(lambda x: x['total_issues'], value))))
 
@@ -584,6 +595,8 @@ class GitHub_Adopters_Closed_Issues(DataSource):
 
     def get_measurement(self, metric):
         value = list(filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats))
+
+        # TODO: ERROR:reduce() of empty sequence with no initial value
 
         authors = set(reduce(operator.concat, list(map(lambda x: x['authors'], value))))
         total_reporter_issues = set(reduce(operator.concat, list(map(lambda x: x['total_issues'], value))))
