@@ -267,18 +267,19 @@ class Helpdesk(DataSource):
             if result:
                 status = list(map(lambda x: x['fields']['status']['name'], result))
 
-                # TODO: ERROR:'total', MR CoAP - Protocol Adapter & Security Monitoring
-
                 total_tickets = len(status)
                 closed_tickets = len(list(filter(lambda x: x == 'Closed', status)))
                 rest_tickets = total_tickets - closed_tickets
                 pending_tickets = (float(rest_tickets) / float(total_tickets) * 100)
 
-                diff = list(map(lambda x: self.jira.difference_time(x['fields']['resolutiondate'], x['fields']['created']), result))
+                diff = list(
+                    map(
+                        lambda x: self.jira.difference_time(x['fields']['resolutiondate'], x['fields']['created']),
+                        result))
 
-                numberDays = reduce(lambda x, y: x + y, diff) / len(diff)
+                number_days = reduce(lambda x, y: x + y, diff) / len(diff)
 
-                result = '{:3,d} ({:2.2f}%) | {:2.2f}d'.format(total_tickets, pending_tickets, numberDays)
+                result = '{:3,d} ({:2.2f}%) | {:2.2f}d'.format(total_tickets, pending_tickets, number_days)
             else:
                 result = '0 (0%) | -'
 
@@ -342,6 +343,7 @@ class Docker(DataSource):
         super(Docker, self).get_measurement(metric)
 
         keys = metric.details[0].split('/')
+        namespace = ''
 
         if len(keys) == 1:
             # There is no namespace, therefore we confider fiware as a value
@@ -546,21 +548,20 @@ class GitHub_Adopters(DataSource):
     def get_measurement(self, metric):
         value = list(filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats))
 
-        # TODO: ERROR:'int' object is not iterable
-
         authors = list(map(lambda x: x['authors'], value))
+        adopters = 0
 
         total_authors = len(authors)
         if total_authors != 0:
             total_authors = set(reduce(operator.concat, authors))
 
-        total_issues = list(map(lambda x: x['total_issues'], value))
+            total_issues = list(map(lambda x: x['total_issues'], value))
 
-        total_reporter_issues = len(total_issues)
-        if total_reporter_issues != 0:
-            total_reporter_issues = set(reduce(operator.concat, total_issues))
+            total_reporter_issues = len(total_issues)
+            if total_reporter_issues != 0:
+                total_reporter_issues = set(reduce(operator.concat, total_issues))
 
-        adopters = len(list(total_reporter_issues - total_authors))
+                adopters = len(list(total_reporter_issues - total_authors))
 
         return '{:4,d}'.format(adopters)
 
@@ -573,16 +574,16 @@ class GitHub_Adopters_Open_Issues(DataSource):
 
     def get_measurement(self, metric):
         value = list(filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats))
+        open_issues_adopters = 0
 
-        # TODO: ERROR:reduce() of empty sequence with no initial value
+        if len(value) != 0:
+            authors = set(reduce(operator.concat, list(map(lambda x: x['authors'], value))))
+            total_reporter_issues = set(reduce(operator.concat, list(map(lambda x: x['total_issues'], value))))
 
-        authors = set(reduce(operator.concat, list(map(lambda x: x['authors'], value))))
-        total_reporter_issues = set(reduce(operator.concat, list(map(lambda x: x['total_issues'], value))))
+            adopters = list(total_reporter_issues - authors)
 
-        adopters = list(total_reporter_issues - authors)
-
-        open_issues = reduce(operator.concat, list(map(lambda x: x['open_issues'], value)))
-        open_issues_adopters = len(list(filter(lambda x: x in adopters, open_issues)))
+            open_issues = reduce(operator.concat, list(map(lambda x: x['open_issues'], value)))
+            open_issues_adopters = len(list(filter(lambda x: x in adopters, open_issues)))
 
         return '{:4,d}'.format(open_issues_adopters)
 
@@ -595,21 +596,21 @@ class GitHub_Adopters_Closed_Issues(DataSource):
 
     def get_measurement(self, metric):
         value = list(filter(lambda ge_metric: ge_metric['enabler_id'] == metric.enabler_id, github_stats))
+        closed_issues_adopters = 0
 
-        # TODO: ERROR:reduce() of empty sequence with no initial value
+        if len(value) != 0:
+            authors = set(reduce(operator.concat, list(map(lambda x: x['authors'], value))))
+            total_reporter_issues = set(reduce(operator.concat, list(map(lambda x: x['total_issues'], value))))
 
-        authors = set(reduce(operator.concat, list(map(lambda x: x['authors'], value))))
-        total_reporter_issues = set(reduce(operator.concat, list(map(lambda x: x['total_issues'], value))))
+            adopters = list(total_reporter_issues - authors)
 
-        adopters = list(total_reporter_issues - authors)
+            open_issues = reduce(operator.concat, list(map(lambda x: x['open_issues'], value)))
+            open_issues_adopters = len(list(filter(lambda x: x in adopters, open_issues)))
 
-        open_issues = reduce(operator.concat, list(map(lambda x: x['open_issues'], value)))
-        open_issues_adopters = len(list(filter(lambda x: x in adopters, open_issues)))
+            total_issues = reduce(operator.concat, list(map(lambda x: x['total_issues'], value)))
+            total_issues_adopters = len(list(filter(lambda x: x in adopters, total_issues)))
 
-        total_issues = reduce(operator.concat, list(map(lambda x: x['total_issues'], value)))
-        total_issues_adopters = len(list(filter(lambda x: x in adopters, total_issues)))
-
-        closed_issues_adopters = total_issues_adopters - open_issues_adopters
+            closed_issues_adopters = total_issues_adopters - open_issues_adopters
 
         return '{:4,d}'.format(closed_issues_adopters)
 

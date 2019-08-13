@@ -638,7 +638,7 @@
         ]
     },
     {
-        "enabler": "OFNIC - Network Information & Control",
+        "enabler": "OFNIC - Network Information and Control",
         "catalogue": "network-information-and-control-ofnic",
         "academy": "OFNIC",
         "readthedocs": "fiware-ofnic",
@@ -702,6 +702,20 @@
         ],
         "docker": [
             "fiware/orion"
+        ]
+    },
+    {
+        "enabler": "Orion-LD",
+        "catalogue": "",
+        "academy": "",
+        "readthedocs":"",
+        "helpdesk":"Orion-LD",
+        "coverall": "",
+        "github": [
+            "Fiware/context.Orion-LD"
+        ],
+        "docker": [
+            "orion-ld"
         ]
     },
     {
@@ -960,7 +974,7 @@
             "Wirecloud/docker-wirecloud"
         ],
         "docker": [
-            "Wirecloud/docker-wirecloud"
+            "fiware/wirecloud"
         ]
     }
 ]
