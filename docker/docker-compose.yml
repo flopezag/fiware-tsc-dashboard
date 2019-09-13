@@ -1,0 +1,21 @@
+# use image if you have a dedicated build step:
+#   docker build --rm --build-arg BRANCH=develop -t docker-enabler-dashboard .
+# image: docker-enabler-dashboard
+# use build path to Dockerfile if docker-compose should build the image
+version: '3.7'
+services:
+  docker-tsc-dashboard:
+    container_name: enabler-dashboard
+    hostname: enabler-dashboard
+    image: docker-enabler-dashboard:latest
+    labels:
+      - docker-enabler-dashboard
+    volumes:
+      - ./tsc-dashboard.ini:/home/mgmt/fiware-tsc-dashboard/config/tsc-dashboard.ini
+      - ./dashboard-credential.json:/home/mgmt/fiware-tsc-dashboard/config/dashboard-credential.json
+      - ./fiware-176e13e65772.json:/home/mgmt/fiware-tsc-dashboard/config/fiware-176e13e65772.json
+      - ./sheets.googleapis.com.json:/home/mgmt/fiware-tsc-dashboard/.credentials/sheets.googleapis.com.json
+    logging:
+        options:
+            max-size: "100m"
+            max-file: "5"

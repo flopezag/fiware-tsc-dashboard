@@ -16,9 +16,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ##
-from schema import Schema, Or, Use, And, SchemaError
-from oauth2client.tools import argparser, run_flow
-from config import enablers
+from schema import Schema, Or, And, SchemaError
 
 __author__ = 'fla'
 
@@ -30,24 +28,24 @@ def process_arguments(params):
     :param params: The CLI arguments introduced by the user.
     :return: Nothing.
     """
-    help = params['--help']
-    dbupdate = params['--DBUpdate']
-    flag = params['--noauth_local_webserver']
+    help_param = params['--help']
+    dbupdate_param = params['--DBUpdate']
+    flag_param = params['--noauth_local_webserver']
     version = params['--version']
-    filter = params['--filter']
-    publish = params['--publish']
+    filter_param = params['--filter']
+    publish_param = params['--publish']
 
     # TODO: Add help, version and DBUpdate operations
-    if help:
+    if help_param:
         help_message()
 
     if version:
         version_message()
 
-    if dbupdate:
+    if dbupdate_param:
         delete_db()
 
-    return flag, filter, publish
+    return flag_param, filter_param, publish_param
 
 
 def validate(params):
@@ -64,14 +62,14 @@ def validate(params):
             '--DBUpdate': Or(True, False),
             '--noauth_local_webserver': Or(True, False),
             '--publish': Or(True, False),
-            '--filter': Or(None, And(str, lambda s: len(s) > 3))
+            '--filter': Or(None, And(str, lambda x: len(x) > 3))
         }
     )
 
     try:
         params = s.validate(params)
     except SchemaError as e:
-        message = "Error in the options specified"
+        message = "Error in the options specified: {}".format(e)
         raise ValueError(message)
 
     return params

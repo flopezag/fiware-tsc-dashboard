@@ -105,3 +105,11 @@ dbase/*.db
 # Configuration files
 config/owners.json
 config/tsc-dashboard.ini
+docker/*.json
+docker/*.ini
+
+# Backup files
+config/*.bk
+
+# Logs folder
+logs

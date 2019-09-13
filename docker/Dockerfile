@@ -1,8 +1,8 @@
 FROM python:3.7-alpine
 
-LABEL com.jira-management.version="1.3.0" \
+LABEL com.jira-management.version="2.2.0" \
       vendor="FIWARE Foundation, e.V." \
-      com.jira-management.release-date="2019-08-20" \
+      com.jira-management.release-date="2019-09-13" \
       com.jira-management.version.is-production="yes" \
       com.jira-management.maintainer="Fernando López <fernando.lopez@fiware.org>"
 
@@ -35,6 +35,7 @@ WORKDIR /home/mgmt
 RUN git clone -b $BRANCH https://github.com/flopezag/fiware-tsc-dashboard.git && \
     apk del git && \
     rm -f /var/cache/apk/* && \
+    mkdir /home/mgmt/fiware-tsc-dashboard/.credentials && \
     chown -R mgmt:mgmt fiware-tsc-dashboard/
 
 # Tell docker that all future commands should run as the appuser user
