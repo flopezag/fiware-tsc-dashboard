@@ -4,9 +4,9 @@ from requests import get
 
 class LinkMD:
     def __init__(self):
-        regex_submodule = r"^#{2}(\s*:new:\s*|\s*:seedling:\s*|\s*)([a-zA-Z 0-9]*)(\s*\(Incubated\)|\s*)$"
+        regex_submodule = r"^#{2}(\s*:new:\s*|\s*:seedling:\s*|\s*)([a-zA-Z 0-9\-]*)(\s*\(Incubated\)|\s*)$"
         regex_generic_enablers = r"\s*\|\s*(.*)\s*\|\s*(.*)\s*\|\s*(.*)\s*\|\s*(.*)\s*\|\s*(.*)\s*\|\s*"
-        regex_extract_info = r"^\s*:[a-zA-Z]*:\s*([a-zA-Z ]*)\s*:\s*\*{2}([a-zA-Z]*)\*{2}\s*|.*\[(.*)\]\((.*)\).*$"  # r".*\[(.*)\]\((.*)\).*$"
+        regex_extract_info = r"^\s*:[a-zA-Z_]*:\s*([a-zA-Z ]*)\s*:\s*\**([a-zA-Z]*)\**\s*|.*\[(.*)\]\((.*)\).*$"  # r".*\[(.*)\]\((.*)\).*$"
 
         self.prog_submodule = re.compile(regex_submodule)  # r"submodule \"(.*)\/(.*)\"")
         self.prog_generic_enablers = re.compile(regex_generic_enablers)
@@ -63,23 +63,23 @@ class LinkMD:
 if __name__ == "__main__":
     md = LinkMD()
 
-    # good md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/core/README.md')
-    # good md.get_links()
+    md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/core/README.md')
+    md.get_links()
 
-    # good md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/data-publication/README.md')
-    # good md.get_links()
+    md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/data-publication/README.md')
+    md.get_links()
 
-    # peta falta Academy en OPC-UA y Sigfox -> md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/iot-agents/README.md')
-    # peta falta Academy en OPC-UA y Sigfox -> md.get_links()
+    md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/iot-agents/README.md')
+    md.get_links()
 
-    # peta Cosmos tiene 2 books sin separador -> md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/processing/README.md')
-    # peta Cosmos tiene 2 books sin separador -> md.get_links()
+    # Perseo, has pending the academy and has 2 components -> md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/processing/README.md')
+    # Perseo, has pending the academy and has 2 components -> md.get_links()
 
-    # peta, Micro XRCE-DDS and FIROS has no academy -> md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/robotics/README.md')
-    # peta, Micro XRCE-DDS and FIROS has no academy -> md.get_links()
+    md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/robotics/README.md')
+    md.get_links()
 
     md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/security/README.md')
     md.get_links()
 
-    # peta falta Roadmap en IoTAgent Node Lib -> md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/third-party/README.md')
-    # peta falta Roadmap en IoTAgent Node Lib -> md.get_links()
+    md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/third-party/README.md')
+    md.get_links()
