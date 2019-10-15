@@ -20,8 +20,6 @@ RUN apk update && \
     pip install --no-cache-dir -Iv schema==0.7.0 && \
     pip install --no-cache-dir -Iv docopt==0.6.2
 
-#     apk del gcc musl-dev libffi-dev openssl-dev python3-dev && \
-
 # Define the default BRANCH to get the code
 ARG BRANCH=master
 
@@ -45,4 +43,4 @@ USER mgmt
 ENV TSC_DASHBOARD_SETTINGS_FILE /home/mgmt/fiware-tsc-dashboard/config/tsc-dashboard.ini
 
 # Execute the service
-CMD [ "python", "/home/mgmt/fiware-tsc-dashboard/dashboard.py", "-p --noauth_local_webserver" ]
+CMD [ "python", "/home/mgmt/fiware-tsc-dashboard/dashboard.py", "-p", "-n" ]

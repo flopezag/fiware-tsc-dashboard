@@ -15,20 +15,31 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ##
-import logging
-import os
+from os.path import exists, join
+from os import makedirs
+from logging import getLogger, Formatter, FileHandler, StreamHandler, ERROR
 from config.settings import LOG_HOME, LOG_LEVEL
 from config.constants import LOG_FILE
+from sys import stdout
 
 
-filename = os.path.join(LOG_HOME, LOG_FILE)
+if not exists(LOG_HOME):
+    makedirs(LOG_HOME)
 
-if not os.path.exists(LOG_HOME):
-    os.makedirs(LOG_HOME)
+log_filename = join(LOG_HOME, LOG_FILE)
+format_str = '%(asctime)s [%(levelname)s] %(module)s: %(message)s'
+date_format = '%Y-%m-%dT%H:%M:%SZ'
 
-logging.basicConfig(filename=filename,
-                    format='%(asctime)s|%(levelname)s:%(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S',
-                    level=LOG_LEVEL)
+logger = getLogger(__name__)
+logger.setLevel(LOG_LEVEL)
+formatter = Formatter(fmt=format_str, datefmt=date_format)
 
-logger = logging.getLogger(__name__)
+fh = FileHandler(filename=log_filename)
+fh.setLevel(LOG_LEVEL)
+fh.setFormatter(formatter)
+logger.addHandler(fh)
+
+sh = StreamHandler(stdout)
+sh.setLevel(ERROR)
+sh.setFormatter(formatter)
+logger.addHandler(sh)

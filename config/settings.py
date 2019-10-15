@@ -80,13 +80,16 @@ def check_log_level(loglevel):
 def check_metric_values(metric_values):
 
     if metric_values.upper() not in ('UPDATE', 'READ'):
-        msg = '\nERROR: param metricvalues in file tsc-dashboard.ini has not a valid value. ' \
+        msg_error = '\nERROR: param metric values in file tsc-dashboard.ini has not a valid value. ' \
               '\n       Accepted values are only "read" or "update".' \
               '\n\n       Please update the configuration file.'
-        exit(msg)
+        exit(msg_error)
 
     return metric_values
 
+
+LOG_LEVEL = ''
+LOG_FILE = ''
 
 if Config.sections():
     # Data from Google section
@@ -105,6 +108,7 @@ if Config.sections():
     log_section = config_section_map("log")
 
     LOG_LEVEL = check_log_level(log_section['loglevel'])
+    LOG_FILE = log_section['logfile']
 
     # Backlog section
     backlog_section = config_section_map("backlog")
