@@ -145,7 +145,7 @@ if Config.sections():
 else:
     msg = '\nERROR: There is not defined TSC_DASHBOARD_SETTINGS_FILE environment variable ' \
           '\n       pointing to configuration file or there is no tsc-dashboard.ini file' \
-          '\n       in the /etd/fiware.d directory.' \
+          '\n       in the /etc/fiware.d directory.' \
           '\n\n       Please correct at least one of them to execute the program.'
     exit(msg)
 

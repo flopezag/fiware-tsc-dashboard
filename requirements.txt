@@ -1,13 +1,13 @@
 # Project executed with Python3.7
 # Use virtualenv -p python3.7 env
 
-sqlalchemy==1.3.3
-requests==2.21.0
-PyGithub==1.43.7
+sqlalchemy==1.3.23
+requests==2.25.1
+PyGithub==1.54.1
 oauth2client==4.1.3
-google-api-python-client==1.7.8
-configparser==3.7.4
-python-dateutil==2.8.0
-pytz==2019.1
+google-api-python-client==1.12.8
+configparser==5.0.2
+python-dateutil==2.8.1
+pytz==2021.1    # !!!
 schema==0.7.0
 docopt==0.6.2

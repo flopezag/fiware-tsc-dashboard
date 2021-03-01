@@ -62,13 +62,7 @@ NEW_PATH=${result}${PATH_TO_CHANGE}
 
 sed -i -e "s/${PATH_TO_CHANGE}/${NEW_PATH}/" ./config/tsc-dashboard.logrotate
 
-echo ""
-echo ""
-echo "Please, with root user, execute the following command:"
-echo ""
-echo "cp ./config/tsc-dashboard.logrotate /etc/logrotate.d/tsc-dashboard"
-
-
+sudo cp ./config/tsc-dashboard.logrotate /etc/logrotate.d/tsc-dashboard
 
 # 4) configure crontab
 username=$(whoami)
@@ -96,7 +90,7 @@ else
     if [ "$line" == "" ]; then
         (crontab -l; echo "") | crontab -
         (crontab -l; echo "# FIWARE TSC Enabler Dashboard") | crontab -
-        (crontab -l; echo "00 4 * * * "${working_directory}"/dashboard.py --noauth_local_webserver") | crontab -
+        (crontab -l; echo "00 6 * * * "${working_directory}"/dashboard.py --noauth_local_webserver") | crontab -
     fi
 
     rm -f /tmp/cronlock

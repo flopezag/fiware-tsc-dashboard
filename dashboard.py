@@ -1,4 +1,4 @@
-#!/usr/bin/env /Users/fernandolopez/Documents/workspace/python/fiware-tsc-dashboard/env/bin/python
+#!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 ##
 # Copyright 2017 FIWARE Foundation, e.V.
