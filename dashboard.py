@@ -31,7 +31,6 @@ Options:
   -f --filter <enabler>  Filter the data for the specific enabler
   -p --publish   Publish the information in Monasca for historical purpose
 """
-import os
 
 from datetime import datetime
 from dbase import db, EnablerImp, Source, Metric, Measurement, Admin
@@ -49,7 +48,10 @@ from kernel.monasca import Monasca
 from kernel.keystone import Keystone
 from docopt import docopt
 from kernel.clioperations import validate, process_arguments
-import time
+from urllib3 import disable_warnings
+from urllib3.exceptions import InsecureRequestWarning
+from os.path import isfile, join, dirname, abspath
+from time import time
 
 __author__ = 'Fernando López'
 __version__ = '2.2.0'
@@ -86,9 +88,9 @@ class Dashboard:
 
     @staticmethod
     def check_database():
-        database_filename = os.path.join(os.path.dirname(os.path.abspath(__file__)), DB_FOLDER, DB_NAME)
+        database_filename = join(dirname(abspath(__file__)), DB_FOLDER, DB_NAME)
 
-        if os.path.isfile(database_filename) is False:
+        if isfile(database_filename) is False:
             my_db = Database()
             my_db.show_data()
 
@@ -184,7 +186,9 @@ class Dashboard:
 
 
 if __name__ == "__main__":
-    start_time = time.time()
+    start_time = time()
+
+    disable_warnings(InsecureRequestWarning)
 
     version = "Generate the Enabler Dashboard panel v{}".format(__version__)
     arguments = docopt(__doc__, version=version)
@@ -221,4 +225,4 @@ if __name__ == "__main__":
     logger.info("GitHub rate limiting reset time: {}".format(rate_count_reset_time))
 
     # TODO: Add footer to the Google sheet document.
-    logger.info("--- %s seconds ---" % (time.time() - start_time))
+    logger.info("--- %s seconds ---" % (time() - start_time))

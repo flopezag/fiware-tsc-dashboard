@@ -28,11 +28,11 @@ VIRTUALENV_DIR='\/env\/bin\/python'
 
 
 # 1) Install&Config virtualenv for DesksReminder
-if [ ! -d "env" ]; then
+if [ ! -d ".env" ]; then
   # Control will enter here if env does not exist.
-  virtualenv -p python2.7 env
+  virtualenv -p python3.9 .env
 
-  source env/bin/activate
+  source .env/bin/activate
   pip install -r requirements.txt
 
   deactivate

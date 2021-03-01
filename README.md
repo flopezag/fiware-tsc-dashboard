@@ -9,13 +9,14 @@ and forward the data to the [InfluxDB Global Monitoring instance](http://127.0.0
 for historical analysis in order to evaluate the use of the different components.
  
 These scripts were developed in order to facilitate the activities in the FIWARE Technical Steering
-Committee. The purpose is generate automatically a google excel file in which we show the use of
-the different Generic Enablers that are available in FIWARE.
+Committee. The purpose is to generate automatically a Google Spreadsheet file in which we show the 
+use of the different Generic Enablers that are available in FIWARE.
 
-These scripts were originally develop by Manuel Escriche from Telefónica I+D and now 
+These scripts were originally developed by Manuel Escriche from Telefónica I+D and now 
 is maintained by me. I just try to cover python style reorganize content to separate 
-the scripts and generate a separate project for it. Eventually, I generate a proper project to allow
-the continue execution of the component every day and describe how to install the component.
+the scripts and generate a separate project for it. Eventually, I generate a proper 
+project to allow the continue execution of the component every day and describe how 
+to install the component.
 
 ## Build and Install
 
@@ -23,14 +24,14 @@ the continue execution of the component every day and describe how to install th
 
 The following software must be installed:
 
-- Python 2.7
+- Python 3.9
 - pip
 - virtualenv
 
 
 ### Installation
 
-The recommend installation method is using a virtualenv. Actually, the installation 
+The recommended installation method is using a virtualenv. Actually, the installation 
 process is only about the python dependencies, because the python code do not need 
 installation.
 
