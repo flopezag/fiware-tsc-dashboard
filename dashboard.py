@@ -43,6 +43,7 @@ from dbase.database import Database
 from dbase.measurement_search import MeasurementData
 from config.log import logger
 from config import enablers
+from config.settings import __version__
 from github import Github
 from kernel.monasca import Monasca
 from kernel.keystone import Keystone
@@ -54,7 +55,6 @@ from os.path import isfile, join, dirname, abspath
 from time import time
 
 __author__ = 'Fernando López'
-__version__ = '2.2.0'
 
 
 class Dashboard:
@@ -79,7 +79,7 @@ class Dashboard:
         # for row in values: print(row)
 
         body = {'values': values}
-        area = 'Main!A3:X100'
+        area = 'Main!A1:X100'
 
         self.service.spreadsheets().values().update(spreadsheetId=SHEET_ID,
                                                     range=area,
@@ -120,6 +120,11 @@ class Dashboard:
 
     def generate_data(self):
         values = list()
+        header = 'FIWARE - TSC Enablers Dashboard, v{}'.format(__version__)
+
+        values.append([header])
+        values.append([''])
+
         values.append(['Report date:', datetime.now().strftime('%d %b %Y at %H:%m')])
 
         # Add the date in which the database schema was created last time
@@ -167,6 +172,8 @@ class Dashboard:
                         raw.extend([measurement.value])
                 values.append(raw)
             values.append([''])
+
+        values.append(['2021 © FIWARE Foundation, e.V.'])
 
         if self.publish:
             self.__publish__(values=values)
@@ -224,5 +231,4 @@ if __name__ == "__main__":
     logger.info("GitHub rate limiting at finish: {}".format(rate_count))
     logger.info("GitHub rate limiting reset time: {}".format(rate_count_reset_time))
 
-    # TODO: Add footer to the Google sheet document.
     logger.info("--- %s seconds ---" % (time() - start_time))

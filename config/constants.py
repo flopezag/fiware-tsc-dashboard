@@ -42,7 +42,7 @@ LOG_FILE = 'tsc-dashboard.log'
 FIXED_ROWS = 16
 
 # We keep the firsts row without change in the sheet (sheet title)
-INITIAL_ROW = 2
+INITIAL_ROW = 1
 
 # The number of columns to delete corresponds to:
 # Source, Catalogue, ReadTheDocs, Docker, GitHub, Coverall, Academy, HelpDesk, Backlog, GitHub_Open_Issues,
