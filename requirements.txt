@@ -1,7 +1,7 @@
 # Project executed with Python2.7
 # Use virtualenv -p python2.7 env
 
-sqlalchemy==1.1.5
+sqlalchemy==1.3.0
 requests==2.14.0
 PyGithub==1.40
 oauth2client==4.0.0
