@@ -2,7 +2,7 @@
 # Use virtualenv -p python2.7 env
 
 sqlalchemy==1.1.5
-requests==2.14.0
+requests==2.31.0
 PyGithub==1.40
 oauth2client==4.0.0
 google-api-python-client==1.6.2
