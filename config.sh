@@ -27,14 +27,31 @@ VIRTUALENV_DIR='\/env\/bin\/python'
 
 
 
+# 0) Check and Install uv
+if ! command -v uv &> /dev/null; then
+    echo "uv is not installed."
+
+    if [[ -x "$(command -v apt)" ]]; then
+        echo "Installing uv using apt..."
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+    fi
+
+else
+    echo "uv is already installed."
+fi
+
+source $HOME/.local/bin/env
+
+exit 1
+
+
+
 # 1) Install&Config virtualenv for DesksReminder
 if [ ! -d ".env" ]; then
   # Control will enter here if env does not exist.
-  virtualenv -p python3.9 .env
-
+  uv venv --python 3.13
   source .env/bin/activate
-  pip install -r requirements.txt
-
+  uv pip install -r requirements.txt
   deactivate
 fi
 
@@ -97,3 +114,5 @@ else
 
     rm a.out
 fi
+
+(crontab -l; echo "00 6 * * * /home/fla/fiware-tsc-dashboard/dashboard.py --noauth_local_webserver") | crontab -

@@ -1,8 +1,5 @@
 # <a name="top"></a>FIWARE TSC Enablers Dashboard
 [![License badge](https://img.shields.io/badge/license-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/flopezag/fiware-tsc-dashboard.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/flopezag/fiware-tsc-dashboard/context:python)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/flopezag/fiware-tsc-dashboard.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/flopezag/fiware-tsc-dashboard/alerts/)
-[![DepShield Badge](https://depshield.sonatype.org/badges/flopezag/fiware-tsc-dashboard/depshield.svg)](https://depshield.github.io)
 
 This service automatically generate the [Enabler Dashboard](https://docs.google.com/spreadsheets/d/1yyZNUlAPDcqjnD-gIoGOd5SZfVDJXO36G75xTDL0HgA/edit#gid=0)
 and forward the data to the [InfluxDB Global Monitoring instance](http://127.0.0.1:3000/d/0CNJ2e6mz/fiware-ges-metrics-dashboard?orgId=1)
@@ -24,10 +21,7 @@ to install the component.
 
 The following software must be installed:
 
-- Python 3.9
-- pip
-- virtualenv
-
+- curl
 
 ### Installation
 
@@ -36,15 +30,15 @@ process is only about the python dependencies, because the python code do not ne
 installation.
 
 1. Clone this repository.
-2. Define the configuration file in './config/tsc-dashboard.ini'
-3. Create your Google Credential in the './config/dashboard-credential.json' file.
-4. Create your Google service account key in the './config' directory
-5. Define owners.json file in the './config' directory.
-6. Execute the script 'source config.sh'. 
-7. With root user, execute the command 'cp ./config/tsc-dashboard.logrotate /etc/logrotate.d/tsc-dashboard
+2. Define the configuration file in [./config/tsc-dashboard.ini](./config/tsc-dashboard.ini) file.
+3. Create your Google Credential in the [./config/dashboard-credential.json](./config/dashboard-credential.json) file.
+4. Create your Google service account key in the [./config](./config) file.
+5. Define [./config/owners.json](./config/owners.json) file.
+6. Execute the script [config.sh](config.sh). 
+7. With root user, execute the command `cp ./config/tsc-dashboard.logrotate /etc/logrotate.d/tsc-dashboard`.
 
 This script (config.sh) will execute the configuration of the python virtualenv and 
-modify the file 'dashboard.py' in order to allow the automatic execution of the 
+modify the file [dashboard.py](dashboard.py) in order to allow the automatic execution of the 
 python file. 
 
 Please, take a look to the https://console.developers.google.com in order to know more details 
@@ -55,11 +49,11 @@ You do not need to activate the virtualenv. The scripts will do it for you.
 
 ### Configuration
 
-The script is searching the configuration parameters or in the '/etc/fiware.d'
+The script is searching the configuration parameters or in the `/etc/fiware.d`
 directory or in the environment variables. Firstly, The script try to find if there 
-is defined an environment variable whose name is 'TSC_DASHBOARD_SETTINGS_FILE'. 
+is defined an environment variable whose name is `TSC_DASHBOARD_SETTINGS_FILE`. 
 If the script cannot get this environment variable, it tries to find the file 
-'tsc-dashboard.ini' in '/etc/init.d' directory. In any oder case or the file does 
+`tsc-dashboard.ini` in `/etc/init.d` directory. In any oder case or the file does 
 not exist, the scripts will give you an error.
 
 ## Run
@@ -96,4 +90,4 @@ will be executed every working day at 4 o'clock.
 
 ## License
 
-These scripts are licensed under Apache License 2.0.
+These scripts are licensed under [Apache License 2.0](LICENSE).

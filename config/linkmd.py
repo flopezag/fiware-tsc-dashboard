@@ -66,20 +66,20 @@ if __name__ == "__main__":
     md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/core/README.md')
     md.get_links()
 
-    md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/data-publication/README.md')
-    md.get_links()
+    #md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/data-publication/README.md')
+    #md.get_links()
 
-    md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/iot-agents/README.md')
-    md.get_links()
+    #md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/iot-agents/README.md')
+    #md.get_links()
 
     # Perseo, has pending the academy and has 2 components -> md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/processing/README.md')
     # Perseo, has pending the academy and has 2 components -> md.get_links()
 
-    md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/robotics/README.md')
-    md.get_links()
+    #md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/robotics/README.md')
+    #md.get_links()
 
-    md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/security/README.md')
-    md.get_links()
+    #md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/security/README.md')
+    #md.get_links()
 
-    md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/third-party/README.md')
-    md.get_links()
+    #md.markdown(url='https://raw.githubusercontent.com/FIWARE/catalogue/master/third-party/README.md')
+    #md.get_links()

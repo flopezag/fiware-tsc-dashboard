@@ -712,7 +712,7 @@
         "helpdesk":"Orion-LD",
         "coverall": "",
         "github": [
-            "Fiware/context.Orion-LD"
+            "fiware/context.Orion-LD"
         ],
         "docker": [
             "orion-ld"

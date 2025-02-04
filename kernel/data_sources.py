@@ -403,7 +403,7 @@ class GitHub(DataSource):
             releases = repo.get_releases()
         except RateLimitExceededException:
             logger.warning(
-                'The available request limit was exceeded for the Github API, waiting 1h until refresh it5....')
+                'The available request limit was exceeded for the Github API, waiting 1h until refresh it...')
 
             # Start to wait 1h
             for i in range(0, 20):
