@@ -23,7 +23,7 @@
 PYTHON_FILE="dashboard.py"
 INITIAL_HEADER="#\!\/usr\/bin\/env python"
 FINAL_HEADER='#\!\/usr\/bin\/env '
-VIRTUALENV_DIR='\/env\/bin\/python'
+VIRTUALENV_DIR='\/.venv\/bin\/python'
 
 
 
@@ -42,15 +42,11 @@ fi
 
 source $HOME/.local/bin/env
 
-exit 1
-
-
-
 # 1) Install&Config virtualenv for DesksReminder
 if [ ! -d ".env" ]; then
   # Control will enter here if env does not exist.
   uv venv --python 3.13
-  source .env/bin/activate
+  source .venv/bin/activate
   uv pip install -r requirements.txt
   deactivate
 fi
@@ -114,5 +110,3 @@ else
 
     rm a.out
 fi
-
-(crontab -l; echo "00 6 * * * /home/fla/fiware-tsc-dashboard/dashboard.py --noauth_local_webserver") | crontab -
